@@ -1,1 +1,37 @@
-<p>categories works!</p>
+<h1 class="m-2">Categorias</h1>
+
+<div class="content">
+  <mat-card class="m-2">
+    <mat-card-title>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="newCategory()"
+        class="m-2"
+      >
+        <mat-icon mat-list-icon>add</mat-icon>
+        New
+      </button>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="mt-2" style="overflow-x: auto">
+      <mat-form-field style="width: 100%">
+        <mat-label>Buscar</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilterList($event)"
+          placeholder="Filter"
+          #input
+        />
+      </mat-form-field>
+
+      <category-list
+        [dataSource]="dataSource"
+        [displayedColumns]="displayedColumns"
+        [input]="input"
+        (onEditCategory)="editCategory($event)"
+        (onChangeStatus)="changeStatus($event)"
+      ></category-list>
+    </mat-card-content>
+  </mat-card>
+</div>

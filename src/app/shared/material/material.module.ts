@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { LayoutModule } from '@angular/cdk/layout';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatSlideToggleModule,
     LayoutModule,
   ],
 })
