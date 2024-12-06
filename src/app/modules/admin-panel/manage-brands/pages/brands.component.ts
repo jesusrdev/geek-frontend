@@ -1,40 +1,40 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
-import { Category } from '../../../../../core/models/category';
+import { Brand } from '../../../../core/models/brand';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
-import { CategoryService } from '../../../../../core/services/category.service';
-import { SharedService } from '../../../../../core/services/shared.service';
+import { BrandService } from '../../../../core/services/brand.service';
+import { SharedService } from '../../../../core/services/shared.service';
+
+import { BrandModalComponent } from '../components/brand-modal/brand-modal.component';
 
 import Swal from 'sweetalert2';
 
-import { CategoryModalComponent } from '../../components/modal/modal.component';
-
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.css'
+  selector: 'app-brands',
+  templateUrl: './brands.component.html',
+  styleUrl: './brands.component.css'
 })
-export class CategoriesComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['nameCategory', 'estatus', 'actions'];
+export class BrandsComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['nameBrand', 'imageUrl', 'status', 'actions'];
 
-  initialData: Category[] = [];
+  initialData: Brand[] = [];
 
   dataSource = new MatTableDataSource(this.initialData);
 
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
 
   constructor(
-    private _categoryService: CategoryService,
+    private _brandService: BrandService,
     private _sharedService: SharedService,
     private dialog: MatDialog
   ) {}
 
   getCategories() {
-    this._categoryService.list().subscribe({
+    this._brandService.list().subscribe({
       next: data => {
         if (data.isSuccessful) {
           this.dataSource = new MatTableDataSource(data.result);
@@ -49,20 +49,20 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     });
   }
 
-  newCategory() {
+  newBrand() {
     this.dialog
-      .open(CategoryModalComponent, { width: '400px' })
+      .open(BrandModalComponent, { width: '400px' })
       .afterClosed()
       .subscribe(result => {
         if (result === true) this.getCategories();
       });
   }
 
-  editCategory(category: Category) {
+  editBrand(brand: Brand) {
     this.dialog
-      .open(CategoryModalComponent, {
+      .open(BrandModalComponent, {
         width: '400px',
-        data: category
+        data: brand
       })
       .afterClosed()
       .subscribe(result => {
@@ -70,11 +70,11 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       });
   }
 
-  changeStatus(category: Category) {
-    const text = category.estatus != 1 ? 'activar' : 'desactivar';
+  changeStatus(brand: Brand) {
+    const text = brand.status != 1 ? 'activar' : 'desactivar';
     Swal.fire({
-      title: `¿Quieres ${text} esta categoría?`,
-      text: category.nameCategory,
+      title: `¿Quieres ${text} esta marca?`,
+      text: brand.nameBrand,
       icon: 'warning',
       confirmButtonColor: '#3085d6',
       confirmButtonText: `Si, ${text}`,
@@ -83,13 +83,13 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       cancelButtonText: 'No'
     }).then(result => {
       if (result.isConfirmed) {
-        this._categoryService.changeStatus(category.id).subscribe({
+        this._brandService.changeStatus(brand.id).subscribe({
           next: data => {
             if (data.isSuccessful) {
-              this._sharedService.showAlert(`Se logró ${text} la categoría con éxito`, 'Completado');
+              this._sharedService.showAlert(`Se logró ${text} la marca con éxito`, 'Completado');
               this.getCategories();
             } else {
-              this._sharedService.showAlert(`No se pudo ${text} la categoría`, 'Error!');
+              this._sharedService.showAlert(`No se pudo ${text} la marca`, 'Error!');
             }
           },
           error: e => {

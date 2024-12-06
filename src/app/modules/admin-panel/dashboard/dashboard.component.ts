@@ -10,7 +10,7 @@ import { SharedService } from '../../../core/services/shared.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  username: string = '';
+  username = '';
 
   constructor(
     private router: Router,

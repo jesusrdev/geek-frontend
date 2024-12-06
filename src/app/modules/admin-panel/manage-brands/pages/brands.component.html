@@ -1,4 +1,4 @@
-<h1 class="m-2">Categorias</h1>
+<h1 class="m-2">Marcas</h1>
 
 <div class="content">
   <mat-card class="m-2">
@@ -6,7 +6,7 @@
       <button
         mat-raised-button
         color="primary"
-        (click)="newCategory()"
+        (click)="newBrand()"
         class="m-2"
       >
         <mat-icon mat-list-icon>add</mat-icon>
@@ -25,13 +25,13 @@
         />
       </mat-form-field>
 
-      <category-list
+      <brand-list
         [dataSource]="dataSource"
         [displayedColumns]="displayedColumns"
         [input]="input"
-        (onEditCategory)="editCategory($event)"
+        (onEditBrand)="editBrand($event)"
         (onChangeStatus)="changeStatus($event)"
-      ></category-list>
+      ></brand-list>
     </mat-card-content>
   </mat-card>
 </div>

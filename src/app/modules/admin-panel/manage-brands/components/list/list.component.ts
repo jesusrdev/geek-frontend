@@ -1,16 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Brand } from '../../../../../core/models/brand';
+
 import { MatTableDataSource } from '@angular/material/table';
-import { Category } from '../../../../../core/models/category';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'category-list',
+  selector: 'brand-list',
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
-export class CategoryListComponent {
+export class BrandListComponent {
   @Input()
-  dataSource = new MatTableDataSource<Category, MatPaginator>();
+  dataSource = new MatTableDataSource<Brand, MatPaginator>();
 
   @Input()
   displayedColumns: string[] = [];
@@ -19,16 +21,16 @@ export class CategoryListComponent {
   input: any;
 
   @Output()
-  public onEditCategory = new EventEmitter<Category>();
+  public onEditBrand = new EventEmitter<Brand>();
 
-  editCategory(category: Category) {
-    this.onEditCategory.emit(category);
+  editBrand(category: Brand) {
+    this.onEditBrand.emit(category);
   }
 
   @Output()
-  public onChangeStatus = new EventEmitter<Category>();
+  public onChangeStatus = new EventEmitter<Brand>();
 
-  changeStatus(category: Category) {
+  changeStatus(category: Brand) {
     this.onChangeStatus.emit(category);
   }
 }

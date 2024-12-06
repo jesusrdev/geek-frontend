@@ -8,9 +8,6 @@ import {HomeComponent} from './home/pages/home.component';
 import {LayoutComponent} from './layout/layout.component';
 import {ProductComponent} from './product/pages/product.component';
 
-import {CategoryService} from '../../core/services/category.service';
-
-
 @NgModule({
   declarations: [
     HomeComponent,

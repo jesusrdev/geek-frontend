@@ -9,20 +9,19 @@ import { SharedService } from '../../../core/services/shared.service';
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent implements OnInit {
-  username: string = '';
+  username = '';
 
   constructor(
     private router: Router,
-    private sharedService: SharedService,
+    private sharedService: SharedService
     // private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
-  //   const userSession = this.sharedService.getSession();
-
-  //   if (userSession != null) {
-  //     this.username = userSession;
-  //   }
+    //   const userSession = this.sharedService.getSession();
+    //   if (userSession != null) {
+    //     this.username = userSession;
+    //   }
   }
 
   // logOut(): void {

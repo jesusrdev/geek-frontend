@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './manage-categories/pages/categories/categories.component';
+import { BrandsComponent } from './manage-brands/pages/brands.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,12 @@ const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesComponent,
-        pathMatch: 'full',
+        pathMatch: 'full'
+      },
+      {
+        path: 'brands',
+        component: BrandsComponent,
+        pathMatch: 'full'
       },
       // {
       //   path: 'specialties',
@@ -24,14 +30,14 @@ const routes: Routes = [
       // },
       // { path: 'doctors', component: ListDoctorComponent, pathMatch: 'full' },
       // { path: 'users', component: ListUserComponent, pathMatch: 'full' },
-      { path: '**', redirectTo: 'admin', pathMatch: 'full' },
-    ],
-  },
+      { path: '**', redirectTo: 'admin', pathMatch: 'full' }
+    ]
+  }
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule {}
