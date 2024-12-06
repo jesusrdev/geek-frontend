@@ -10,10 +10,18 @@ import { CategoryListComponent } from './manage-categories/components/list/list.
 import { CategoryModalComponent } from './manage-categories/components/modal/modal.component';
 import { BrandsComponent } from './manage-brands/pages/brands.component';
 import { BrandListComponent } from './manage-brands/components/list/list.component';
+import { BrandModalComponent } from './manage-brands/components/brand-modal/brand-modal.component';
+import { SubcategoriesComponent } from './manage-subcategories/pages/subcategories.component';
+import { SubcategoryListComponent } from './manage-subcategories/components/subcategory-list/subcategory-list.component';
+import { SubcategoryModalComponent } from './manage-subcategories/components/subcategory-modal/subcategory-modal.component';
 
 import { CategoryService } from '../../core/services/category.service';
 import { BrandService } from '../../core/services/brand.service';
-import { BrandModalComponent } from './manage-brands/components/brand-modal/brand-modal.component';
+import { SubcategoryService } from '../../core/services/subcategory.service';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -23,10 +31,21 @@ import { BrandModalComponent } from './manage-brands/components/brand-modal/bran
     CategoryModalComponent,
     BrandsComponent,
     BrandListComponent,
-    BrandModalComponent
+    BrandModalComponent,
+    SubcategoriesComponent,
+    SubcategoryListComponent,
+    SubcategoryModalComponent
   ],
-  imports: [CommonModule, AdminRoutingModule, SharedModule, MaterialModule],
-  providers: [CategoryService, BrandService],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    SharedModule,
+    MaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+  ],
+  providers: [CategoryService, BrandService, SubcategoryService],
   exports: [DashboardComponent]
 })
 export class AdminPanelModule {}
