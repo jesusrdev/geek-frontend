@@ -1,0 +1,48 @@
+<mat-toolbar class="flex justify-between !bg-gray-navbar !h-fit !py-2">
+  <span class="font-montserrat font-bold text-4xl text-orange">GEEK</span>
+
+  <ul
+    class="flex flex-row gap-5 text-lg hover:*:border-b-orange *:border-b-2 *:border-solid *:transition-all hover:*:cursor-pointer">
+    <li>
+      <a routerLink="/">Home</a>
+    </li>
+    <li>
+      <a routerLink="/products">Productos</a>
+    </li>
+  </ul>
+
+  <div class="flex *:tracking-wide *:grow" *ngIf="isLoggedIn; else noLoggedIn">
+    <button mat-icon-button class="!p-1">
+      <img src="/icons/carrito.png" alt="cart" class="!w-full !h-full object-contain" />
+    </button>
+
+    <span class="w-0.5 bg-[#C1C1C1]"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="account" class="!p-0">
+      <img src="/icons/perfil.png" alt="cart" class="!w-full !h-full object-contain" />
+    </button>
+    <mat-menu #menu="matMenu" class="!bg-gray-navbar">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Mi cuenta</span>
+      </button>
+      <button mat-menu-item routerLink="/favorites">
+        <mat-icon>favorite</mat-icon>
+        <span>Mis lista de deseos</span>
+      </button>
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+
+  </div>
+
+  <ng-template #noLoggedIn>
+    <div class="flex gap-2 *:tracking-wide *:grow">
+
+      <app-button text="Registrarse" color="secondary" class="font-koulen" (handleClick)="register()"></app-button>
+      <app-button text="Acceder" color="primary" class="font-koulen" (handleClick)="logIn()"></app-button>
+    </div>
+  </ng-template>
+</mat-toolbar>

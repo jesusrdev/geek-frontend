@@ -20,8 +20,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -45,7 +45,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatToolbarModule,
     MatTooltipModule,
     MatSlideToggleModule,
-    LayoutModule,
-  ],
+    MatMenuModule,
+    LayoutModule
+  ]
 })
 export class MaterialModule {}

@@ -16,23 +16,23 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        pathMatch: 'full',
+        pathMatch: 'full'
         // canActivate: [authGuard],
       },
       {
-        path: 'product',
+        path: 'products',
         component: ProductComponent,
-        pathMatch: 'full',
+        pathMatch: 'full'
         // canActivate: [authGuard],
-      },
+      }
       // { path: '**', redirectTo: '', pathMatch: 'full' },
-    ],
-  },
+    ]
+  }
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class EcommerceRoutingModule { }
+export class EcommerceRoutingModule {}

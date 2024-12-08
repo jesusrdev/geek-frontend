@@ -1,27 +1,19 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {EcommerceRoutingModule} from './ecommerce-routing.module';
-import {SharedModule} from '../../shared/shared.module';
-import {MaterialModule} from '../../shared/material/material.module';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { EcommerceRoutingModule } from './ecommerce-routing.module';
+import { SharedModule } from '../../shared/shared.module';
+import { MaterialModule } from '../../shared/material/material.module';
 
-import {HomeComponent} from './home/pages/home.component';
-import {LayoutComponent} from './layout/layout.component';
-import {ProductComponent} from './product/pages/product.component';
+import { HomeComponent } from './home/pages/home.component';
+import { LayoutComponent } from './layout/layout.component';
+import { ProductComponent } from './product/pages/product.component';
+import { NavbarComponent } from './layout/components/navbar/navbar.component';
+import { FooterComponent } from './layout/components/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    LayoutComponent,
-    ProductComponent,
-  ],
-  imports: [
-    CommonModule,
-    EcommerceRoutingModule,
-    SharedModule,
-    MaterialModule,
-  ],
+  declarations: [HomeComponent, LayoutComponent, ProductComponent, NavbarComponent, FooterComponent],
+  imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
   providers: [],
-  exports: [HomeComponent],
+  exports: [HomeComponent]
 })
-export class ECommerceModule {
-}
+export class ECommerceModule {}

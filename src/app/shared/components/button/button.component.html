@@ -1,0 +1,8 @@
+<button [class]="class + ' uppercase text-lg py-2 px-5 rounded-xl'"
+        [ngClass]="{
+          'bg-orange text-white': color === 'primary',
+          'bg-white text-orange': color === 'secondary'
+        }"
+        [disabled]="disabled" (click)="clickEmit()">
+  {{ text }}
+</button>
