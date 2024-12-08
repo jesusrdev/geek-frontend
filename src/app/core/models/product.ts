@@ -24,4 +24,5 @@ export interface ImageProduct {
   id: number;
   urlImage: string;
   productId: number;
+  product?: Omit<Product, 'images'>;
 }

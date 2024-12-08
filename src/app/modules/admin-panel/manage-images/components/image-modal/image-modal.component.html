@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>{{ title }} Imagen</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formImage">
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Producto</mat-label>
+          <mat-select formControlName="productId">
+            <mat-option *ngFor="let product of listProducts" [value]="product.id">
+              {{ product.nameProduct }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <div class="w-full">
+          <mat-label>Imagen</mat-label>
+          <input
+            formControlName="imageUrl"
+            autocomplete="off"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event)"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close="true" color="warn">Back</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="formImage.invalid"
+    (click)="saveImage()"
+  >
+    {{ nameButton }}
+  </button>
+</mat-dialog-actions>

@@ -7,6 +7,7 @@ import { CategoriesComponent } from './manage-categories/pages/categories/catego
 import { BrandsComponent } from './manage-brands/pages/brands.component';
 import { SubcategoriesComponent } from './manage-subcategories/pages/subcategories.component';
 import { ProductsComponent } from './manage-products/pages/products.component';
+import { ImagesComponent } from './manage-images/pages/images.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       { path: 'products', component: ProductsComponent, pathMatch: 'full' },
+      {
+        path: 'images',
+        component: ImagesComponent,
+        pathMatch: 'full'
+      },
       // { path: 'users', component: ListUserComponent, pathMatch: 'full' },
       { path: '**', redirectTo: 'admin', pathMatch: 'full' }
     ]
