@@ -60,7 +60,7 @@ export class SubcategoryModalComponent implements OnInit {
       this.formSubcategory.patchValue({
         nameSubcategory: this.dataSubcategory.nameSubcategory,
         categoryId: this.dataSubcategory.categoryId,
-        status: this.dataSubcategory.estatus.toString()
+        status: this.dataSubcategory.status.toString()
       });
     }
   }
@@ -70,7 +70,7 @@ export class SubcategoryModalComponent implements OnInit {
       id: this.dataSubcategory?.id ?? 0,
       nameSubcategory: this.formSubcategory.value.nameSubcategory,
       categoryId: this.formSubcategory.value.categoryId,
-      estatus: parseInt(this.formSubcategory.value.status)
+      status: parseInt(this.formSubcategory.value.status)
     };
 
     if (this.dataSubcategory == null) {

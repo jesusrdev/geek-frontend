@@ -1,40 +1,51 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
-import { Category } from '../../../../../core/models/category';
+import { Product } from '../../../../core/models/product';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
-import { CategoryService } from '../../../../../core/services/category.service';
-import { SharedService } from '../../../../../core/services/shared.service';
+import { ProductService } from '../../../../core/services/product.service';
+import { SharedService } from '../../../../core/services/shared.service';
+
+import { ProductModalComponent } from '../components/product-modal/product-modal.component';
 
 import Swal from 'sweetalert2';
 
-import { CategoryModalComponent } from '../../components/modal/modal.component';
-
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.css'
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrl: './products.component.css'
 })
-export class CategoriesComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['nameCategory', 'status', 'actions'];
+export class ProductsComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = [
+    'nameProduct',
+    'image',
+    'description',
+    'price',
+    'stock',
+    'discount',
+    'categoryId',
+    'brandId',
+    'subcategoryId',
+    'actions'
+  ];
 
-  initialData: Category[] = [];
+  initialData: Product[] = [];
 
   dataSource = new MatTableDataSource(this.initialData);
 
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
 
   constructor(
-    private _categoryService: CategoryService,
+    private _productService: ProductService,
     private _sharedService: SharedService,
     private dialog: MatDialog
   ) {}
 
   getCategories() {
-    this._categoryService.list().subscribe({
+    this._productService.list().subscribe({
       next: data => {
         if (data.isSuccessful) {
           this.dataSource = new MatTableDataSource(data.result);
@@ -49,20 +60,20 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     });
   }
 
-  newCategory() {
+  newProduct() {
     this.dialog
-      .open(CategoryModalComponent, { width: '400px' })
+      .open(ProductModalComponent, { width: '600px' })
       .afterClosed()
       .subscribe(result => {
         if (result === true) this.getCategories();
       });
   }
 
-  editCategory(category: Category) {
+  editProduct(product: Product) {
     this.dialog
-      .open(CategoryModalComponent, {
-        width: '400px',
-        data: category
+      .open(ProductModalComponent, {
+        width: '600px',
+        data: product
       })
       .afterClosed()
       .subscribe(result => {
@@ -70,11 +81,11 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       });
   }
 
-  changeStatus(category: Category) {
-    const text = category.status != 1 ? 'activar' : 'desactivar';
+  changeStatus(product: Product) {
+    const text = product.status != 1 ? 'activar' : 'desactivar';
     Swal.fire({
-      title: `¿Quieres ${text} esta categoría?`,
-      text: category.nameCategory,
+      title: `¿Quieres ${text} este producto?`,
+      text: product.nameProduct,
       icon: 'warning',
       confirmButtonColor: '#3085d6',
       confirmButtonText: `Si, ${text}`,
@@ -83,13 +94,13 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
       cancelButtonText: 'No'
     }).then(result => {
       if (result.isConfirmed) {
-        this._categoryService.changeStatus(category.id).subscribe({
+        this._productService.changeStatus(product.id).subscribe({
           next: data => {
             if (data.isSuccessful) {
-              this._sharedService.showAlert(`Se logró ${text} la categoría con éxito`, 'Completado');
+              this._sharedService.showAlert(`Se logró ${text} el producto con éxito`, 'Completado');
               this.getCategories();
             } else {
-              this._sharedService.showAlert(`No se pudo ${text} la categoría`, 'Error!');
+              this._sharedService.showAlert(`No se pudo ${text} el producto`, 'Error!');
             }
           },
           error: e => {

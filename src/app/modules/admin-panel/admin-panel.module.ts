@@ -18,10 +18,14 @@ import { SubcategoryModalComponent } from './manage-subcategories/components/sub
 import { CategoryService } from '../../core/services/category.service';
 import { BrandService } from '../../core/services/brand.service';
 import { SubcategoryService } from '../../core/services/subcategory.service';
+import { ProductService } from '../../core/services/product.service';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ProductsComponent } from './manage-products/pages/products.component';
+import { ProductModalComponent } from './manage-products/components/product-modal/product-modal.component';
+import { ProductListComponent } from './manage-products/components/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { MatSortModule } from '@angular/material/sort';
     BrandModalComponent,
     SubcategoriesComponent,
     SubcategoryListComponent,
-    SubcategoryModalComponent
+    SubcategoryModalComponent,
+    ProductsComponent,
+    ProductModalComponent,
+    ProductListComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +52,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [CategoryService, BrandService, SubcategoryService],
+  providers: [CategoryService, BrandService, SubcategoryService, ProductService],
   exports: [DashboardComponent]
 })
 export class AdminPanelModule {}

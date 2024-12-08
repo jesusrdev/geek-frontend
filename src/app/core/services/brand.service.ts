@@ -24,7 +24,7 @@ export class BrandService {
   }
 
   listActive(): Observable<ApiResponse<Brand[]>> {
-    return this.http.get<ApiResponse<Brand[]>>(`${this.baseUrl}/getassets`);
+    return this.http.get<ApiResponse<Brand[]>>(`${this.baseUrl}/active-brands`);
   }
 
   create(request: FormData): Observable<ApiResponse<Brand>> {

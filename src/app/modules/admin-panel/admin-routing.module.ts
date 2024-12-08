@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './manage-categories/pages/categories/categories.component';
 import { BrandsComponent } from './manage-brands/pages/brands.component';
 import { SubcategoriesComponent } from './manage-subcategories/pages/subcategories.component';
+import { ProductsComponent } from './manage-products/pages/products.component';
 
 const routes: Routes = [
   {
@@ -29,12 +30,7 @@ const routes: Routes = [
         component: SubcategoriesComponent,
         pathMatch: 'full'
       },
-      // {
-      //   path: 'specialties',
-      //   component: ListSpecialtyComponent,
-      //   pathMatch: 'full',
-      // },
-      // { path: 'doctors', component: ListDoctorComponent, pathMatch: 'full' },
+      { path: 'products', component: ProductsComponent, pathMatch: 'full' },
       // { path: 'users', component: ListUserComponent, pathMatch: 'full' },
       { path: '**', redirectTo: 'admin', pathMatch: 'full' }
     ]

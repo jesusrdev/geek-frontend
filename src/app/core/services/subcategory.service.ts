@@ -24,7 +24,7 @@ export class SubcategoryService {
   }
 
   listActive(): Observable<ApiResponse<Subcategory[]>> {
-    return this.http.get<ApiResponse<Subcategory[]>>(`${this.baseUrl}active`);
+    return this.http.get<ApiResponse<Subcategory[]>>(`${this.baseUrl}active-subcategories`);
   }
 
   create(request: Subcategory): Observable<ApiResponse<Subcategory>> {

@@ -1,0 +1,177 @@
+<h2 mat-dialog-title>{{ title }} Producto</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formProduct">
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Nombre</mat-label>
+          <input
+            formControlName="nameProduct"
+            matInput
+            autocomplete="off"
+            maxlength="60"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Descripción</mat-label>
+          <input
+            formControlName="description"
+            matInput
+            autocomplete="off"
+            maxlength="255"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Descripción larga</mat-label>
+          <input
+            formControlName="largeDescription"
+            matInput
+            autocomplete="off"
+            maxlength="255"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Precio</mat-label>
+          <input
+            formControlName="price"
+            matInput
+            autocomplete="off"
+            type="number"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Stock</mat-label>
+          <input
+            formControlName="stock"
+            matInput
+            autocomplete="off"
+            type="number"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Descuento</mat-label>
+          <input
+            formControlName="discount"
+            matInput
+            autocomplete="off"
+            type="number"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Categoría</mat-label>
+          <mat-select formControlName="categoryId">
+            <mat-option
+              *ngFor="let category of listCategories"
+              [value]="category.id"
+            >{{ category.nameCategory }}
+            </mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Marca</mat-label>
+          <mat-select formControlName="brandId">
+            <mat-option
+              *ngFor="let brand of listBrands"
+              [value]="brand.id"
+            >{{ brand.nameBrand }}
+            </mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full">
+          <mat-label>Subcategoría</mat-label>
+          <mat-select formControlName="subcategoryId">
+            <mat-option
+              *ngFor="let subcategory of listSubcategories"
+              [value]="subcategory.id"
+            >{{ subcategory.nameSubcategory }}
+            </mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <div class="w-full">
+          <mat-label>Imágenes</mat-label>
+          <input
+            formControlName="images"
+            autocomplete="off"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event)"
+            multiple
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-2 row">
+      <div class="col-12">
+        <mat-form-field class="w-full border-0">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="1">Activo</mat-option>
+            <mat-option value="0">Inactivo</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close="true" color="warn">Back</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="formProduct.invalid"
+    (click)="saveProduct()"
+  >
+    {{ nameButton }}
+  </button>
+</mat-dialog-actions>

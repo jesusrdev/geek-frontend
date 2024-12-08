@@ -1,0 +1,37 @@
+<h1 class="m-2">Marcas</h1>
+
+<div class="content">
+  <mat-card class="m-2">
+    <mat-card-title>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="newProduct()"
+        class="m-2"
+      >
+        <mat-icon mat-list-icon>add</mat-icon>
+        Nuevo
+      </button>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="mt-2" style="overflow-x: auto">
+      <mat-form-field style="width: 100%">
+        <mat-label>Buscar</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilterList($event)"
+          placeholder="Filtro"
+          #input
+        />
+      </mat-form-field>
+
+      <product-list
+        [dataSource]="dataSource"
+        [displayedColumns]="displayedColumns"
+        [input]="input"
+        (onEditProduct)="editProduct($event)"
+        (onChangeStatus)="changeStatus($event)"
+      ></product-list>
+    </mat-card-content>
+  </mat-card>
+</div>

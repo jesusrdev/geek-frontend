@@ -24,7 +24,7 @@ export class CategoryService {
   }
 
   listActive(): Observable<ApiResponse<Category[]>> {
-    return this.http.get<ApiResponse<Category[]>>(`${this.baseUrl}getassets`);
+    return this.http.get<ApiResponse<Category[]>>(`${this.baseUrl}active-categories`);
   }
 
   create(request: Category): Observable<ApiResponse<Category>> {

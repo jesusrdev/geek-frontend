@@ -40,7 +40,7 @@ export class CategoryModalComponent implements OnInit {
     if (this.dataCategory != null) {
       this.formCategory.patchValue({
         nameCategory: this.dataCategory.nameCategory,
-        status: this.dataCategory.estatus.toString()
+        status: this.dataCategory.status.toString()
       });
     }
   }
@@ -49,7 +49,7 @@ export class CategoryModalComponent implements OnInit {
     const category: Category = {
       id: this.dataCategory?.id ?? 0,
       nameCategory: this.formCategory.value.nameCategory,
-      estatus: parseInt(this.formCategory.value.status)
+      status: parseInt(this.formCategory.value.status)
     };
 
     if (this.dataCategory == null) {

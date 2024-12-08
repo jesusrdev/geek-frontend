@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
   styleUrl: './subcategories.component.css'
 })
 export class SubcategoriesComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['nameSubcategory', 'nameCategory', 'estatus', 'actions'];
+  displayedColumns: string[] = ['nameSubcategory', 'nameCategory', 'status', 'actions'];
 
   initialData: Subcategory[] = [];
 
@@ -71,7 +71,7 @@ export class SubcategoriesComponent implements OnInit, AfterViewInit {
   }
 
   changeStatus(subcategory: Subcategory) {
-    const text = subcategory.estatus != 1 ? 'activar' : 'desactivar';
+    const text = subcategory.status != 1 ? 'activar' : 'desactivar';
     Swal.fire({
       title: `¿Quieres ${text} esta subcategoría?`,
       text: subcategory.nameSubcategory,
