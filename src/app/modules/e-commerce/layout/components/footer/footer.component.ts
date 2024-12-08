@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { SharedService } from '../../../../../core/services/shared.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  constructor(
+    private router: Router,
+    private sharedService: SharedService
+  ) {}
 }
