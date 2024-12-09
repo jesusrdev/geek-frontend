@@ -16,9 +16,18 @@ import { ProductComponent } from './product/pages/product.component';
 import { NavbarComponent } from './layout/components/navbar/navbar.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { HeroComponent } from './home/components/hero/hero.component';
+import { BrandsComponent } from './home/components/categories/brands.component';
 
 @NgModule({
-  declarations: [HomeComponent, LayoutComponent, ProductComponent, NavbarComponent, FooterComponent, HeroComponent],
+  declarations: [
+    HomeComponent,
+    LayoutComponent,
+    ProductComponent,
+    NavbarComponent,
+    FooterComponent,
+    HeroComponent,
+    BrandsComponent
+  ],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
   providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService],
   exports: [HomeComponent]

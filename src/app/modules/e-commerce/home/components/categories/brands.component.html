@@ -1,0 +1,8 @@
+<div class="bg-black flex items-center justify-center h-32 py-4">
+  <div
+    *ngFor="let brand of brands; let isLast = last"
+    class="h-full flex-1 flex justify-center py-3"
+    [ngClass]="{ 'border-r border-r-white': !isLast }">
+    <img [src]="brand.imageUrl" [alt]="brand.nameBrand" class="h-full w-full object-contain" />
+  </div>
+</div>

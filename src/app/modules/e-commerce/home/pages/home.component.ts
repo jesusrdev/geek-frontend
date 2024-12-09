@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../../../core/models/product';
-import { Category } from '../../../../core/models/category';
+import { Brand } from '../../../../core/models/brand';
 
 import { SharedService } from '../../../../core/services/shared.service';
-import { CategoryService } from '../../../../core/services/category.service';
+import { BrandService } from '../../../../core/services/brand.service';
 import { ProductService } from '../../../../core/services/product.service';
 
 @Component({
@@ -15,12 +15,12 @@ import { ProductService } from '../../../../core/services/product.service';
 })
 export class HomeComponent {
   products: Product[] = [];
-  categories: Category[] = [];
+  brands: Brand[] = [];
 
   constructor(
     private router: Router,
     private _sharedService: SharedService,
-    private _categoryService: CategoryService,
+    private _brandService: BrandService,
     private _productService: ProductService
   ) {}
 
@@ -39,11 +39,11 @@ export class HomeComponent {
     });
   }
 
-  getCategories() {
-    this._categoryService.list().subscribe({
+  getBrands() {
+    this._brandService.listActive().subscribe({
       next: data => {
         if (data.isSuccessful) {
-          this.categories = data.result;
+          this.brands = data.result;
         } else {
           this._sharedService.showAlert('No se encontraron categorías', 'Advertencia');
         }
@@ -56,6 +56,6 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.getProducts();
-    this.getCategories();
+    this.getBrands();
   }
 }
