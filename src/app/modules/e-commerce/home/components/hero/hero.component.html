@@ -1,0 +1,18 @@
+<div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
+  <div *ngFor="let product of products.slice(0, 5)"
+       class="flex flex-row max-h-[calc(100vh-52.5px)] h-screen w-full  items-center   flex-[0_0_100%] [scroll-snap-align:center]">
+    <div class="bg-white w-1/2 py-12 px-[max(5vw,12px)] flex flex-col gap-4">
+      <h3 class="font-poppins font-semibold text-7xl"> {{ product.description }} </h3>
+      <p class="text-base"> {{ product.largeDescription }} </p>
+      <app-button text="Ver más" color="primary" class="font-koulen"
+                  (handleClick)="goToProduct(product.id)"></app-button>
+    </div>
+    <div class="bg-gradient-to-b from-gray-card to-orange w-1/2 h-full py-12 px-[max(10vw,12px)] flex items-center">
+      <div class="flex flex-col items-center justify-center">
+        <img [src]="product.images[0].urlImage" [alt]="product.nameProduct" class="mb-6" />
+        <p class="font-montserrat font-medium text-4xl mb-3">{{ product.nameProduct }}</p>
+        <p class="text-white font-poppins font-medium text-3xl">S/ {{ product.price }}</p>
+      </div>
+    </div>
+  </div>
+</div>

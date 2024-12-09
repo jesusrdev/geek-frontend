@@ -38,14 +38,37 @@ mat-form-field {
   font-style: normal;
 }
 
-.font-poppins {
-  font-family: Poppins;
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-Medium.woff2");
+  font-weight: 500;
+  font-style: normal;
 }
 
-.font-inter {
-  font-family: Inter;
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins/Poppins-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
 
-.font-mulish {
-  font-family: Mulish;
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins/Poppins-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins/Poppins-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins/Poppins-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
 }

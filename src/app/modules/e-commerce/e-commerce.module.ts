@@ -4,16 +4,23 @@ import { EcommerceRoutingModule } from './ecommerce-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { MaterialModule } from '../../shared/material/material.module';
 
+import { CategoryService } from '../../core/services/category.service';
+import { BrandService } from '../../core/services/brand.service';
+import { SubcategoryService } from '../../core/services/subcategory.service';
+import { ProductService } from '../../core/services/product.service';
+import { ImageService } from '../../core/services/image.service';
+
 import { HomeComponent } from './home/pages/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ProductComponent } from './product/pages/product.component';
 import { NavbarComponent } from './layout/components/navbar/navbar.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
+import { HeroComponent } from './home/components/hero/hero.component';
 
 @NgModule({
-  declarations: [HomeComponent, LayoutComponent, ProductComponent, NavbarComponent, FooterComponent],
+  declarations: [HomeComponent, LayoutComponent, ProductComponent, NavbarComponent, FooterComponent, HeroComponent],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
-  providers: [],
+  providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService],
   exports: [HomeComponent]
 })
 export class ECommerceModule {}
