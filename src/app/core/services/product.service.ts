@@ -19,6 +19,10 @@ export class ProductService {
     private cookieService: CookieService
   ) {}
 
+  get(id: number): Observable<ApiResponse<Product>> {
+    return this.http.get<ApiResponse<Product>>(`${this.baseUrl}/${id}`);
+  }
+
   list(): Observable<ApiResponse<Product[]>> {
     return this.http.get<ApiResponse<Product[]>>(`${this.baseUrl}`);
   }

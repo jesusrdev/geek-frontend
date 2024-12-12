@@ -19,6 +19,8 @@ import { HeroComponent } from './home/components/hero/hero.component';
 import { BrandsComponent } from './home/components/categories/brands.component';
 import { BestSellersComponent } from './home/components/best-sellers/best-sellers.component';
 import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
+import { DescriptionComponent } from './product-detail/components/description/description.component';
+import { ProductsSuggestedComponent } from './product-detail/components/products-suggested/products-suggested.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ProductDetailComponent } from './product-detail/pages/product-detail.co
     HeroComponent,
     BrandsComponent,
     BestSellersComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    DescriptionComponent,
+    ProductsSuggestedComponent
   ],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
   providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService],

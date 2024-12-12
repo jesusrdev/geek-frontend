@@ -1,6 +1,6 @@
 <div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
   <div *ngFor="let product of products.slice(0, 5)"
-       class="flex flex-row max-h-[calc(100vh-52.5px)] h-screen w-full  items-center   flex-[0_0_100%] [scroll-snap-align:center]">
+       class="flex flex-row max-h-[calc(100vh-52.5px)] h-screen w-full  items-center flex-[0_0_100%] [scroll-snap-align:center]">
     <div class="bg-white w-1/2 py-12 px-[max(5vw,12px)] flex flex-col gap-4">
       <h3 class="font-poppins font-semibold text-7xl"> {{ product.description }} </h3>
       <p class="text-base"> {{ product.largeDescription }} </p>

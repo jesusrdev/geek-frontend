@@ -1,0 +1,31 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="rounded-xl border border-gray-card-border p-1">
+
+    <div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
+      <div *ngFor="let image of product.images"
+           class="flex-[0_0_100%] [scroll-snap-align:center] p-5 aspect-square flex items-center justify-center">
+        <img [src]="image.urlImage" [alt]="image.nameProduct" class="h-[85%] w-[85%] object-contain" />
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col gap-3">
+    <h3 class="text-2xl font-medium">{{ product.nameProduct }}</h3>
+    <p class="border-b font-base">{{ product.description }}</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="rounded-lg border border-gray-card-border p-4">
+        <p>{{ product?.largeDescription }}</p>
+        <!--    @Html.Raw(Model.Producto.DescripcioGeneral)-->
+      </div>
+      <div>
+        <p class="text-2xl text-orange font-bold">
+          S/ {{ (product.price * (1 - product.discount)) | number:'1.2-2' }}
+        </p>
+        <div class="flex mb-4 gap-8 items-center">
+          <del>S/ {{ product.price | number:'1.2-2' }}</del>
+          <span class="bg-orange rounded-md px-1 text-white">{{ product.discount | percent }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
