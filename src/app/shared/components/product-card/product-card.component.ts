@@ -13,6 +13,7 @@ export class ProductCardComponent {
   @Input() name: string = '';
   @Input() price: number = 0;
   @Input() discount: number = 0;
+  @Input() class?: string = '';
 
   constructor(private router: Router) {}
 
