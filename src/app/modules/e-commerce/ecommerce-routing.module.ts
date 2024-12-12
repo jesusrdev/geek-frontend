@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/pages/home.component';
 import { ProductComponent } from './product/pages/product.component';
+import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
         component: ProductComponent,
         pathMatch: 'full'
         // canActivate: [authGuard],
+      },
+      {
+        path: 'products/:id',
+        component: ProductDetailComponent
       }
       // { path: '**', redirectTo: '', pathMatch: 'full' },
     ]

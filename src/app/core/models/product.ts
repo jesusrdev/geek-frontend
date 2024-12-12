@@ -9,7 +9,7 @@ export interface Product {
   largeDescription: string;
   price: number;
   stock: number;
-  discount?: number;
+  discount: number;
   status: number;
   categoryId: number;
   category?: Category;
@@ -22,7 +22,8 @@ export interface Product {
 
 export interface ImageProduct {
   id: number;
-  urlImage: string;
+  urlImage?: string;
+  imageProduct?: string;
   productId: number;
-  product?: Omit<Product, 'images'>;
+  nameProduct: string;
 }

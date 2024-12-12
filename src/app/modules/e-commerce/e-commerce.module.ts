@@ -17,6 +17,8 @@ import { NavbarComponent } from './layout/components/navbar/navbar.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { HeroComponent } from './home/components/hero/hero.component';
 import { BrandsComponent } from './home/components/categories/brands.component';
+import { BestSellersComponent } from './home/components/best-sellers/best-sellers.component';
+import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { BrandsComponent } from './home/components/categories/brands.component';
     NavbarComponent,
     FooterComponent,
     HeroComponent,
-    BrandsComponent
+    BrandsComponent,
+    BestSellersComponent,
+    ProductDetailComponent
   ],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
   providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService],

@@ -1,0 +1,33 @@
+<h2 class="text-5xl font-medium font-montserrat text-center py-5">- Más Vendidos -</h2>
+
+<div class="flex items-center justify-center gap-3">
+  <div
+    *ngFor="let brand of brands.slice(0, 4)"
+    class="p-4 border border-black rounded-md text-xl hover:cursor-pointer hover:bg-black hover:text-white transition-all"
+    [ngClass]="{
+    'bg-black text-white': brandActive === brand.id,
+  }"
+    (click)="filterProductsByBrandId(brand.id)"
+  >
+    <p>{{ brand.nameBrand }}</p>
+  </div>
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-5">
+  <product-card
+    *ngFor="let product of productsFiltered"
+    [imageUrl]="product.images[0].urlImage || ''"
+    [name]="product.nameProduct"
+    [price]="product.price"
+    [discount]="product.discount"
+    [id]="product.id"
+  ></product-card>
+  <div *ngIf="productsFiltered.length === 0" class="flex items-center justify-center">
+    <p>No hay productos disponibles</p>
+  </div>
+</div>
+
+<div class="flex items-center justify-center gap-3">
+  <app-button text="Ver más productos" class="py-4 px-8 font-bold"></app-button>
+</div>
