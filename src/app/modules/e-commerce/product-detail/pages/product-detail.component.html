@@ -1,5 +1,5 @@
 <main class="mx-auto max-w-screen-xl p-5" *ngIf="product; else noProduct">
-  <product-description [product]="product"></product-description>
+  <product-description [product]="product" [productDescription]="productDescription"></product-description>
   <hr class="my-8" />
   <products-suggested [products]="products.splice(0, 2)"></products-suggested>
 </main>

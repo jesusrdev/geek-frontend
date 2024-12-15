@@ -5,7 +5,7 @@ import { Product } from '../../../../core/models/product';
 
 import { ProductService } from '../../../../core/services/product.service';
 import { SharedService } from '../../../../core/services/shared.service';
-import { data } from 'autoprefixer';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,12 +15,14 @@ import { data } from 'autoprefixer';
 export class ProductDetailComponent implements OnInit {
   productId: number = 0;
   product?: Product;
+  productDescription: SafeHtml = '';
   products: Product[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private _productService: ProductService,
-    private _sharedService: SharedService
+    private _sharedService: SharedService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class ProductDetailComponent implements OnInit {
       next: data => {
         if (data.isSuccessful) {
           this.product = data.result;
+          this.productDescription = this.sanitizer.bypassSecurityTrustHtml(this.product.largeDescription);
         } else {
           this._sharedService.showAlert('No se encontraró el producto', 'Advertencia');
         }

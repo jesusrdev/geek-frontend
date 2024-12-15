@@ -20,9 +20,11 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@tinymce/tinymce-angular": "^8.0.1",
     "ngx-cookie-service": "^18.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.5",
+    "tinymce": "^7.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },

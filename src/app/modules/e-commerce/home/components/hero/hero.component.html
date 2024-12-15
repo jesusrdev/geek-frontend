@@ -3,7 +3,9 @@
        class="flex flex-row max-h-[calc(100vh-52.5px)] h-screen w-full  items-center flex-[0_0_100%] [scroll-snap-align:center]">
     <div class="bg-white w-1/2 py-12 px-[max(5vw,12px)] flex flex-col gap-4">
       <h3 class="font-poppins font-semibold text-7xl"> {{ product.description }} </h3>
-      <p class="text-base"> {{ product.largeDescription }} </p>
+      <!--      <p class="text-base"> {{  }} </p>-->
+      <div class="*:list-disc *:pl-7"
+           [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(this.product.largeDescription)"></div>
       <app-button text="Ver más" color="primary" class="font-koulen"
                   (handleClick)="goToProduct(product.id)"></app-button>
     </div>

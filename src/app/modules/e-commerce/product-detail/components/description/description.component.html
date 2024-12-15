@@ -13,8 +13,8 @@
     <p class="border-b font-base">{{ product.description }}</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div class="rounded-lg border border-gray-card-border p-4">
-        <p>{{ product?.largeDescription }}</p>
-        <!--    @Html.Raw(Model.Producto.DescripcioGeneral)-->
+        <!--        <p>{{ product?.largeDescription }}</p>-->
+        <div class="*:list-disc *:pl-4" [innerHTML]="productDescription"></div>
       </div>
       <div>
         <p class="text-2xl text-orange font-bold">

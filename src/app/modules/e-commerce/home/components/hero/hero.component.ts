@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../../../../core/models/product';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'home-hero',
@@ -12,9 +13,12 @@ export class HeroComponent {
   @Input()
   public products: Product[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public sanitizer: DomSanitizer
+  ) {}
 
   goToProduct(productId: number) {
-    this.router.navigate(['product', productId]);
+    this.router.navigate(['products', productId]);
   }
 }

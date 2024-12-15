@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+import { environment } from '../../../../../../environments/environment';
+
 import { Brand } from '../../../../../core/models/brand';
 import { Product } from '../../../../../core/models/product';
 import { Category } from '../../../../../core/models/category';
@@ -186,4 +188,6 @@ export class ProductModalComponent implements OnInit {
       console.log(files); // Verifica que los archivos estén siendo capturados correctamente
     }
   }
+
+  protected readonly environment = environment;
 }

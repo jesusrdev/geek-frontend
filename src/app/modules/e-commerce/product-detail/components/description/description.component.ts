@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Product } from '../../../../../core/models/product';
 
@@ -7,6 +8,11 @@ import { Product } from '../../../../../core/models/product';
   templateUrl: './description.component.html',
   styleUrl: './description.component.css'
 })
-export class DescriptionComponent {
+export class DescriptionComponent implements OnInit {
   @Input() product: Product = {} as Product;
+  @Input() productDescription: SafeHtml = '';
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }
