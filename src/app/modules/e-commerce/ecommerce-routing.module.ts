@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/pages/home.component';
-import { ProductComponent } from './product/pages/product.component';
+import { ProductsComponent } from './products/pages/products.component';
 import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
 
 const routes: Routes = [
@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'products',
-        component: ProductComponent,
+        component: ProductsComponent,
         pathMatch: 'full'
         // canActivate: [authGuard],
       },

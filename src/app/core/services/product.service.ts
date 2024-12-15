@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
@@ -41,5 +41,24 @@ export class ProductService {
 
   changeStatus(id: number): Observable<ApiResponse<Product>> {
     return this.http.put<ApiResponse<Product>>(`${this.baseUrl}/${id}`, null);
+  }
+
+  filter(
+    query: string,
+    orderBy: number,
+    page: number,
+    brands: number[],
+    categories: number[],
+    subcategories: number[]
+  ): Observable<ApiResponse<Product[]>> {
+    const params = new HttpParams()
+      .set('query', query)
+      .set('orderBy', orderBy)
+      .set('page', page.toString())
+      .set('brands', brands.toString())
+      .set('categories', categories.toString())
+      .set('subcategories', subcategories.toString());
+
+    return this.http.get<ApiResponse<Product[]>>(`${this.baseUrl}/filter`, { params });
   }
 }

@@ -1,0 +1,11 @@
+<div
+  class="bg-black flex w-full h-32 py-4 overflow-x-scroll [scroll-snap-type:x_mandatory]">
+  <div
+    *ngFor="let brand of brands; let isLast = last"
+    class="h-full flex justify-center py-3 px-4 flex-[0_0_50%] lg:flex-[0_0_20%] sm:flex-[0_0_25%] [scroll-snap-align:center] hover:cursor-pointer"
+    [ngClass]="{ 'border-r border-r-white': !isLast }"
+    [routerLink]="['/products']" [queryParams]='{ brands: [brand.id] }'
+  >
+    <img [src]="brand.imageUrl" [alt]="brand.nameBrand" class="h-full w-fit object-contain" />
+  </div>
+</div>

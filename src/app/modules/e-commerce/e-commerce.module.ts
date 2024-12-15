@@ -12,11 +12,11 @@ import { ImageService } from '../../core/services/image.service';
 
 import { HomeComponent } from './home/pages/home.component';
 import { LayoutComponent } from './layout/layout.component';
-import { ProductComponent } from './product/pages/product.component';
+import { ProductsComponent } from './products/pages/products.component';
 import { NavbarComponent } from './layout/components/navbar/navbar.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { HeroComponent } from './home/components/hero/hero.component';
-import { BrandsComponent } from './home/components/categories/brands.component';
+import { BrandsComponent } from './home/components/brands/brands.component';
 import { BestSellersComponent } from './home/components/best-sellers/best-sellers.component';
 import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
 import { DescriptionComponent } from './product-detail/components/description/description.component';
@@ -26,7 +26,7 @@ import { ProductsSuggestedComponent } from './product-detail/components/products
   declarations: [
     HomeComponent,
     LayoutComponent,
-    ProductComponent,
+    ProductsComponent,
     NavbarComponent,
     FooterComponent,
     HeroComponent,

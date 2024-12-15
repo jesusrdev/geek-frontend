@@ -21,7 +21,6 @@ export class BestSellersComponent implements OnInit, AfterViewInit {
   filterProductsByBrandId(brandId: number) {
     this.brandActive = brandId;
     this.productsFiltered = this.products.filter(product => product.brandId === brandId).slice(0, 11);
-    console.log(this.productsFiltered);
   }
 
   constructor(private router: Router) {

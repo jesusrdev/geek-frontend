@@ -142,7 +142,7 @@ export class ProductModalComponent implements OnInit {
       console.error('No se seleccionaron imágenes.');
     }
 
-    console.log(formData);
+    // console.log(formData);
 
     if (this.dataProduct == null) {
       this._productService.create(formData).subscribe({
@@ -185,7 +185,7 @@ export class ProductModalComponent implements OnInit {
       }
       this.formProduct.patchValue({ images: files });
       this.formProduct.get('images')?.updateValueAndValidity();
-      console.log(files); // Verifica que los archivos estén siendo capturados correctamente
+      // console.log(files); // Verifica que los archivos estén siendo capturados correctamente
     }
   }
 
