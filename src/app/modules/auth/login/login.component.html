@@ -1,0 +1,63 @@
+<mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+
+<section class="flex w-full items-center justify-center">
+  <form [formGroup]="formLogin" (ngSubmit)="signIn()" class="flex-1 grow-[2] px-[max(5vw,12px)]">
+    <div class="flex flex-col gap-4 p-4">
+      <h3 class="text-5xl font-bold uppercase">Iniciar Sesión</h3>
+      <p class="py-3 text-lg text-gray-600/60">Ingresa tus datos por favor.</p>
+
+      <div class="col-12">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            autocomplete="off"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            matInput
+            autocomplete="off"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="setHidePassword(!hidePassword)"
+            type="button"
+          >
+            <mat-icon matSuffix>{{
+                hidePassword ? "visibility_off" : "visibility"
+              }}
+            </mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="flex justify-center">
+        <app-button
+          text="Iniciar Sesión"
+          class="py-4 px-8 font-bold cursor-pointer"
+          type="submit"
+          [disabled]="formLogin.invalid"
+        >
+        </app-button>
+      </div>
+    </div>
+
+    <p>No tienes cuenta? <a routerLink="/auth/sign-up">Regístrate</a></p>
+  </form>
+
+  <div class="grow-[2] max-w-[58%] max-md:hidden max-md:invisible h-[min(90vh,90%)]">
+    <img src="register.png" alt="register" class="w-full h-full object-cover" />
+  </div>
+</section>
+
+

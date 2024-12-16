@@ -6,6 +6,10 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/pages/home.component';
 import { ProductsComponent } from './products/pages/products.component';
 import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
+import { SignUpComponent } from '../auth/sign-up/sign-up.component';
+import { LoginComponent } from '../auth/login/login.component';
+
+import {} from '../auth/auth.module';
 
 const routes: Routes = [
   {
@@ -31,6 +35,31 @@ const routes: Routes = [
         component: ProductDetailComponent
       }
       // { path: '**', redirectTo: '', pathMatch: 'full' },
+    ]
+  },
+  {
+    path: 'auth',
+    component: LayoutComponent,
+    runGuardsAndResolvers: 'always',
+    // canActivate: [authGuard],
+    children: [
+      {
+        path: 'sign-up',
+        component: SignUpComponent,
+        pathMatch: 'full'
+        // canActivate: [authGuard],
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        pathMatch: 'full'
+        // canActivate: [authGuard],
+      }
+      // {
+      //   path: 'profile',
+      //   component: ProfileComponent,
+      //   pathMatch: 'full'
+      // },
     ]
   }
 ];

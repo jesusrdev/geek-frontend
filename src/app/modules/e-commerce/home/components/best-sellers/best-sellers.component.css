@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+  .sidenav {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidenav {
+    display: none;
+  }
+
+  .sidenav.open {
+    display: block;
+  }
+}

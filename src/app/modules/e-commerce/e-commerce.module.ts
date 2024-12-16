@@ -9,6 +9,7 @@ import { BrandService } from '../../core/services/brand.service';
 import { SubcategoryService } from '../../core/services/subcategory.service';
 import { ProductService } from '../../core/services/product.service';
 import { ImageService } from '../../core/services/image.service';
+import { AuthService } from '../../core/services/auth.service';
 
 import { HomeComponent } from './home/pages/home.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -37,7 +38,7 @@ import { ProductsSuggestedComponent } from './product-detail/components/products
     ProductsSuggestedComponent
   ],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
-  providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService],
-  exports: [HomeComponent]
+  providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService, AuthService],
+  exports: [HomeComponent, LayoutComponent]
 })
 export class ECommerceModule {}

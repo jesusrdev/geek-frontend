@@ -1,11 +1,10 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { Product } from '../../../../core/models/product';
 import { Brand } from '../../../../core/models/brand';
 import { Category } from '../../../../core/models/category';
 import { Subcategory } from '../../../../core/models/subcategory';
-
 import { SharedService } from '../../../../core/services/shared.service';
 import { ProductService } from '../../../../core/services/product.service';
 import { CategoryService } from '../../../../core/services/category.service';
@@ -15,7 +14,7 @@ import { SubcategoryService } from '../../../../core/services/subcategory.servic
 @Component({
   selector: 'app-product',
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -23,59 +22,70 @@ export class ProductsComponent implements OnInit {
   categories: Category[] = [];
   subcategories: Subcategory[] = [];
 
-  filterParams: any = {};
-  brandsId: number[] = [];
-  categoriesId: number[] = [];
-  subcategoriesId: number[] = [];
-  query: string = '';
-  orderBy: number = 0;
-  page: number = 1;
+  filterForm: FormGroup;
   total: number = 0;
+  pageSize: number = 12;
+  page: number = 1;
 
-  readonly panelOpenState = signal(false);
+  panelOpenState = true; // Abierto por defecto
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private fb: FormBuilder,
     private _sharedService: SharedService,
     private _productService: ProductService,
     private _categoryService: CategoryService,
     private _brandService: BrandService,
     private _subcategoryService: SubcategoryService
-  ) {}
+  ) {
+    this.filterForm = this.fb.group({
+      query: [''],
+      orderBy: [0],
+      brands: this.fb.array([]),
+      categories: this.fb.array([]),
+      subcategories: this.fb.array([])
+    });
+  }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
-      this.filterParams = params;
-      // this.query = this.filterParams.get('query');
-      // this.orderBy = this.filterParams.get('orderBy');
-      this.brands = this.filterParams.get('brands');
-      // this.categories = this.filterParams.get('categories');
-      // this.subcategories = this.filterParams.get('subcategories');
-      // Aquí puedes usar los parámetros de filtrado para cargar los productos filtrados
+      this.filterForm.patchValue({
+        query: params.get('query') || '',
+        orderBy: +params.get('orderBy')! || 0,
+        brands: params.getAll('brandsId').map(Number) || [],
+        categories: params.getAll('categoriesId').map(Number) || [],
+        subcategories: params.getAll('subcategoriesId').map(Number) || []
+      });
+      this.page = +params.get('page')! || 1;
+
       this.getProducts();
       this.getBrands();
       this.getCategories();
       this.getSubcategories();
     });
+
+    this.filterForm.valueChanges.subscribe(() => {
+      this.page = 1; // Reset to the first page when filters change
+      this.getProducts();
+    });
   }
 
   getProducts() {
-    this._productService
-      .filter(this.query, this.orderBy, this.page, this.brandsId, this.categoriesId, this.subcategoriesId)
-      .subscribe({
-        next: data => {
-          if (data.isSuccessful) {
-            this.products = data.result;
-            this.total = this.products.length;
-          } else {
-            this._sharedService.showAlert('No se encontraron productos', 'Advertencia');
-          }
-        },
-        error: e => {
-          this._sharedService.showAlert(e.error.message, 'Error!');
+    const { query, orderBy, brands, categories, subcategories } = this.filterForm.value;
+    this._productService.filter(query, orderBy, this.page, brands, categories, subcategories, this.pageSize).subscribe({
+      next: data => {
+        if (data.isSuccessful) {
+          this.products = data.result;
+          this.total = data.result.length; // Calcular el total manualmente
+        } else {
+          this._sharedService.showAlert('No se encontraron productos', 'Advertencia');
         }
-      });
+      },
+      error: e => {
+        this._sharedService.showAlert(e.error.message, 'Error!');
+      }
+    });
   }
 
   getBrands() {
@@ -121,5 +131,24 @@ export class ProductsComponent implements OnInit {
         this._sharedService.showAlert(e.error.message, 'Error!');
       }
     });
+  }
+
+  toggleSideNav() {
+    this.panelOpenState = !this.panelOpenState;
+  }
+
+  onPageChange(event: any) {
+    this.page = event.pageIndex + 1;
+    this.getProducts();
+  }
+
+  onCheckboxChange(event: any, controlName: string, id: number) {
+    const formArray = this.filterForm.get(controlName) as FormArray;
+    if (event.checked) {
+      formArray.push(this.fb.control(id));
+    } else {
+      const index = formArray.controls.findIndex(x => x.value === id);
+      formArray.removeAt(index);
+    }
   }
 }

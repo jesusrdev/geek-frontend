@@ -47,17 +47,32 @@ export class ProductService {
     query: string,
     orderBy: number,
     page: number,
-    brands: number[],
-    categories: number[],
-    subcategories: number[]
+    brandsId: number[],
+    categoriesId: number[],
+    subcategoriesId: number[],
+    pageSize: number
   ): Observable<ApiResponse<Product[]>> {
-    const params = new HttpParams()
-      .set('query', query)
-      .set('orderBy', orderBy)
+    let params = new HttpParams()
+      .set('searchString', query)
+      .set('orderType', orderBy.toString())
       .set('page', page.toString())
-      .set('brands', brands.toString())
-      .set('categories', categories.toString())
-      .set('subcategories', subcategories.toString());
+      .set('pageSize', pageSize.toString());
+
+    if (brandsId.length > 0) {
+      brandsId.forEach(id => {
+        params = params.append('brandsIds', id.toString());
+      });
+    }
+    if (categoriesId.length > 0) {
+      categoriesId.forEach(id => {
+        params = params.append('categoryIds', id.toString());
+      });
+    }
+    if (subcategoriesId.length > 0) {
+      subcategoriesId.forEach(id => {
+        params = params.append('subCategoryIds', id.toString());
+      });
+    }
 
     return this.http.get<ApiResponse<Product[]>>(`${this.baseUrl}/filter`, { params });
   }

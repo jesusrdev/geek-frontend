@@ -30,11 +30,11 @@ export class NavbarComponent {
   }
 
   logIn(): void {
-    this.router.navigate(['login']);
+    this.router.navigate(['/auth/login']);
   }
 
   register(): void {
-    this.router.navigate(['register']);
+    this.router.navigate(['/auth/sign-up']);
   }
 
   logOut(): void {
@@ -42,6 +42,6 @@ export class NavbarComponent {
 
     this.cookieService.delete('Authorization', '/');
 
-    this.router.navigate(['login']);
+    this.router.navigate(['/']);
   }
 }

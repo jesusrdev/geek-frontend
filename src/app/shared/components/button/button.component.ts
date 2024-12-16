@@ -18,6 +18,9 @@ export class ButtonComponent {
   @Input()
   public disabled: boolean = false;
 
+  @Input()
+  public type: string = 'button';
+
   @Output()
   public handleClick: EventEmitter<any> = new EventEmitter();
 

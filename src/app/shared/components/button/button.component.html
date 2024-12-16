@@ -1,8 +1,11 @@
 <button [class]="class + ' uppercase text-lg py-2 px-5 rounded-xl'"
         [ngClass]="{
           'bg-orange text-white': color === 'primary',
-          'bg-white text-orange': color === 'secondary'
+          'bg-white text-orange': color === 'secondary',
+          'cursor-not-allowed bg-orange/60': disabled
         }"
-        [disabled]="disabled" (click)="clickEmit()">
+        [disabled]="disabled" (click)="clickEmit()"
+        [type]="type"
+>
   {{ text }}
 </button>
