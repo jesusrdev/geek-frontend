@@ -14,7 +14,7 @@ export class SharedService {
     this._snackBar.open(message, type, {
       horizontalPosition: 'end',
       verticalPosition: 'top',
-      duration: 3000
+      duration: 5000
     });
   }
 

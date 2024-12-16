@@ -4,16 +4,16 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { SharedService } from '../../../core/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Login, Token } from '../../../shared/interfaces/auth';
+import { SignUp, Token } from '../../../shared/interfaces/auth';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrl: './sign-up.component.css'
 })
-export class LoginComponent {
-  formLogin: FormGroup;
+export class SignUpComponent {
+  formSignUp: FormGroup;
 
   hidePassword: boolean = true;
 
@@ -26,20 +26,28 @@ export class LoginComponent {
     private sharedService: SharedService,
     private cookieService: CookieService
   ) {
-    this.formLogin = this.fb.group({
+    this.formSignUp = this.fb.group({
+      userName: ['', Validators.required],
+      names: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      role: ['User']
     });
   }
 
-  signIn(): void {
+  signUp(): void {
     this.showLoading = true;
-    const request: Login = {
-      email: this.formLogin.value.email,
-      password: this.formLogin.value.password
+    const request: SignUp = {
+      userName: this.formSignUp.value.userName,
+      names: this.formSignUp.value.names,
+      lastName: this.formSignUp.value.lastName,
+      email: this.formSignUp.value.email,
+      password: this.formSignUp.value.password,
+      role: this.formSignUp.value.role
     };
 
-    this.userService.signIn(request).subscribe({
+    this.userService.signUp(request).subscribe({
       next: response => {
         this.sharedService.setSession(response);
 
