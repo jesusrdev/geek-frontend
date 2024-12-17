@@ -13,7 +13,6 @@
     <p class="border-b font-base">{{ product.description }}</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div class="rounded-lg border border-gray-card-border p-4">
-        <!--        <p>{{ product?.largeDescription }}</p>-->
         <div class="*:list-disc *:pl-4" [innerHTML]="productDescription"></div>
       </div>
       <div>
@@ -23,6 +22,23 @@
         <div class="flex mb-4 gap-8 items-center">
           <del>S/ {{ product.price | number:'1.2-2' }}</del>
           <span class="bg-orange rounded-md px-1 text-white">{{ product.discount | percent }}</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button (click)="decreaseQuantity()" class="bg-orange text-white px-3 py-1 rounded">-</button>
+          <input type="number" [(ngModel)]="quantity" class="w-16 text-center border border-orange rounded px-2 py-1"
+                 min="1" />
+          <button (click)="increaseQuantity()" class="bg-orange text-white px-3 py-1 rounded">+</button>
+        </div>
+        <div class="flex items-center justify-between gap-1 mx-sm:flex-col mt-3 *:flex-1">
+          <app-button (click)="addToCart()" class="text-sm rounded-full border border-orange w-full"
+                      text="Agregar al carrito"
+                      color="secondary">
+          </app-button>
+          <app-button (click)="addToWishlist()" class="text-sm rounded-full"
+                      text="Agregar a la lista de deseos">
+          </app-button>
+
         </div>
       </div>
     </div>
