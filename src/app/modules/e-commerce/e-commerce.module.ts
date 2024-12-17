@@ -22,6 +22,8 @@ import { BestSellersComponent } from './home/components/best-sellers/best-seller
 import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
 import { DescriptionComponent } from './product-detail/components/description/description.component';
 import { ProductsSuggestedComponent } from './product-detail/components/products-suggested/products-suggested.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ProductsSuggestedComponent } from './product-detail/components/products
     BestSellersComponent,
     ProductDetailComponent,
     DescriptionComponent,
-    ProductsSuggestedComponent
+    ProductsSuggestedComponent,
+    ShoppingCartComponent,
+    CheckoutComponent
   ],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
   providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService, AuthService],

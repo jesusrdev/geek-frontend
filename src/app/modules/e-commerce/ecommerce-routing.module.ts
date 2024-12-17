@@ -10,6 +10,8 @@ import { SignUpComponent } from '../auth/sign-up/sign-up.component';
 import { LoginComponent } from '../auth/login/login.component';
 
 import {} from '../auth/auth.module';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,16 @@ const routes: Routes = [
       {
         path: 'products/:id',
         component: ProductDetailComponent
+      },
+      {
+        path: 'shopping-cart',
+        component: ShoppingCartComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        pathMatch: 'full'
       }
       // { path: '**', redirectTo: '', pathMatch: 'full' },
     ]

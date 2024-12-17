@@ -14,7 +14,7 @@ export interface ShoppingCartItem {
   cartId: number;
   shoppingCart?: ShoppinCart;
   productId: number;
-  product?: Product;
+  product: Product;
   quantity: number;
   price: number;
 }

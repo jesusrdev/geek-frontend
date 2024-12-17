@@ -12,7 +12,7 @@
   </ul>
 
   <div class="flex *:tracking-wide *:grow" *ngIf="isLoggedIn; else noLoggedIn">
-    <button mat-icon-button class="!p-1">
+    <button mat-icon-button class="!p-1" routerLink="/shopping-cart">
       <img src="/icons/carrito.png" alt="cart" class="!w-full !h-full object-contain" />
     </button>
 
@@ -22,9 +22,13 @@
       <img src="/icons/perfil.png" alt="cart" class="!w-full !h-full object-contain" />
     </button>
     <mat-menu #menu="matMenu" class="!bg-gray-navbar">
-      <button mat-menu-item routerLink="/profile">
-        <mat-icon>person</mat-icon>
-        <span>Mi cuenta</span>
+      <!--      <button mat-menu-item routerLink="/profile">-->
+      <!--        <mat-icon>person</mat-icon>-->
+      <!--        <span>Mi cuenta</span>-->
+      <!--      </button>-->
+      <button mat-menu-item routerLink="/my-orders">
+        <mat-icon>storefront</mat-icon>
+        <span>Mis compras</span>
       </button>
       <button mat-menu-item routerLink="/favorites">
         <mat-icon>favorite</mat-icon>
