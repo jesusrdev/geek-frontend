@@ -1,13 +1,19 @@
-import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { inject } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
-export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
-  const authToken = inject(CookieService).get('Authorization');
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(private cookieService: CookieService) {}
 
-  const authRequest = req.clone({
-    headers: req.headers.append('Authorization', authToken)
-  });
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const authRequest = request.clone({
+      setHeaders: {
+        Authorization: this.cookieService.get('Authorization')
+      }
+    });
 
-  return next(authRequest);
-};
+    return next.handle(authRequest);
+  }
+}
