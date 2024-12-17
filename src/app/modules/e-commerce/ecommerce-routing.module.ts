@@ -14,6 +14,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { authGuard } from '../../core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,13 +27,11 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         pathMatch: 'full'
-        // canActivate: [authGuard],
       },
       {
         path: 'products',
         component: ProductsComponent,
         pathMatch: 'full'
-        // canActivate: [authGuard],
       },
       {
         path: 'products/:id',
@@ -41,22 +40,26 @@ const routes: Routes = [
       {
         path: 'shopping-cart',
         component: ShoppingCartComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: 'checkout',
         component: CheckoutComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: 'my-orders',
         component: MyOrdersComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: 'favorites',
         component: FavoritesComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       }
       // { path: '**', redirectTo: '', pathMatch: 'full' },
     ]

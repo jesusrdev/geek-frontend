@@ -28,6 +28,13 @@ export const authGuard: CanActivateFn = (route, state) => {
       return false;
     }
 
+    if (state.url.includes('admin')) {
+      if (decodedToken.role !== 'Admin') {
+        router.navigate(['/']);
+        return false;
+      }
+    }
+
     return true;
   } else {
     router.navigate(['/auth/login']);
