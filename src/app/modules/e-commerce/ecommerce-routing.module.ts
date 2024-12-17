@@ -12,6 +12,8 @@ import { LoginComponent } from '../auth/login/login.component';
 import {} from '../auth/auth.module';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,16 @@ const routes: Routes = [
       {
         path: 'checkout',
         component: CheckoutComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'my-orders',
+        component: MyOrdersComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'favorites',
+        component: FavoritesComponent,
         pathMatch: 'full'
       }
       // { path: '**', redirectTo: '', pathMatch: 'full' },

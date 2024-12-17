@@ -24,6 +24,11 @@ import { DescriptionComponent } from './product-detail/components/description/de
 import { ProductsSuggestedComponent } from './product-detail/components/products-suggested/products-suggested.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { OrderService } from '../../core/services/order.service';
+import { ShoppingCartService } from '../../core/services/shopping-cart.service';
+import { WishlistService } from '../../core/services/wishlist.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     DescriptionComponent,
     ProductsSuggestedComponent,
     ShoppingCartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyOrdersComponent,
+    FavoritesComponent
   ],
   imports: [CommonModule, EcommerceRoutingModule, SharedModule, MaterialModule],
   providers: [CategoryService, BrandService, SubcategoryService, ProductService, ImageService, AuthService],

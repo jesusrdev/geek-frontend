@@ -4,7 +4,7 @@ export interface Wishlist {
   id: number;
   userApplicationId: number;
   productId: number;
-  product?: Product;
+  product: Product;
 }
 
 export interface WishlistForm {
