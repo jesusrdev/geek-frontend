@@ -2,14 +2,36 @@
   <span class="font-montserrat font-bold text-4xl text-orange">GEEK</span>
 
   <ul
-    class="flex flex-row gap-5 text-lg hover:*:border-b-orange *:border-b-2 *:border-solid *:transition-all hover:*:cursor-pointer">
+    class="max-sm:hidden flex flex-row gap-5 text-lg hover:*:border-b-orange *:border-b-2 *:border-solid *:transition-all hover:*:cursor-pointer">
     <li routerLink="/">
       Home
     </li>
     <li routerLink="/products">
       Productos
     </li>
+    <li routerLink="/admin" *ngIf="isAdmin">
+      Panel Admin
+    </li>
   </ul>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" id="menu" class="sm:!hidden">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="!bg-gray-navbar">
+    <button mat-menu-item routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="/products">
+      <mat-icon>storefront</mat-icon>
+      <span>Productos</span>
+    </button>
+    <button mat-menu-item routerLink="/admin">
+      <mat-icon>account_circle</mat-icon>
+      <span>Panel Admin</span>
+    </button>
+  </mat-menu>
+
 
   <div class="flex *:tracking-wide *:grow" *ngIf="isLoggedIn; else noLoggedIn">
     <button mat-icon-button class="!p-1" routerLink="/shopping-cart">

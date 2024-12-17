@@ -85,21 +85,27 @@
       </mat-accordion>
     </div>
 
-    <div class="grid w-full h-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-5">
-      <product-card
-        *ngFor="let product of products"
-        [imageUrl]="product.images[0].urlImage || ''"
-        [name]="product.nameProduct"
-        [price]="product.price"
-        [discount]="product.discount"
-        [id]="product.id"
-      ></product-card>
-      <div *ngIf="products.length === 0" class="flex items-center justify-center">
-        <p>No hay productos disponibles</p>
+    <div class="flex flex-col">
+
+      <div class="grid w-full h-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-5">
+        <product-card
+          *ngFor="let product of products"
+          [imageUrl]="product.images[0]?.urlImage || ''"
+          [name]="product.nameProduct"
+          [price]="product.price"
+          [discount]="product.discount"
+          [id]="product.id"
+        ></product-card>
+        <div *ngIf="products.length === 0" class="flex items-center justify-center">
+          <p>No hay productos disponibles</p>
+        </div>
+      </div>
+      <div class="flex flex-col justify-between items-center my-4 col-span-4">
+        <mat-paginator [length]="total" [pageSize]="pageSize" [pageIndex]="page - 1" (page)="onPageChange($event)">
+        </mat-paginator>
       </div>
     </div>
   </div>
-
 
   <div [class.hidden]="panelOpenState"
        class="sidenav fixed z-20 top-0 bottom-0 left-0 w-full max-h-screen backdrop-contrast-50 flex"
@@ -152,10 +158,5 @@
     </div>
   </div>
 
-  <div class="flex flex-col justify-between items-center my-4">
-    <mat-paginator [length]="total" [pageSize]="pageSize" [pageIndex]="page - 1" (page)="onPageChange($event)">
-    </mat-paginator>
-  </div>
+
 </form>
-
-

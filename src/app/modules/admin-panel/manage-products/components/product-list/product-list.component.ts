@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 import { Product } from '../../../../../core/models/product';
 
@@ -12,13 +12,16 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ProductListComponent {
   @Input()
-  dataSource = new MatTableDataSource<Product, MatPaginator>();
+  dataSource = new MatTableDataSource<Product>();
 
   @Input()
   displayedColumns: string[] = [];
 
   @Input()
   input: any;
+
+  @ViewChild(MatPaginator)
+  tablePaginator!: MatPaginator;
 
   @Output()
   public onEditProduct = new EventEmitter<Product>();

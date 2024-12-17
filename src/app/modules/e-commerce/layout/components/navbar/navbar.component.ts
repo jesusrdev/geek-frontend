@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 import { SharedService } from '../../../../../core/services/shared.service';
+import { jwtDecode } from 'jwt-decode';
+import { Token } from '../../../../../shared/interfaces/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +15,7 @@ import { SharedService } from '../../../../../core/services/shared.service';
 export class NavbarComponent {
   username = '';
   isLoggedIn = false;
+  isAdmin = false;
 
   constructor(
     private router: Router,
@@ -22,10 +25,14 @@ export class NavbarComponent {
 
   ngOnInit(): void {
     const userSession = this.sharedService.getSession();
+    const token = this.cookieService.get('Authorization');
+
+    const decodedToken: Token = jwtDecode(token);
 
     if (userSession != null) {
       this.username = userSession;
       this.isLoggedIn = true;
+      this.isAdmin = decodedToken.role === 'Admin';
     }
   }
 

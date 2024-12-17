@@ -10,7 +10,7 @@
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef>Imagen</th>
       <td mat-cell *matCellDef="let element">
-        <img [src]="element.images[0].urlImage" [alt]="element.nameProduct" class="max-h-10 bg-black" />
+        <img [src]="element.images[0]?.urlImage" [alt]="element.nameProduct" class="max-h-10 bg-black" />
       </td>
     </ng-container>
 

@@ -5,7 +5,7 @@
 <section class="py-8 px-8">
   <home-best-sellers
     [products]="products"
-    [brands]="brands"
+    [brands]="brands || []"
     [brandActive]="brands[0].id">
     >
   </home-best-sellers>

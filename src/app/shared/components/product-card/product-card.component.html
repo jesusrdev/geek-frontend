@@ -5,7 +5,7 @@
   (click)="goToProduct()"
 >
   <mat-card-header class="aspect-square m-4 group-hover:scale-110 transition-all duration-300">
-    <img mat-card-image [src]="imageUrl" [alt]="name" class="h-full object-contain">
+    <img mat-card-image [src]="imageUrl || ''" [alt]="name" class="h-full object-contain">
   </mat-card-header>
   <mat-card-content class="">
     <p class="text-3xl font-medium">{{ name }}</p>

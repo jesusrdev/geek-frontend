@@ -57,7 +57,7 @@ export class ProductsComponent implements OnInit {
         categories: params.getAll('categoriesId').map(Number) || [],
         subcategories: params.getAll('subcategoriesId').map(Number) || []
       });
-      this.page = +params.get('page')! || 1;
+      this.page = 1;
 
       this.getProducts();
       this.getBrands();
@@ -66,7 +66,7 @@ export class ProductsComponent implements OnInit {
     });
 
     this.filterForm.valueChanges.subscribe(() => {
-      this.page = 1; // Reset to the first page when filters change
+      this.page = 1;
       this.getProducts();
     });
   }
@@ -77,7 +77,7 @@ export class ProductsComponent implements OnInit {
       next: data => {
         if (data.isSuccessful) {
           this.products = data.result;
-          this.total = data.result.length; // Calcular el total manualmente
+          this.total = data.total || data.result.length; // Obtener el total del servicio
         } else {
           this._sharedService.showAlert('No se encontraron productos', 'Advertencia');
         }
