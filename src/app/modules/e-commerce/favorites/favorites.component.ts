@@ -4,9 +4,10 @@ import { WishlistService } from '../../../core/services/wishlist.service';
 import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
-  selector: 'app-favorites',
-  templateUrl: './favorites.component.html',
-  styleUrl: './favorites.component.css'
+    selector: 'app-favorites',
+    templateUrl: './favorites.component.html',
+    styleUrl: './favorites.component.css',
+    standalone: false
 })
 export class FavoritesComponent implements OnInit {
   wishlistItems: Wishlist[] = [];

@@ -6,9 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'product-list',
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+    selector: 'product-list',
+    templateUrl: './product-list.component.html',
+    styleUrl: './product-list.component.css',
+    standalone: false
 })
 export class ProductListComponent {
   @Input()

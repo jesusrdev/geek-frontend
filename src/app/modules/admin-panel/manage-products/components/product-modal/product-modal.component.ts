@@ -17,9 +17,10 @@ import { CategoryService } from '../../../../../core/services/category.service';
 import { SubcategoryService } from '../../../../../core/services/subcategory.service';
 
 @Component({
-  selector: 'product-modal',
-  templateUrl: './product-modal.component.html',
-  styleUrl: './product-modal.component.css'
+    selector: 'product-modal',
+    templateUrl: './product-modal.component.html',
+    styleUrl: './product-modal.component.css',
+    standalone: false
 })
 export class ProductModalComponent implements OnInit {
   formProduct: FormGroup;

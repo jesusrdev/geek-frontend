@@ -14,9 +14,10 @@ import Swal from 'sweetalert2';
 import { CategoryModalComponent } from '../../components/modal/modal.component';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.css'
+    selector: 'app-categories',
+    templateUrl: './categories.component.html',
+    styleUrl: './categories.component.css',
+    standalone: false
 })
 export class CategoriesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameCategory', 'status', 'actions'];

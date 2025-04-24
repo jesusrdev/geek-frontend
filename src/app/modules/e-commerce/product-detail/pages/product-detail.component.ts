@@ -8,9 +8,10 @@ import { SharedService } from '../../../../core/services/shared.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css'
+    selector: 'app-product-detail',
+    templateUrl: './product-detail.component.html',
+    styleUrl: './product-detail.component.css',
+    standalone: false
 })
 export class ProductDetailComponent implements OnInit {
   productId: number = 0;

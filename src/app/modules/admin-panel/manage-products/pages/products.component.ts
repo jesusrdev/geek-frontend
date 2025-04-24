@@ -14,9 +14,10 @@ import { ProductModalComponent } from '../components/product-modal/product-modal
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrl: './products.component.css',
+    standalone: false
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [

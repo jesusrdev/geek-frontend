@@ -14,9 +14,10 @@ import { BrandModalComponent } from '../components/brand-modal/brand-modal.compo
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-brands',
-  templateUrl: './brands.component.html',
-  styleUrl: './brands.component.css'
+    selector: 'app-brands',
+    templateUrl: './brands.component.html',
+    styleUrl: './brands.component.css',
+    standalone: false
 })
 export class BrandsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameBrand', 'imageUrl', 'status', 'actions'];

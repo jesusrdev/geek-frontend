@@ -4,9 +4,10 @@ import { OrderService } from '../../../core/services/order.service';
 import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
-  selector: 'app-my-orders',
-  templateUrl: './my-orders.component.html',
-  styleUrl: './my-orders.component.css'
+    selector: 'app-my-orders',
+    templateUrl: './my-orders.component.html',
+    styleUrl: './my-orders.component.css',
+    standalone: false
 })
 export class MyOrdersComponent implements OnInit {
   orders: Order[] = [];

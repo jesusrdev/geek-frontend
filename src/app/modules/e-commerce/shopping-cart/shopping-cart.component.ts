@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
-  selector: 'app-shopping-cart',
-  templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.css'
+    selector: 'app-shopping-cart',
+    templateUrl: './shopping-cart.component.html',
+    styleUrl: './shopping-cart.component.css',
+    standalone: false
 })
 export class ShoppingCartComponent implements OnInit {
   cartItems: ShoppingCartItem[] = [];

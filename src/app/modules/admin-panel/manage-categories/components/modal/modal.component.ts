@@ -9,9 +9,10 @@ import { SharedService } from '../../../../../core/services/shared.service';
 import { CategoryService } from '../../../../../core/services/category.service';
 
 @Component({
-  selector: 'category-modal',
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+    selector: 'category-modal',
+    templateUrl: './modal.component.html',
+    styleUrl: './modal.component.css',
+    standalone: false
 })
 export class CategoryModalComponent implements OnInit {
   formCategory: FormGroup;

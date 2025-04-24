@@ -10,9 +10,10 @@ import { ImageService } from '../../../../../core/services/image.service';
 import { ProductService } from '../../../../../core/services/product.service';
 
 @Component({
-  selector: 'app-image-modal',
-  templateUrl: './image-modal.component.html',
-  styleUrl: './image-modal.component.css'
+    selector: 'app-image-modal',
+    templateUrl: './image-modal.component.html',
+    styleUrl: './image-modal.component.css',
+    standalone: false
 })
 export class ImageModalComponent implements OnInit {
   formImage: FormGroup;

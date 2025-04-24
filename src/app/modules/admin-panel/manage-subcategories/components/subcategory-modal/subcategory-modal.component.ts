@@ -11,9 +11,10 @@ import { SubcategoryService } from '../../../../../core/services/subcategory.ser
 import { CategoryService } from '../../../../../core/services/category.service';
 
 @Component({
-  selector: 'app-subcategory-modal',
-  templateUrl: './subcategory-modal.component.html',
-  styleUrl: './subcategory-modal.component.css'
+    selector: 'app-subcategory-modal',
+    templateUrl: './subcategory-modal.component.html',
+    styleUrl: './subcategory-modal.component.css',
+    standalone: false
 })
 export class SubcategoryModalComponent implements OnInit {
   formSubcategory: FormGroup;

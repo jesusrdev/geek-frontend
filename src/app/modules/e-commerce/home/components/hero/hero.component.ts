@@ -5,9 +5,10 @@ import { Product } from '../../../../../core/models/product';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'home-hero',
-  templateUrl: './hero.component.html',
-  styleUrl: './hero.component.css'
+    selector: 'home-hero',
+    templateUrl: './hero.component.html',
+    styleUrl: './hero.component.css',
+    standalone: false
 })
 export class HeroComponent {
   @Input()

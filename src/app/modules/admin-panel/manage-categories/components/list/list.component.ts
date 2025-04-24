@@ -4,9 +4,10 @@ import { Category } from '../../../../../core/models/category';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'category-list',
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css'
+    selector: 'category-list',
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.css',
+    standalone: false
 })
 export class CategoryListComponent {
   @Input()

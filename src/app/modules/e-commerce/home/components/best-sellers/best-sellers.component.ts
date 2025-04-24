@@ -5,9 +5,10 @@ import { Product } from '../../../../../core/models/product';
 import { Brand } from '../../../../../core/models/brand';
 
 @Component({
-  selector: 'home-best-sellers',
-  templateUrl: './best-sellers.component.html',
-  styleUrl: './best-sellers.component.css'
+    selector: 'home-best-sellers',
+    templateUrl: './best-sellers.component.html',
+    styleUrl: './best-sellers.component.css',
+    standalone: false
 })
 export class BestSellersComponent implements OnInit, AfterViewInit {
   @Input() products: Product[] = [];

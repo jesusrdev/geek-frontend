@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrl: './layout.component.css',
+    standalone: false
 })
 export class LayoutComponent implements OnInit {
   username = '';

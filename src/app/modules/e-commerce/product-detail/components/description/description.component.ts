@@ -8,9 +8,10 @@ import { ShoppingCartService } from '../../../../../core/services/shopping-cart.
 import { WishlistService } from '../../../../../core/services/wishlist.service';
 
 @Component({
-  selector: 'product-description',
-  templateUrl: './description.component.html',
-  styleUrl: './description.component.css'
+    selector: 'product-description',
+    templateUrl: './description.component.html',
+    styleUrl: './description.component.css',
+    standalone: false
 })
 export class DescriptionComponent implements OnInit {
   @Input() product: Product = {} as Product;

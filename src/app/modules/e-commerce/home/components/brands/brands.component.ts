@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { Brand } from '../../../../../core/models/brand';
 
 @Component({
-  selector: 'home-brands',
-  templateUrl: './brands.component.html',
-  styleUrl: './brands.component.css'
+    selector: 'home-brands',
+    templateUrl: './brands.component.html',
+    styleUrl: './brands.component.css',
+    standalone: false
 })
 export class BrandsComponent {
   @Input()

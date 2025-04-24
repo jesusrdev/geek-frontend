@@ -9,9 +9,10 @@ import { SharedService } from '../../../../../core/services/shared.service';
 import { BrandService } from '../../../../../core/services/brand.service';
 
 @Component({
-  selector: 'brand-modal',
-  templateUrl: './brand-modal.component.html',
-  styleUrl: './brand-modal.component.css'
+    selector: 'brand-modal',
+    templateUrl: './brand-modal.component.html',
+    styleUrl: './brand-modal.component.css',
+    standalone: false
 })
 export class BrandModalComponent implements OnInit {
   formBrand: FormGroup;

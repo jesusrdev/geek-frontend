@@ -6,9 +6,10 @@ import { SharedService } from '../../../core/services/shared.service';
 import { OrderService } from '../../../core/services/order.service';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.css'
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrl: './checkout.component.css',
+    standalone: false
 })
 export class CheckoutComponent implements OnInit {
   cartItems: ShoppingCartItem[] = [];

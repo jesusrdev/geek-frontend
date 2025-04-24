@@ -12,9 +12,10 @@ import { BrandService } from '../../../../core/services/brand.service';
 import { SubcategoryService } from '../../../../core/services/subcategory.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+    selector: 'app-product',
+    templateUrl: './products.component.html',
+    styleUrls: ['./products.component.css'],
+    standalone: false
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];

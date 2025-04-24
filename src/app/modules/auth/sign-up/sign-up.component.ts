@@ -8,9 +8,10 @@ import { SignUp, Token } from '../../../shared/interfaces/auth';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+    selector: 'app-sign-up',
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.css',
+    standalone: false
 })
 export class SignUpComponent {
   formSignUp: FormGroup;

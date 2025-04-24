@@ -14,9 +14,10 @@ import { ImageModalComponent } from '../components/image-modal/image-modal.compo
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-images',
-  templateUrl: './images.component.html',
-  styleUrl: './images.component.css'
+    selector: 'app-images',
+    templateUrl: './images.component.html',
+    styleUrl: './images.component.css',
+    standalone: false
 })
 export class ImagesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameProduct', 'imageUrl', 'actions'];

@@ -8,9 +8,10 @@ import { jwtDecode } from 'jwt-decode';
 import { Token } from '../../../../../shared/interfaces/auth';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css',
+    standalone: false
 })
 export class NavbarComponent {
   username = '';

@@ -6,9 +6,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Subcategory } from '../../../../../core/models/subcategory';
 
 @Component({
-  selector: 'subcategory-list',
-  templateUrl: './subcategory-list.component.html',
-  styleUrl: './subcategory-list.component.css'
+    selector: 'subcategory-list',
+    templateUrl: './subcategory-list.component.html',
+    styleUrl: './subcategory-list.component.css',
+    standalone: false
 })
 export class SubcategoryListComponent {
   @Input()

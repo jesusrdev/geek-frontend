@@ -6,9 +6,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ImageProduct } from '../../../../../core/models/product';
 
 @Component({
-  selector: 'image-list',
-  templateUrl: './image-list.component.html',
-  styleUrl: './image-list.component.css'
+    selector: 'image-list',
+    templateUrl: './image-list.component.html',
+    styleUrl: './image-list.component.css',
+    standalone: false
 })
 export class ImageListComponent {
   @Input()

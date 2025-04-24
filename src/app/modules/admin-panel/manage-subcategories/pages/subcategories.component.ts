@@ -14,9 +14,10 @@ import { SubcategoryModalComponent } from '../components/subcategory-modal/subca
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-subcategories',
-  templateUrl: './subcategories.component.html',
-  styleUrl: './subcategories.component.css'
+    selector: 'app-subcategories',
+    templateUrl: './subcategories.component.html',
+    styleUrl: './subcategories.component.css',
+    standalone: false
 })
 export class SubcategoriesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameSubcategory', 'nameCategory', 'status', 'actions'];
