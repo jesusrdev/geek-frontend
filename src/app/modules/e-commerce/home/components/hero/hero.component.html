@@ -6,7 +6,7 @@
         class="font-poppins font-semibold text-3xl sm:text-5xl xl:text-7xl line-clamp-3 lg:line-clamp-5"> {{ product.description }} </h3>
       <!--      <p class="text-base"> {{  }} </p>-->
       <div class="*:list-disc *:pl-7"
-           [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(this.product.largeDescription)"></div>
+           [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(product.largeDescription)"></div>
       <app-button text="Ver más" color="primary" class="font-koulen"
                   (handleClick)="goToProduct(product.id)"></app-button>
     </div>
