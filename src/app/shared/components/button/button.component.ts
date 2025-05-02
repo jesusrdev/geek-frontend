@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -18,8 +18,7 @@ export class ButtonComponent {
 
   public readonly type = input<string>('button');
 
-  @Output()
-  public handleClick: EventEmitter<any> = new EventEmitter();
+  public readonly handleClick = output();
 
   clickEmit() {
     this.handleClick.emit();

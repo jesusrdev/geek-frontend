@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { Brand } from '../../../../../core/models/brand';
 
@@ -50,15 +50,13 @@ export class BrandListComponent {
 
   readonly input = input<any>();
 
-  @Output()
-  public onEditBrand = new EventEmitter<Brand>();
+  public readonly onEditBrand = output<Brand>();
 
   editBrand(category: Brand) {
     this.onEditBrand.emit(category);
   }
 
-  @Output()
-  public onChangeStatus = new EventEmitter<Brand>();
+  public readonly onChangeStatus = output<Brand>();
 
   changeStatus(category: Brand) {
     this.onChangeStatus.emit(category);

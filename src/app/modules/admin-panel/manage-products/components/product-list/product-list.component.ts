@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Output, ViewChild, input } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, input, output } from '@angular/core';
 
 import { Product } from '../../../../../core/models/product';
 
@@ -53,15 +53,13 @@ export class ProductListComponent {
   @ViewChild(MatPaginator)
   tablePaginator!: MatPaginator;
 
-  @Output()
-  public onEditProduct = new EventEmitter<Product>();
+  public readonly onEditProduct = output<Product>();
 
   editProduct(category: Product) {
     this.onEditProduct.emit(category);
   }
 
-  @Output()
-  public onChangeStatus = new EventEmitter<Product>();
+  public readonly onChangeStatus = output<Product>();
 
   changeStatus(category: Product) {
     this.onChangeStatus.emit(category);

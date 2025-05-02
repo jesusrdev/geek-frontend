@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import {
   MatTableDataSource,
   MatTable,
@@ -48,15 +48,13 @@ export class CategoryListComponent {
 
   readonly input = input<any>();
 
-  @Output()
-  public onEditCategory = new EventEmitter<Category>();
+  public readonly onEditCategory = output<Category>();
 
   editCategory(category: Category) {
     this.onEditCategory.emit(category);
   }
 
-  @Output()
-  public onChangeStatus = new EventEmitter<Category>();
+  public readonly onChangeStatus = output<Category>();
 
   changeStatus(category: Category) {
     this.onChangeStatus.emit(category);

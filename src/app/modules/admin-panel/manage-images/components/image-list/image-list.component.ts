@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import {
   MatTableDataSource,
@@ -48,15 +48,13 @@ export class ImageListComponent {
 
   readonly input = input<any>();
 
-  @Output()
-  public onEditImage = new EventEmitter<ImageProduct>();
+  public readonly onEditImage = output<ImageProduct>();
 
   editImage(category: ImageProduct) {
     this.onEditImage.emit(category);
   }
 
-  @Output()
-  public onRemoveImage = new EventEmitter<ImageProduct>();
+  public readonly onRemoveImage = output<ImageProduct>();
 
   removeImage(category: ImageProduct) {
     this.onRemoveImage.emit(category);
