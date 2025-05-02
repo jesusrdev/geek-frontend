@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, input, output } from '@angular/core';
+import { AfterViewInit, Component, input, output, viewChild } from '@angular/core';
 
 import { Product } from '../../../../../core/models/product';
 
@@ -50,8 +50,7 @@ export class ProductListComponent {
 
   readonly input = input<any>();
 
-  @ViewChild(MatPaginator)
-  tablePaginator!: MatPaginator;
+  readonly tablePaginator = viewChild.required(MatPaginator);
 
   public readonly onEditProduct = output<Product>();
 

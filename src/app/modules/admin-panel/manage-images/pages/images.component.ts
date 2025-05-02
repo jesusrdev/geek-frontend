@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject, viewChild } from '@angular/core';
 
 import { ImageProduct } from '../../../../core/models/product';
 
@@ -47,14 +47,14 @@ export default class ImagesComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource(this.initialData);
 
-  @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
+  readonly tablePaginator = viewChild.required(MatPaginator);
 
   getCategories() {
     this._brandService.list().subscribe({
       next: data => {
         if (data.isSuccessful) {
           this.dataSource = new MatTableDataSource(data.result);
-          this.dataSource.paginator = this.tablePaginator;
+          this.dataSource.paginator = this.tablePaginator();
         } else {
           this._sharedService.showAlert('No se encontraron datos', 'Advertencia');
         }
@@ -130,6 +130,6 @@ export default class ImagesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.tablePaginator;
+    this.dataSource.paginator = this.tablePaginator();
   }
 }
