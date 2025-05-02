@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Product } from '../../../../../core/models/product';
@@ -21,8 +21,8 @@ export class DescriptionComponent implements OnInit {
   private wishlistService = inject(WishlistService);
   private _sharedService = inject(SharedService);
 
-  @Input() product: Product = {} as Product;
-  @Input() productDescription: SafeHtml = '';
+  readonly product = input<Product>({} as Product);
+  readonly productDescription = input<SafeHtml>('');
 
   quantity: number = 1;
 
@@ -41,8 +41,8 @@ export class DescriptionComponent implements OnInit {
   addToCart() {
     this.shoppingCartService
       .create({
-        id: this.product.id,
-        productId: this.product.id,
+        id: this.product().id,
+        productId: this.product().id,
         quantity: this.quantity
       })
       .subscribe({
@@ -62,10 +62,10 @@ export class DescriptionComponent implements OnInit {
   addToWishlist() {
     this.wishlistService
       .create({
-        id: this.product.id,
-        productId: this.product.id,
+        id: this.product().id,
+        productId: this.product().id,
         nameUser: '',
-        nameProduct: this.product.nameProduct
+        nameProduct: this.product().nameProduct
       })
       .subscribe({
         next: response => {

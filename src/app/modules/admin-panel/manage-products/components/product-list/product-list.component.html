@@ -1,7 +1,7 @@
 <div class="mat-elevation-z8">
   <table
     mat-table
-    [dataSource]="dataSource"
+    [dataSource]="dataSource()"
   >
     <ng-container matColumnDef="nameProduct">
       <th
@@ -204,11 +204,11 @@
 
     <tr
       mat-header-row
-      *matHeaderRowDef="displayedColumns"
+      *matHeaderRowDef="displayedColumns()"
     ></tr>
     <tr
       mat-row
-      *matRowDef="let row; columns: displayedColumns"
+      *matRowDef="let row; columns: displayedColumns()"
     ></tr>
 
     <tr
@@ -219,7 +219,7 @@
         class="mat-cell"
         colspan="4"
       >
-        No hay datos que coincidan con el filtro "{{ input.value }}"
+        No hay datos que coincidan con el filtro "{{ input().value }}"
       </td>
     </tr>
   </table>

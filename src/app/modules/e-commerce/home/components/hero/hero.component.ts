@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../../../../core/models/product';
@@ -16,8 +16,7 @@ export class HeroComponent {
   private router = inject(Router);
   sanitizer = inject(DomSanitizer);
 
-  @Input()
-  public products: Product[] = [];
+  public readonly products = input<Product[]>([]);
 
   goToProduct(productId: number) {
     this.router.navigate(['products', productId]);

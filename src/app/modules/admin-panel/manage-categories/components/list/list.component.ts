@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import {
   MatTableDataSource,
   MatTable,
@@ -42,14 +42,11 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class CategoryListComponent {
-  @Input()
-  dataSource = new MatTableDataSource<Category, MatPaginator>();
+  readonly dataSource = input(new MatTableDataSource<Category, MatPaginator>());
 
-  @Input()
-  displayedColumns: string[] = [];
+  readonly displayedColumns = input<string[]>([]);
 
-  @Input()
-  input: any;
+  readonly input = input<any>();
 
   @Output()
   public onEditCategory = new EventEmitter<Category>();

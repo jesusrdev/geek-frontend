@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output, ViewChild, input } from '@angular/core';
 
 import { Product } from '../../../../../core/models/product';
 
@@ -44,14 +44,11 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class ProductListComponent {
-  @Input()
-  dataSource = new MatTableDataSource<Product>();
+  readonly dataSource = input(new MatTableDataSource<Product>());
 
-  @Input()
-  displayedColumns: string[] = [];
+  readonly displayedColumns = input<string[]>([]);
 
-  @Input()
-  input: any;
+  readonly input = input<any>();
 
   @ViewChild(MatPaginator)
   tablePaginator!: MatPaginator;

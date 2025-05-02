@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 
 import {
   MatTableDataSource,
@@ -42,14 +42,11 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class ImageListComponent {
-  @Input()
-  dataSource = new MatTableDataSource<ImageProduct, MatPaginator>();
+  readonly dataSource = input(new MatTableDataSource<ImageProduct, MatPaginator>());
 
-  @Input()
-  displayedColumns: string[] = [];
+  readonly displayedColumns = input<string[]>([]);
 
-  @Input()
-  input: any;
+  readonly input = input<any>();
 
   @Output()
   public onEditImage = new EventEmitter<ImageProduct>();

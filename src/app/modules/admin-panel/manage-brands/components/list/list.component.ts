@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 
 import { Brand } from '../../../../../core/models/brand';
 
@@ -44,14 +44,11 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class BrandListComponent {
-  @Input()
-  dataSource = new MatTableDataSource<Brand, MatPaginator>();
+  readonly dataSource = input(new MatTableDataSource<Brand, MatPaginator>());
 
-  @Input()
-  displayedColumns: string[] = [];
+  readonly displayedColumns = input<string[]>([]);
 
-  @Input()
-  input: any;
+  readonly input = input<any>();
 
   @Output()
   public onEditBrand = new EventEmitter<Brand>();

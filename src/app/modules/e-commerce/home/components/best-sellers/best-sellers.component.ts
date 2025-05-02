@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, Input, OnInit, inject } from '@angular/core';
+import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 import { Product } from '../../../../../core/models/product';
 import { Brand } from '../../../../../core/models/brand';
-import { NgClass } from '@angular/common';
+
 import { ProductCardComponent } from '../../../../../shared/components/product-card/product-card.component';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
 
@@ -13,31 +14,28 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   styleUrl: './best-sellers.component.css',
   imports: [NgClass, ProductCardComponent, ButtonComponent]
 })
-export class BestSellersComponent implements OnInit, AfterViewInit {
+export class BestSellersComponent {
   private router = inject(Router);
 
-  @Input() products: Product[] = [];
-  @Input() brands: Brand[] = [];
+  readonly products = input<Product[]>([]);
+  readonly brands = input<Brand[]>([]);
 
-  productsFiltered: Product[] = [];
+  productsFiltered = computed(() => this.products().filter(product => product.brandId === this.brandActive()));
 
-  @Input()
-  brandActive: number = 1;
+  brandActive = signal<number>(1);
 
   filterProductsByBrandId(brandId: number) {
-    this.brandActive = brandId;
-    this.productsFiltered = this.products.filter(product => product.brandId === brandId).slice(0, 11);
+    this.brandActive.set(brandId);
   }
 
   constructor() {
-    this.filterProductsByBrandId(this.brandActive);
-  }
+    const firstBrand = this.brands()[0];
+    if (firstBrand) {
+      this.brandActive.set(firstBrand.id);
+    }
 
-  ngOnInit(): void {
-    this.filterProductsByBrandId(this.brandActive);
-  }
-
-  ngAfterViewInit(): void {
-    this.filterProductsByBrandId(this.brandActive);
+    effect(() => {
+      this.filterProductsByBrandId(this.brandActive());
+    });
   }
 }

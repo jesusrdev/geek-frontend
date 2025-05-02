@@ -1,11 +1,11 @@
 <h2 class="text-5xl font-medium font-montserrat text-center py-5">- Más Vendidos -</h2>
 
 <div class="flex items-center justify-center gap-3">
-  @for (brand of brands.slice(0, 4); track brand) {
+  @for (brand of brands().slice(0, 4); track brand) {
     <div
       class="p-4 border border-black rounded-md text-xl hover:cursor-pointer hover:bg-black hover:text-white transition-all"
       [ngClass]="{
-        'bg-black text-white': brandActive === brand.id
+        'bg-black text-white': brandActive() === brand.id
       }"
       (click)="filterProductsByBrandId(brand.id)"
     >
@@ -15,7 +15,7 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-5">
-  @for (product of productsFiltered; track product) {
+  @for (product of productsFiltered(); track product) {
     <product-card
       [imageUrl]="product.images[0].urlImage || ''"
       [name]="product.nameProduct"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -8,20 +8,15 @@ import { NgClass } from '@angular/common';
   imports: [NgClass]
 })
 export class ButtonComponent {
-  @Input()
-  public text: string = '';
+  public readonly text = input<string>('');
 
-  @Input()
-  public color: string = 'primary';
+  public readonly color = input<string>('primary');
 
-  @Input()
-  public class: string = '';
+  public readonly class = input<string>('');
 
-  @Input()
-  public disabled: boolean = false;
+  public readonly disabled = input<boolean>(false);
 
-  @Input()
-  public type: string = 'button';
+  public readonly type = input<string>('button');
 
   @Output()
   public handleClick: EventEmitter<any> = new EventEmitter();

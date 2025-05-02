@@ -1,5 +1,5 @@
 <div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
-  @for (product of products.slice(0, 5); track product) {
+  @for (product of products().slice(0, 5); track product) {
     <div
       class="flex flex-col sm:flex-row max-h-[calc(100vh-52.5px)] sm:h-screen w-full items-center flex-[0_0_100%] [scroll-snap-align:center]"
     >

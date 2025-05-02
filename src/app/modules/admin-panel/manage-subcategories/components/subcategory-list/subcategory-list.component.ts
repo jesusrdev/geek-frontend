@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 
 import {
   MatTableDataSource,
@@ -44,14 +44,11 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class SubcategoryListComponent {
-  @Input()
-  dataSource = new MatTableDataSource<Subcategory, MatPaginator>();
+  readonly dataSource = input(new MatTableDataSource<Subcategory, MatPaginator>());
 
-  @Input()
-  displayedColumns: string[] = [];
+  readonly displayedColumns = input<string[]>([]);
 
-  @Input()
-  input: any;
+  readonly input = input<any>();
 
   @Output()
   public onEditSubcategory = new EventEmitter<Subcategory>();

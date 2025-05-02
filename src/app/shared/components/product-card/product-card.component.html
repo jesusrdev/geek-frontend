@@ -1,27 +1,27 @@
 <mat-card
   class="group relative h-full !bg-gray-card/5 !border-gray-card-border !border-2 !rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:cursor-pointer"
-  [ngClass]="class"
+  [ngClass]="class()"
   appearance="outlined"
   (click)="goToProduct()"
 >
   <mat-card-header class="aspect-square m-4 group-hover:scale-110 transition-all duration-300">
     <img
       mat-card-image
-      [src]="imageUrl || ''"
-      [alt]="name"
+      [src]="imageUrl() || ''"
+      [alt]="name()"
       class="h-full object-contain"
     />
   </mat-card-header>
   <mat-card-content class="">
-    <p class="text-3xl font-medium">{{ name }}</p>
-    @if (discount && discount > 0) {
+    <p class="text-3xl font-medium">{{ name() }}</p>
+    @if (discount() > 0) {
       <p class="text-xl pt-2">
-        <span>S/ {{ price * (1 - discount) | number: '1.2-2' }}</span>
-        <span class="line-through text-base ml-2">S/ {{ price | number: '1.2-2' }}</span>
+        <span>S/ {{ price() * (1 - discount()) | number: '1.2-2' }}</span>
+        <span class="line-through text-base ml-2">S/ {{ price() | number: '1.2-2' }}</span>
       </p>
     } @else {
       <p class="text-xl pt-2">
-        <span>S/ {{ price | number: '1.2-2' }}</span>
+        <span>S/ {{ price() | number: '1.2-2' }}</span>
       </p>
     }
   </mat-card-content>
@@ -37,6 +37,6 @@
     <!--    </button>-->
   </mat-card-actions>
   <div class="absolute top-8 left-0 bg-black text-white text-xs px-2 py-1">
-    <span>{{ discount | percent }}</span>
+    <span>{{ discount() | percent }}</span>
   </div>
 </mat-card>

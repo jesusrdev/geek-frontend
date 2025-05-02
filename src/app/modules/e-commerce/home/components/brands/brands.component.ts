@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { Brand } from '../../../../../core/models/brand';
@@ -13,6 +13,5 @@ import { NgClass } from '@angular/common';
 export class BrandsComponent {
   private router = inject(Router);
 
-  @Input()
-  public brands: Brand[] = [];
+  public readonly brands = input<Brand[]>([]);
 }
