@@ -14,18 +14,16 @@
   </mat-card-header>
   <mat-card-content class="">
     <p class="text-3xl font-medium">{{ name }}</p>
-    <p
-      class="text-xl pt-2"
-      *ngIf="discount && discount > 0; else noDiscount"
-    >
-      <span>S/ {{ price * (1 - discount) | number: '1.2-2' }}</span>
-      <span class="line-through text-base ml-2">S/ {{ price | number: '1.2-2' }}</span>
-    </p>
-    <ng-template #noDiscount>
+    @if (discount && discount > 0) {
+      <p class="text-xl pt-2">
+        <span>S/ {{ price * (1 - discount) | number: '1.2-2' }}</span>
+        <span class="line-through text-base ml-2">S/ {{ price | number: '1.2-2' }}</span>
+      </p>
+    } @else {
       <p class="text-xl pt-2">
         <span>S/ {{ price | number: '1.2-2' }}</span>
       </p>
-    </ng-template>
+    }
   </mat-card-content>
   <mat-card-actions class="flex items-center justify-end mb-1 ml-2 -mt-5">
     <button

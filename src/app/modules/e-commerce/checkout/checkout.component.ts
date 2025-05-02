@@ -4,14 +4,14 @@ import { ShoppingCartService } from '../../../core/services/shopping-cart.servic
 import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
 import { OrderService } from '../../../core/services/order.service';
-import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
-  imports: [NgIf, NgFor, ButtonComponent, DecimalPipe]
+  imports: [ButtonComponent, DecimalPipe]
 })
 export class CheckoutComponent implements OnInit {
   cartItems: ShoppingCartItem[] = [];

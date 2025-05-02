@@ -6,7 +6,7 @@ import { Product } from '../../../../core/models/product';
 import { ProductService } from '../../../../core/services/product.service';
 import { SharedService } from '../../../../core/services/shared.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { NgIf } from '@angular/common';
+
 import { DescriptionComponent } from '../components/description/description.component';
 import { ProductsSuggestedComponent } from '../components/products-suggested/products-suggested.component';
 
@@ -14,7 +14,7 @@ import { ProductsSuggestedComponent } from '../components/products-suggested/pro
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
-  imports: [NgIf, DescriptionComponent, ProductsSuggestedComponent]
+  imports: [DescriptionComponent, ProductsSuggestedComponent]
 })
 export class ProductDetailComponent implements OnInit {
   productId: number = 0;

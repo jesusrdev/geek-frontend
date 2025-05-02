@@ -21,7 +21,7 @@ import {
   MatExpansionPanelHeader,
   MatExpansionPanelTitle
 } from '@angular/material/expansion';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatCheckbox } from '@angular/material/checkbox';
 import { ProductCardComponent } from '../../../../shared/components/product-card/product-card.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -46,10 +46,8 @@ import { MatPaginator } from '@angular/material/paginator';
     MatExpansionPanel,
     MatExpansionPanelHeader,
     MatExpansionPanelTitle,
-    NgFor,
     MatCheckbox,
     ProductCardComponent,
-    NgIf,
     MatPaginator
   ]
 })

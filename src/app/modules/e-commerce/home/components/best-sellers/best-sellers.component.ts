@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Product } from '../../../../../core/models/product';
 import { Brand } from '../../../../../core/models/brand';
-import { NgFor, NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ProductCardComponent } from '../../../../../shared/components/product-card/product-card.component';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
 
@@ -11,7 +11,7 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   selector: 'home-best-sellers',
   templateUrl: './best-sellers.component.html',
   styleUrl: './best-sellers.component.css',
-  imports: [NgFor, NgClass, ProductCardComponent, NgIf, ButtonComponent]
+  imports: [NgClass, ProductCardComponent, ButtonComponent]
 })
 export class BestSellersComponent implements OnInit, AfterViewInit {
   @Input() products: Product[] = [];

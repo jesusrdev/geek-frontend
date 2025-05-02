@@ -100,12 +100,11 @@
         <mat-form-field class="w-full">
           <mat-label>Categoría</mat-label>
           <mat-select formControlName="categoryId">
-            <mat-option
-              *ngFor="let category of listCategories"
-              [value]="category.id"
-            >
-              {{ category.nameCategory }}
-            </mat-option>
+            @for (category of listCategories; track category) {
+              <mat-option [value]="category.id">
+                {{ category.nameCategory }}
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>
@@ -116,12 +115,11 @@
         <mat-form-field class="w-full">
           <mat-label>Marca</mat-label>
           <mat-select formControlName="brandId">
-            <mat-option
-              *ngFor="let brand of listBrands"
-              [value]="brand.id"
-            >
-              {{ brand.nameBrand }}
-            </mat-option>
+            @for (brand of listBrands; track brand) {
+              <mat-option [value]="brand.id">
+                {{ brand.nameBrand }}
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>
@@ -132,12 +130,11 @@
         <mat-form-field class="w-full">
           <mat-label>Subcategoría</mat-label>
           <mat-select formControlName="subcategoryId">
-            <mat-option
-              *ngFor="let subcategory of listSubcategories"
-              [value]="subcategory.id"
-            >
-              {{ subcategory.nameSubcategory }}
-            </mat-option>
+            @for (subcategory of listSubcategories; track subcategory) {
+              <mat-option [value]="subcategory.id">
+                {{ subcategory.nameSubcategory }}
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>

@@ -26,7 +26,7 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { MatSelect } from '@angular/material/select';
-import { NgFor } from '@angular/common';
+
 import { MatOption } from '@angular/material/autocomplete';
 import { MatButton } from '@angular/material/button';
 
@@ -45,7 +45,6 @@ import { MatButton } from '@angular/material/button';
     MatInput,
     EditorComponent,
     MatSelect,
-    NgFor,
     MatOption,
     MatDialogActions,
     MatButton,

@@ -1,41 +1,42 @@
 <div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
-  <div
-    *ngFor="let product of products.slice(0, 5)"
-    class="flex flex-col sm:flex-row max-h-[calc(100vh-52.5px)] sm:h-screen w-full items-center flex-[0_0_100%] [scroll-snap-align:center]"
-  >
-    <div class="bg-white sm:w-1/2 py-12 px-[max(5vw,12px)] flex flex-col gap-4">
-      <h3 class="font-poppins font-semibold text-3xl sm:text-5xl xl:text-7xl line-clamp-3 lg:line-clamp-5">
-        {{ product.description }}
-      </h3>
-      <!--      <p class="text-base"> {{  }} </p>-->
-      <div
-        class="*:list-disc *:pl-7"
-        [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(product.largeDescription)"
-      ></div>
-      <app-button
-        text="Ver más"
-        color="primary"
-        class="font-koulen"
-        (handleClick)="goToProduct(product.id)"
-      ></app-button>
-    </div>
+  @for (product of products.slice(0, 5); track product) {
     <div
-      class="bg-gradient-to-b max-sm:hidden from-gray-card to-orange w-1/2 h-full py-12 px-[max(10vw,12px)] flex items-center"
+      class="flex flex-col sm:flex-row max-h-[calc(100vh-52.5px)] sm:h-screen w-full items-center flex-[0_0_100%] [scroll-snap-align:center]"
     >
-      <div class="flex flex-col items-center justify-center">
-        <img
-          [src]="product.images[0].urlImage || ''"
-          [alt]="product.nameProduct"
-          class="mb-6"
-        />
-        <p class="font-montserrat font-medium text-4xl mb-3">{{ product.nameProduct }}</p>
-        <p class="text-white font-poppins font-medium text-3xl">S/ {{ product.price }}</p>
+      <div class="bg-white sm:w-1/2 py-12 px-[max(5vw,12px)] flex flex-col gap-4">
+        <h3 class="font-poppins font-semibold text-3xl sm:text-5xl xl:text-7xl line-clamp-3 lg:line-clamp-5">
+          {{ product.description }}
+        </h3>
+        <!--      <p class="text-base"> {{  }} </p>-->
+        <div
+          class="*:list-disc *:pl-7"
+          [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(product.largeDescription)"
+        ></div>
+        <app-button
+          text="Ver más"
+          color="primary"
+          class="font-koulen"
+          (handleClick)="goToProduct(product.id)"
+        ></app-button>
       </div>
+      <div
+        class="bg-gradient-to-b max-sm:hidden from-gray-card to-orange w-1/2 h-full py-12 px-[max(10vw,12px)] flex items-center"
+      >
+        <div class="flex flex-col items-center justify-center">
+          <img
+            [src]="product.images[0].urlImage || ''"
+            [alt]="product.nameProduct"
+            class="mb-6"
+          />
+          <p class="font-montserrat font-medium text-4xl mb-3">{{ product.nameProduct }}</p>
+          <p class="text-white font-poppins font-medium text-3xl">S/ {{ product.price }}</p>
+        </div>
+      </div>
+      <img
+        [src]="product.images[0].urlImage || ''"
+        [alt]="product.nameProduct"
+        class="mb-6 p-5 w-[min(75%,300px)] sm:hidden"
+      />
     </div>
-    <img
-      [src]="product.images[0].urlImage || ''"
-      [alt]="product.nameProduct"
-      class="mb-6 p-5 w-[min(75%,300px)] sm:hidden"
-    />
-  </div>
+  }
 </div>

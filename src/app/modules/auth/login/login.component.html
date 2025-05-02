@@ -1,7 +1,6 @@
-<mat-progress-bar
-  mode="indeterminate"
-  *ngIf="showLoading"
-></mat-progress-bar>
+@if (showLoading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
 
 <section class="flex w-full items-center justify-center">
   <form

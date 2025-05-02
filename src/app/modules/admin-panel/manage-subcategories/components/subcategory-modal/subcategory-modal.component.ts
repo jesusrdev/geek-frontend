@@ -19,7 +19,7 @@ import { CategoryService } from '../../../../../core/services/category.service';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
-import { NgFor } from '@angular/common';
+
 import { MatOption } from '@angular/material/autocomplete';
 import { MatButton } from '@angular/material/button';
 
@@ -37,7 +37,6 @@ import { MatButton } from '@angular/material/button';
     MatLabel,
     MatInput,
     MatSelect,
-    NgFor,
     MatOption,
     MatDialogActions,
     MatButton,

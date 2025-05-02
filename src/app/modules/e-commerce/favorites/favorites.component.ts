@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Wishlist } from '../../../core/models/wishlist';
 import { WishlistService } from '../../../core/services/wishlist.service';
 import { SharedService } from '../../../core/services/shared.service';
-import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css',
-  imports: [NgIf, NgFor, ButtonComponent, DecimalPipe]
+  imports: [ButtonComponent, DecimalPipe]
 })
 export class FavoritesComponent implements OnInit {
   wishlistItems: Wishlist[] = [];

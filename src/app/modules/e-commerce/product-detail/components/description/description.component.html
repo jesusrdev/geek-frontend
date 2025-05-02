@@ -1,16 +1,15 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
   <div class="rounded-xl border border-gray-card-border p-1">
     <div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
-      <div
-        *ngFor="let image of product.images"
-        class="flex-[0_0_100%] [scroll-snap-align:center] p-5 aspect-square flex items-center justify-center"
-      >
-        <img
-          [src]="image.urlImage"
-          [alt]="image.nameProduct"
-          class="h-[85%] w-[85%] object-contain"
-        />
-      </div>
+      @for (image of product.images; track image) {
+        <div class="flex-[0_0_100%] [scroll-snap-align:center] p-5 aspect-square flex items-center justify-center">
+          <img
+            [src]="image.urlImage"
+            [alt]="image.nameProduct"
+            class="h-[85%] w-[85%] object-contain"
+          />
+        </div>
+      }
     </div>
   </div>
   <div class="flex flex-col gap-3">

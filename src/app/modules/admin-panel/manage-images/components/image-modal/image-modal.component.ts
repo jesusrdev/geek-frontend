@@ -18,7 +18,7 @@ import { ProductService } from '../../../../../core/services/product.service';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField, MatLabel } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
-import { NgFor } from '@angular/common';
+
 import { MatOption } from '@angular/material/autocomplete';
 import { MatButton } from '@angular/material/button';
 
@@ -35,7 +35,6 @@ import { MatButton } from '@angular/material/button';
     MatFormField,
     MatLabel,
     MatSelect,
-    NgFor,
     MatOption,
     MatDialogActions,
     MatButton,

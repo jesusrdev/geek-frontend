@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
 import { MatCard, MatCardHeader, MatCardImage, MatCardContent, MatCardActions } from '@angular/material/card';
-import { NgClass, NgIf, DecimalPipe, PercentPipe } from '@angular/common';
+import { NgClass, DecimalPipe, PercentPipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
@@ -16,7 +16,6 @@ import { MatIcon } from '@angular/material/icon';
     MatCardHeader,
     MatCardImage,
     MatCardContent,
-    NgIf,
     MatCardActions,
     MatIconButton,
     MatIcon,

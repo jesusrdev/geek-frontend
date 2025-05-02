@@ -62,15 +62,17 @@
             <mat-panel-title>Marcas</mat-panel-title>
           </mat-expansion-panel-header>
           <section>
-            <p *ngFor="let brand of brands">
-              <mat-checkbox
-                (change)="onCheckboxChange($event, 'brands', brand.id)"
-                [formArrayName]="'brands'"
-                [value]="brand.id.toString()"
-              >
-                {{ brand.nameBrand }}
-              </mat-checkbox>
-            </p>
+            @for (brand of brands; track brand) {
+              <p>
+                <mat-checkbox
+                  (change)="onCheckboxChange($event, 'brands', brand.id)"
+                  [formArrayName]="'brands'"
+                  [value]="brand.id.toString()"
+                >
+                  {{ brand.nameBrand }}
+                </mat-checkbox>
+              </p>
+            }
           </section>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true">
@@ -78,15 +80,17 @@
             <mat-panel-title>Categorías</mat-panel-title>
           </mat-expansion-panel-header>
           <section>
-            <p *ngFor="let category of categories">
-              <mat-checkbox
-                (change)="onCheckboxChange($event, 'categories', category.id)"
-                [formArrayName]="'categories'"
-                [value]="category.id.toString()"
-              >
-                {{ category.nameCategory }}
-              </mat-checkbox>
-            </p>
+            @for (category of categories; track category) {
+              <p>
+                <mat-checkbox
+                  (change)="onCheckboxChange($event, 'categories', category.id)"
+                  [formArrayName]="'categories'"
+                  [value]="category.id.toString()"
+                >
+                  {{ category.nameCategory }}
+                </mat-checkbox>
+              </p>
+            }
           </section>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true">
@@ -94,15 +98,17 @@
             <mat-panel-title>Subcategorías</mat-panel-title>
           </mat-expansion-panel-header>
           <section>
-            <p *ngFor="let subcategory of subcategories">
-              <mat-checkbox
-                (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
-                [formArrayName]="'subcategories'"
-                [value]="subcategory.id.toString()"
-              >
-                {{ subcategory.nameSubcategory }}
-              </mat-checkbox>
-            </p>
+            @for (subcategory of subcategories; track subcategory) {
+              <p>
+                <mat-checkbox
+                  (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
+                  [formArrayName]="'subcategories'"
+                  [value]="subcategory.id.toString()"
+                >
+                  {{ subcategory.nameSubcategory }}
+                </mat-checkbox>
+              </p>
+            }
           </section>
         </mat-expansion-panel>
       </mat-accordion>
@@ -110,20 +116,20 @@
 
     <div class="flex flex-col">
       <div class="grid w-full h-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-5">
-        <product-card
-          *ngFor="let product of products"
-          [imageUrl]="product.images[0].urlImage || ''"
-          [name]="product.nameProduct"
-          [price]="product.price"
-          [discount]="product.discount"
-          [id]="product.id"
-        ></product-card>
-        <div
-          *ngIf="products.length === 0"
-          class="flex items-center justify-center"
-        >
-          <p>No hay productos disponibles</p>
-        </div>
+        @for (product of products; track product) {
+          <product-card
+            [imageUrl]="product.images[0].urlImage || ''"
+            [name]="product.nameProduct"
+            [price]="product.price"
+            [discount]="product.discount"
+            [id]="product.id"
+          ></product-card>
+        }
+        @if (products.length === 0) {
+          <div class="flex items-center justify-center">
+            <p>No hay productos disponibles</p>
+          </div>
+        }
       </div>
       <div class="flex flex-col justify-between items-center my-4 col-span-4">
         <mat-paginator
@@ -151,15 +157,17 @@
             <mat-panel-title>Marcas</mat-panel-title>
           </mat-expansion-panel-header>
           <section>
-            <p *ngFor="let brand of brands">
-              <mat-checkbox
-                (change)="onCheckboxChange($event, 'brands', brand.id)"
-                [formArrayName]="'brands'"
-                [value]="brand.id.toString()"
-              >
-                {{ brand.nameBrand }}
-              </mat-checkbox>
-            </p>
+            @for (brand of brands; track brand) {
+              <p>
+                <mat-checkbox
+                  (change)="onCheckboxChange($event, 'brands', brand.id)"
+                  [formArrayName]="'brands'"
+                  [value]="brand.id.toString()"
+                >
+                  {{ brand.nameBrand }}
+                </mat-checkbox>
+              </p>
+            }
           </section>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true">
@@ -167,15 +175,17 @@
             <mat-panel-title>Categorías</mat-panel-title>
           </mat-expansion-panel-header>
           <section>
-            <p *ngFor="let category of categories">
-              <mat-checkbox
-                (change)="onCheckboxChange($event, 'categories', category.id)"
-                [formArrayName]="'categories'"
-                [value]="category.id.toString()"
-              >
-                {{ category.nameCategory }}
-              </mat-checkbox>
-            </p>
+            @for (category of categories; track category) {
+              <p>
+                <mat-checkbox
+                  (change)="onCheckboxChange($event, 'categories', category.id)"
+                  [formArrayName]="'categories'"
+                  [value]="category.id.toString()"
+                >
+                  {{ category.nameCategory }}
+                </mat-checkbox>
+              </p>
+            }
           </section>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true">
@@ -183,15 +193,17 @@
             <mat-panel-title>Subcategorías</mat-panel-title>
           </mat-expansion-panel-header>
           <section>
-            <p *ngFor="let subcategory of subcategories">
-              <mat-checkbox
-                (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
-                [formArrayName]="'subcategories'"
-                [value]="subcategory.id.toString()"
-              >
-                {{ subcategory.nameSubcategory }}
-              </mat-checkbox>
-            </p>
+            @for (subcategory of subcategories; track subcategory) {
+              <p>
+                <mat-checkbox
+                  (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
+                  [formArrayName]="'subcategories'"
+                  [value]="subcategory.id.toString()"
+                >
+                  {{ subcategory.nameSubcategory }}
+                </mat-checkbox>
+              </p>
+            }
           </section>
         </mat-expansion-panel>
       </mat-accordion>

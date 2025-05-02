@@ -1,18 +1,15 @@
-<main
-  class="mx-auto max-w-screen-xl p-5"
-  *ngIf="product; else noProduct"
->
-  <product-description
-    [product]="product"
-    [productDescription]="productDescription"
-  ></product-description>
-  <hr class="my-8" />
-  <products-suggested [products]="products.splice(0, 2)"></products-suggested>
-</main>
-
-<ng-template #noProduct>
+@if (product) {
+  <main class="mx-auto max-w-screen-xl p-5">
+    <product-description
+      [product]="product"
+      [productDescription]="productDescription"
+    ></product-description>
+    <hr class="my-8" />
+    <products-suggested [products]="products.splice(0, 2)"></products-suggested>
+  </main>
+} @else {
   <div class="flex items-center flex-col gap-3 h-[80vh] justify-center text-3xl p-5">
     <span class="text-9xl text-orange">404</span>
     <p>No se encontró el producto</p>
   </div>
-</ng-template>
+}

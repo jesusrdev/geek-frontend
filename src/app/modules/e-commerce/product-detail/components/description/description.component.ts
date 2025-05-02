@@ -6,7 +6,7 @@ import { Product } from '../../../../../core/models/product';
 import { SharedService } from '../../../../../core/services/shared.service';
 import { ShoppingCartService } from '../../../../../core/services/shopping-cart.service';
 import { WishlistService } from '../../../../../core/services/wishlist.service';
-import { NgFor, DecimalPipe, PercentPipe } from '@angular/common';
+import { DecimalPipe, PercentPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
 
@@ -14,7 +14,7 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   selector: 'product-description',
   templateUrl: './description.component.html',
   styleUrl: './description.component.css',
-  imports: [NgFor, FormsModule, ButtonComponent, DecimalPipe, PercentPipe]
+  imports: [FormsModule, ButtonComponent, DecimalPipe, PercentPipe]
 })
 export class DescriptionComponent implements OnInit {
   @Input() product: Product = {} as Product;

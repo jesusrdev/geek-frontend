@@ -7,7 +7,7 @@ import { SharedService } from '../../../../../core/services/shared.service';
 import { jwtDecode } from 'jwt-decode';
 import { Token } from '../../../../../shared/interfaces/auth';
 import { MatToolbar } from '@angular/material/toolbar';
-import { NgIf } from '@angular/common';
+
 import { MatIconButton } from '@angular/material/button';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
@@ -17,7 +17,7 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
-  imports: [MatToolbar, RouterLink, NgIf, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, ButtonComponent]
+  imports: [MatToolbar, RouterLink, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, ButtonComponent]
 })
 export class NavbarComponent {
   username = '';

@@ -6,7 +6,7 @@ import { SharedService } from '../../../core/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SignUp, Token } from '../../../shared/interfaces/auth';
 import { jwtDecode } from 'jwt-decode';
-import { NgIf } from '@angular/common';
+
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatFormField, MatLabel, MatInput, MatSuffix } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
@@ -18,7 +18,6 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
   imports: [
-    NgIf,
     MatProgressBar,
     FormsModule,
     ReactiveFormsModule,
