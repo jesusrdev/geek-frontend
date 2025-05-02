@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -42,20 +42,22 @@ import { MatButton } from '@angular/material/button';
   ]
 })
 export class ImageModalComponent implements OnInit {
+  private modal = inject<MatDialogRef<ImageModalComponent>>(MatDialogRef);
+  dataImage = inject<ImageProduct>(MAT_DIALOG_DATA);
+  private fb = inject(FormBuilder);
+  private _imageService = inject(ImageService);
+  private _productService = inject(ProductService);
+  private _sharedService = inject(SharedService);
+
   formImage: FormGroup;
   title = 'Añadir';
   nameButton = 'Guardar';
 
   listProducts: Product[] = [];
 
-  constructor(
-    private modal: MatDialogRef<ImageModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public dataImage: ImageProduct,
-    private fb: FormBuilder,
-    private _imageService: ImageService,
-    private _productService: ProductService,
-    private _sharedService: SharedService
-  ) {
+  constructor() {
+    const _productService = this._productService;
+
     this.formImage = this.fb.group({
       productId: ['', Validators.required],
       imageUrl: [null]

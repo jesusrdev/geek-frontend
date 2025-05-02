@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../../core/models/product';
@@ -52,6 +52,15 @@ import { MatPaginator } from '@angular/material/paginator';
   ]
 })
 export class ProductsComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private fb = inject(FormBuilder);
+  private _sharedService = inject(SharedService);
+  private _productService = inject(ProductService);
+  private _categoryService = inject(CategoryService);
+  private _brandService = inject(BrandService);
+  private _subcategoryService = inject(SubcategoryService);
+
   products: Product[] = [];
   brands: Brand[] = [];
   categories: Category[] = [];
@@ -64,16 +73,7 @@ export class ProductsComponent implements OnInit {
 
   panelOpenState = true; // Abierto por defecto
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private fb: FormBuilder,
-    private _sharedService: SharedService,
-    private _productService: ProductService,
-    private _categoryService: CategoryService,
-    private _brandService: BrandService,
-    private _subcategoryService: SubcategoryService
-  ) {
+  constructor() {
     this.filterForm = this.fb.group({
       query: [''],
       orderBy: [0],

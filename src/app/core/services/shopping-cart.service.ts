@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -11,9 +11,9 @@ import { CartItemForm, ShoppingCartItem } from '../models/shopping-cart';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  baseUrl: string = environment.apiUrl + 'ShoppingCartItem/';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  baseUrl: string = environment.apiUrl + 'ShoppingCartItem/';
 
   list(): Observable<ApiResponse<ShoppingCartItem[]>> {
     return this.http.get<ApiResponse<ShoppingCartItem[]>>(`${this.baseUrl}`);

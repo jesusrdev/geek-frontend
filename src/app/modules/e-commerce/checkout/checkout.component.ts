@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ShoppingCartItem } from '../../../core/models/shopping-cart';
 import { ShoppingCartService } from '../../../core/services/shopping-cart.service';
 import { Router } from '@angular/router';
@@ -14,15 +14,13 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   imports: [ButtonComponent, DecimalPipe]
 })
 export class CheckoutComponent implements OnInit {
+  private cartService = inject(ShoppingCartService);
+  private orderService = inject(OrderService);
+  private router = inject(Router);
+  private _sharedService = inject(SharedService);
+
   cartItems: ShoppingCartItem[] = [];
   total: number = 0;
-
-  constructor(
-    private cartService: ShoppingCartService,
-    private orderService: OrderService,
-    private router: Router,
-    private _sharedService: SharedService
-  ) {}
 
   ngOnInit(): void {
     this.getCartItems();

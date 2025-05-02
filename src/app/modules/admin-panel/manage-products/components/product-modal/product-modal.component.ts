@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -52,6 +52,15 @@ import { MatButton } from '@angular/material/button';
   ]
 })
 export class ProductModalComponent implements OnInit {
+  private modal = inject<MatDialogRef<ProductModalComponent>>(MatDialogRef);
+  dataProduct = inject<Product>(MAT_DIALOG_DATA);
+  private fb = inject(FormBuilder);
+  private _productService = inject(ProductService);
+  private _brandService = inject(BrandService);
+  private _categoryService = inject(CategoryService);
+  private _subcategoryService = inject(SubcategoryService);
+  private _sharedService = inject(SharedService);
+
   formProduct: FormGroup;
   title = 'Añadir';
   nameButton = 'Guardar';
@@ -60,16 +69,7 @@ export class ProductModalComponent implements OnInit {
   listSubcategories: Subcategory[] = [];
   listBrands: Brand[] = [];
 
-  constructor(
-    private modal: MatDialogRef<ProductModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public dataProduct: Product,
-    private fb: FormBuilder,
-    private _productService: ProductService,
-    private _brandService: BrandService,
-    private _categoryService: CategoryService,
-    private _subcategoryService: SubcategoryService,
-    private _sharedService: SharedService
-  ) {
+  constructor() {
     this.formProduct = this.fb.group({
       nameProduct: ['', Validators.required],
       description: ['', Validators.required],

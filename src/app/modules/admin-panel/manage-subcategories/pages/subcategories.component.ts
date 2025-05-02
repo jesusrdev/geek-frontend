@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 
 import { Subcategory } from '../../../../core/models/subcategory';
 
@@ -37,6 +37,10 @@ import { SubcategoryListComponent } from '../components/subcategory-list/subcate
   ]
 })
 export class SubcategoriesComponent implements OnInit, AfterViewInit {
+  private _subcategoryService = inject(SubcategoryService);
+  private _sharedService = inject(SharedService);
+  private dialog = inject(MatDialog);
+
   displayedColumns: string[] = ['nameSubcategory', 'nameCategory', 'status', 'actions'];
 
   initialData: Subcategory[] = [];
@@ -44,12 +48,6 @@ export class SubcategoriesComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource(this.initialData);
 
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
-
-  constructor(
-    private _subcategoryService: SubcategoryService,
-    private _sharedService: SharedService,
-    private dialog: MatDialog
-  ) {}
 
   getSubcategories() {
     this._subcategoryService.list().subscribe({

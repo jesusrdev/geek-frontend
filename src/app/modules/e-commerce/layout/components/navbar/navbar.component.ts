@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -20,15 +20,13 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   imports: [MatToolbar, RouterLink, MatIconButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, ButtonComponent]
 })
 export class NavbarComponent {
+  private router = inject(Router);
+  private sharedService = inject(SharedService);
+  private cookieService = inject(CookieService);
+
   username = '';
   isLoggedIn = false;
   isAdmin = false;
-
-  constructor(
-    private router: Router,
-    private sharedService: SharedService,
-    private cookieService: CookieService
-  ) {}
 
   ngOnInit(): void {
     const userSession = this.sharedService.getSession();

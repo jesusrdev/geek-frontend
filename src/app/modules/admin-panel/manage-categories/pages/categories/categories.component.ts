@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 
 import { Category } from '../../../../../core/models/category';
 
@@ -37,6 +37,10 @@ import { CategoryListComponent } from '../../components/list/list.component';
   ]
 })
 export class CategoriesComponent implements OnInit, AfterViewInit {
+  private _categoryService = inject(CategoryService);
+  private _sharedService = inject(SharedService);
+  private dialog = inject(MatDialog);
+
   displayedColumns: string[] = ['nameCategory', 'status', 'actions'];
 
   initialData: Category[] = [];
@@ -44,12 +48,6 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource(this.initialData);
 
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
-
-  constructor(
-    private _categoryService: CategoryService,
-    private _sharedService: SharedService,
-    private dialog: MatDialog
-  ) {}
 
   getCategories() {
     this._categoryService.list().subscribe({

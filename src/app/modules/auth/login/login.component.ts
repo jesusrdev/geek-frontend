@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -31,19 +31,19 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   ]
 })
 export class LoginComponent {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private userService = inject(AuthService);
+  private sharedService = inject(SharedService);
+  private cookieService = inject(CookieService);
+
   formLogin: FormGroup;
 
   hidePassword: boolean = true;
 
   showLoading: boolean = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private userService: AuthService,
-    private sharedService: SharedService,
-    private cookieService: CookieService
-  ) {
+  constructor() {
     this.formLogin = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]

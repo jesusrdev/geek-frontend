@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -30,13 +30,11 @@ import { MatNavList, MatListItem, MatListItemIcon, MatListItemTitle } from '@ang
   ]
 })
 export class DashboardComponent implements OnInit {
-  username = '';
+  private router = inject(Router);
+  private sharedService = inject(SharedService);
+  private cookieService = inject(CookieService);
 
-  constructor(
-    private router: Router,
-    private sharedService: SharedService,
-    private cookieService: CookieService
-  ) {}
+  username = '';
 
   ngOnInit(): void {
     const userSession = this.sharedService.getSession();

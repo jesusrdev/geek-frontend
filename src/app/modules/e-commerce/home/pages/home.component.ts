@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../../../core/models/product';
@@ -18,15 +18,13 @@ import { BestSellersComponent } from '../components/best-sellers/best-sellers.co
   imports: [HeroComponent, BrandsComponent, BestSellersComponent]
 })
 export class HomeComponent {
+  private router = inject(Router);
+  private _sharedService = inject(SharedService);
+  private _brandService = inject(BrandService);
+  private _productService = inject(ProductService);
+
   products: Product[] = [];
   brands: Brand[] = [];
-
-  constructor(
-    private router: Router,
-    private _sharedService: SharedService,
-    private _brandService: BrandService,
-    private _productService: ProductService
-  ) {}
 
   getProducts() {
     this._productService.listActive().subscribe({

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SharedService } from '../../../../../core/services/shared.service';
@@ -9,8 +9,6 @@ import { SharedService } from '../../../../../core/services/shared.service';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  constructor(
-    private router: Router,
-    private sharedService: SharedService
-  ) {}
+  private router = inject(Router);
+  private sharedService = inject(SharedService);
 }

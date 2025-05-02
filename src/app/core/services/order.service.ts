@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -11,9 +11,9 @@ import { Order } from '../models/order';
   providedIn: 'root'
 })
 export class OrderService {
-  baseUrl: string = environment.apiUrl + 'Order/';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  baseUrl: string = environment.apiUrl + 'Order/';
 
   list(): Observable<ApiResponse<Order[]>> {
     return this.http.get<ApiResponse<Order[]>>(`${this.baseUrl}`);

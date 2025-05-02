@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -12,12 +12,10 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  baseUrl: string = environment.apiUrl + 'product';
+  private http = inject(HttpClient);
+  private cookieService = inject(CookieService);
 
-  constructor(
-    private http: HttpClient,
-    private cookieService: CookieService
-  ) {}
+  baseUrl: string = environment.apiUrl + 'product';
 
   get(id: number): Observable<ApiResponse<Product>> {
     return this.http.get<ApiResponse<Product>>(`${this.baseUrl}/${id}`);

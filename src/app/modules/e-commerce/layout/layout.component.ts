@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { SharedService } from '../../../core/services/shared.service';
@@ -12,13 +12,10 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [NavbarComponent, RouterOutlet, FooterComponent]
 })
 export class LayoutComponent implements OnInit {
-  username = '';
+  private router = inject(Router);
+  private sharedService = inject(SharedService);
 
-  constructor(
-    private router: Router,
-    private sharedService: SharedService
-    // private cookieService: CookieService
-  ) {}
+  username = '';
 
   ngOnInit(): void {
     //   const userSession = this.sharedService.getSession();

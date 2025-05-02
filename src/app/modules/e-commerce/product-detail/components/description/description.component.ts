@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Product } from '../../../../../core/models/product';
@@ -17,16 +17,14 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   imports: [FormsModule, ButtonComponent, DecimalPipe, PercentPipe]
 })
 export class DescriptionComponent implements OnInit {
+  private shoppingCartService = inject(ShoppingCartService);
+  private wishlistService = inject(WishlistService);
+  private _sharedService = inject(SharedService);
+
   @Input() product: Product = {} as Product;
   @Input() productDescription: SafeHtml = '';
 
   quantity: number = 1;
-
-  constructor(
-    private shoppingCartService: ShoppingCartService,
-    private wishlistService: WishlistService,
-    private _sharedService: SharedService
-  ) {}
 
   ngOnInit(): void {}
 

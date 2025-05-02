@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -41,17 +41,17 @@ import { MatButton } from '@angular/material/button';
   ]
 })
 export class CategoryModalComponent implements OnInit {
+  private modal = inject<MatDialogRef<CategoryModalComponent>>(MatDialogRef);
+  dataCategory = inject<Category>(MAT_DIALOG_DATA);
+  private fb = inject(FormBuilder);
+  private _categoryService = inject(CategoryService);
+  private _sharedService = inject(SharedService);
+
   formCategory: FormGroup;
   title = 'Añadir';
   nameButton = 'Guardar';
 
-  constructor(
-    private modal: MatDialogRef<CategoryModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public dataCategory: Category,
-    private fb: FormBuilder,
-    private _categoryService: CategoryService,
-    private _sharedService: SharedService
-  ) {
+  constructor() {
     this.formCategory = this.fb.group({
       nameCategory: ['', Validators.required],
       status: ['1', Validators.required]

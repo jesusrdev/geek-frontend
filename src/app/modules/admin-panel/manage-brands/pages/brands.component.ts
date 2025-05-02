@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 
 import { Brand } from '../../../../core/models/brand';
 
@@ -37,6 +37,10 @@ import { BrandListComponent } from '../components/list/list.component';
   ]
 })
 export class BrandsComponent implements OnInit, AfterViewInit {
+  private _brandService = inject(BrandService);
+  private _sharedService = inject(SharedService);
+  private dialog = inject(MatDialog);
+
   displayedColumns: string[] = ['nameBrand', 'imageUrl', 'status', 'actions'];
 
   initialData: Brand[] = [];
@@ -44,12 +48,6 @@ export class BrandsComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource(this.initialData);
 
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
-
-  constructor(
-    private _brandService: BrandService,
-    private _sharedService: SharedService,
-    private dialog: MatDialog
-  ) {}
 
   getCategories() {
     this._brandService.list().subscribe({

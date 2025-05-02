@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -11,9 +11,9 @@ import { Wishlist, WishlistForm } from '../models/wishlist';
   providedIn: 'root'
 })
 export class WishlistService {
-  baseUrl: string = environment.apiUrl + 'Wishlist/';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  baseUrl: string = environment.apiUrl + 'Wishlist/';
 
   list(): Observable<ApiResponse<Wishlist[]>> {
     return this.http.get<ApiResponse<Wishlist[]>>(`${this.baseUrl}`);

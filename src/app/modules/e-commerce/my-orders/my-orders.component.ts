@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Order } from '../../../core/models/order';
 import { OrderService } from '../../../core/services/order.service';
 import { SharedService } from '../../../core/services/shared.service';
@@ -11,12 +11,10 @@ import { DecimalPipe, DatePipe } from '@angular/common';
   imports: [DecimalPipe, DatePipe]
 })
 export class MyOrdersComponent implements OnInit {
-  orders: Order[] = [];
+  private ordersService = inject(OrderService);
+  private sharedService = inject(SharedService);
 
-  constructor(
-    private ordersService: OrderService,
-    private sharedService: SharedService
-  ) {}
+  orders: Order[] = [];
 
   ngOnInit(): void {
     this.getOrders();

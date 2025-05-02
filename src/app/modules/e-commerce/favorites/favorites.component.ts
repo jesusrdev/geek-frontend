@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Wishlist } from '../../../core/models/wishlist';
 import { WishlistService } from '../../../core/services/wishlist.service';
 import { SharedService } from '../../../core/services/shared.service';
@@ -12,12 +12,10 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   imports: [ButtonComponent, DecimalPipe]
 })
 export class FavoritesComponent implements OnInit {
-  wishlistItems: Wishlist[] = [];
+  private wishlistService = inject(WishlistService);
+  private sharedService = inject(SharedService);
 
-  constructor(
-    private wishlistService: WishlistService,
-    private sharedService: SharedService
-  ) {}
+  wishlistItems: Wishlist[] = [];
 
   ngOnInit(): void {
     this.getWishlistItems();

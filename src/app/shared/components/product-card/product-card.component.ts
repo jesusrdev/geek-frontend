@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
 import { MatCard, MatCardHeader, MatCardImage, MatCardContent, MatCardActions } from '@angular/material/card';
@@ -24,14 +24,14 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class ProductCardComponent {
+  private router = inject(Router);
+
   @Input() id: number = 0;
   @Input() imageUrl: string = '';
   @Input() name: string = '';
   @Input() price: number = 0;
   @Input() discount: number = 0;
   @Input() class?: string = '';
-
-  constructor(private router: Router) {}
 
   goToProduct() {
     this.router.navigate(['products', this.id]);

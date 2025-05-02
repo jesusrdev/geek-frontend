@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../../../../core/models/product';
@@ -13,13 +13,11 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   imports: [ButtonComponent]
 })
 export class HeroComponent {
+  private router = inject(Router);
+  sanitizer = inject(DomSanitizer);
+
   @Input()
   public products: Product[] = [];
-
-  constructor(
-    private router: Router,
-    public sanitizer: DomSanitizer
-  ) {}
 
   goToProduct(productId: number) {
     this.router.navigate(['products', productId]);

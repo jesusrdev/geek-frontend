@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -12,12 +12,10 @@ import { ImageProduct } from '../models/product';
   providedIn: 'root'
 })
 export class ImageService {
-  baseUrl: string = environment.apiUrl + 'image/';
+  private http = inject(HttpClient);
+  private cookieService = inject(CookieService);
 
-  constructor(
-    private http: HttpClient,
-    private cookieService: CookieService
-  ) {}
+  baseUrl: string = environment.apiUrl + 'image/';
 
   list(): Observable<ApiResponse<ImageProduct[]>> {
     return this.http.get<ApiResponse<ImageProduct[]>>(`${this.baseUrl}`);

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -12,12 +12,10 @@ import { Subcategory } from '../models/subcategory';
   providedIn: 'root'
 })
 export class SubcategoryService {
-  baseUrl: string = environment.apiUrl + 'subcategory/';
+  private http = inject(HttpClient);
+  private cookieService = inject(CookieService);
 
-  constructor(
-    private http: HttpClient,
-    private cookieService: CookieService
-  ) {}
+  baseUrl: string = environment.apiUrl + 'subcategory/';
 
   list(): Observable<ApiResponse<Subcategory[]>> {
     return this.http.get<ApiResponse<Subcategory[]>>(`${this.baseUrl}`);

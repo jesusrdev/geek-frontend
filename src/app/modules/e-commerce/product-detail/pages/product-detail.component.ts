@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product } from '../../../../core/models/product';
@@ -17,17 +17,15 @@ import { ProductsSuggestedComponent } from '../components/products-suggested/pro
   imports: [DescriptionComponent, ProductsSuggestedComponent]
 })
 export class ProductDetailComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private _productService = inject(ProductService);
+  private _sharedService = inject(SharedService);
+  private sanitizer = inject(DomSanitizer);
+
   productId: number = 0;
   product?: Product;
   productDescription: SafeHtml = '';
   products: Product[] = [];
-
-  constructor(
-    private route: ActivatedRoute,
-    private _productService: ProductService,
-    private _sharedService: SharedService,
-    private sanitizer: DomSanitizer
-  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

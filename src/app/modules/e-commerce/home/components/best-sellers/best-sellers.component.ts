@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from '../../../../../core/models/product';
@@ -14,6 +14,8 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   imports: [NgClass, ProductCardComponent, ButtonComponent]
 })
 export class BestSellersComponent implements OnInit, AfterViewInit {
+  private router = inject(Router);
+
   @Input() products: Product[] = [];
   @Input() brands: Brand[] = [];
 
@@ -27,7 +29,7 @@ export class BestSellersComponent implements OnInit, AfterViewInit {
     this.productsFiltered = this.products.filter(product => product.brandId === brandId).slice(0, 11);
   }
 
-  constructor(private router: Router) {
+  constructor() {
     this.filterProductsByBrandId(this.brandActive);
   }
 

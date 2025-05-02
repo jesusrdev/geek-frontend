@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { Brand } from '../../../../../core/models/brand';
@@ -11,8 +11,8 @@ import { NgClass } from '@angular/common';
   imports: [NgClass, RouterLink]
 })
 export class BrandsComponent {
+  private router = inject(Router);
+
   @Input()
   public brands: Brand[] = [];
-
-  constructor(private router: Router) {}
 }

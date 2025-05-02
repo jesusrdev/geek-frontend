@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -44,20 +44,20 @@ import { MatButton } from '@angular/material/button';
   ]
 })
 export class SubcategoryModalComponent implements OnInit {
+  private modal = inject<MatDialogRef<SubcategoryModalComponent>>(MatDialogRef);
+  dataSubcategory = inject<Subcategory>(MAT_DIALOG_DATA);
+  private fb = inject(FormBuilder);
+  private _subcategoryService = inject(SubcategoryService);
+  private _categoryService = inject(CategoryService);
+  private _sharedService = inject(SharedService);
+
   formSubcategory: FormGroup;
   title = 'Añadir';
   nameButton = 'Guardar';
 
   listCategories: Category[] = [];
 
-  constructor(
-    private modal: MatDialogRef<SubcategoryModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public dataSubcategory: Subcategory,
-    private fb: FormBuilder,
-    private _subcategoryService: SubcategoryService,
-    private _categoryService: CategoryService,
-    private _sharedService: SharedService
-  ) {
+  constructor() {
     this.formSubcategory = this.fb.group({
       nameSubcategory: ['', Validators.required],
       categoryId: ['', Validators.required],
