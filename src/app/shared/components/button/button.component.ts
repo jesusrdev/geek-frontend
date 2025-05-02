@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 @Component({
-    selector: 'app-button',
-    templateUrl: './button.component.html',
-    styleUrl: './button.component.css',
-    standalone: false
+  selector: 'app-button',
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.css',
+  imports: [NgClass]
 })
 export class ButtonComponent {
   @Input()

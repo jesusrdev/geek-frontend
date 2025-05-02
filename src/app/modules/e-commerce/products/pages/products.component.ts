@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../../core/models/product';
 import { Brand } from '../../../../core/models/brand';
@@ -10,12 +10,48 @@ import { ProductService } from '../../../../core/services/product.service';
 import { CategoryService } from '../../../../core/services/category.service';
 import { BrandService } from '../../../../core/services/brand.service';
 import { SubcategoryService } from '../../../../core/services/subcategory.service';
+import { MatFormField, MatLabel, MatInput, MatSuffix } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatIconButton, MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import {
+  MatAccordion,
+  MatExpansionPanel,
+  MatExpansionPanelHeader,
+  MatExpansionPanelTitle
+} from '@angular/material/expansion';
+import { NgFor, NgIf } from '@angular/common';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { ProductCardComponent } from '../../../../shared/components/product-card/product-card.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-    selector: 'app-product',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
-    standalone: false
+  selector: 'app-product',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css'],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatInput,
+    MatIconButton,
+    MatSuffix,
+    MatIcon,
+    MatButton,
+    MatAccordion,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    NgFor,
+    MatCheckbox,
+    ProductCardComponent,
+    NgIf,
+    MatPaginator
+  ]
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];

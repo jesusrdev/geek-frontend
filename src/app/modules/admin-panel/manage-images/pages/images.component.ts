@@ -12,12 +12,29 @@ import { SharedService } from '../../../../core/services/shared.service';
 import { ImageModalComponent } from '../components/image-modal/image-modal.component';
 
 import Swal from 'sweetalert2';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/list';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { ImageListComponent } from '../components/image-list/image-list.component';
 
 @Component({
-    selector: 'app-images',
-    templateUrl: './images.component.html',
-    styleUrl: './images.component.css',
-    standalone: false
+  selector: 'app-images',
+  templateUrl: './images.component.html',
+  styleUrl: './images.component.css',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatButton,
+    MatIcon,
+    MatDivider,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    ImageListComponent
+  ]
 })
 export class ImagesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameProduct', 'imageUrl', 'actions'];

@@ -1,7 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose
+} from '@angular/material/dialog';
 
 import { Category } from '../../../../../core/models/category';
 import { Subcategory } from '../../../../../core/models/subcategory';
@@ -9,12 +16,33 @@ import { Subcategory } from '../../../../../core/models/subcategory';
 import { SharedService } from '../../../../../core/services/shared.service';
 import { SubcategoryService } from '../../../../../core/services/subcategory.service';
 import { CategoryService } from '../../../../../core/services/category.service';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'app-subcategory-modal',
-    templateUrl: './subcategory-modal.component.html',
-    styleUrl: './subcategory-modal.component.css',
-    standalone: false
+  selector: 'app-subcategory-modal',
+  templateUrl: './subcategory-modal.component.html',
+  styleUrl: './subcategory-modal.component.css',
+  imports: [
+    MatDialogTitle,
+    CdkScrollable,
+    MatDialogContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatSelect,
+    NgFor,
+    MatOption,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+  ]
 })
 export class SubcategoryModalComponent implements OnInit {
   formSubcategory: FormGroup;

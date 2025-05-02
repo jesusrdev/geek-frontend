@@ -1,14 +1,23 @@
-<mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar>
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="showLoading"
+></mat-progress-bar>
 
 <section class="flex w-full items-center justify-center">
-  <form [formGroup]="formSignUp" (ngSubmit)="signUp()"
-        class="flex-1 grow-[2] px-[max(5vw,12px)] max-md:h-screen flex flex-col items-center justify-center">
+  <form
+    [formGroup]="formSignUp"
+    (ngSubmit)="signUp()"
+    class="flex-1 grow-[2] px-[max(5vw,12px)] max-md:h-screen flex flex-col items-center justify-center"
+  >
     <div class="flex flex-col gap-4 p-4">
       <h3 class="text-5xl font-bold uppercase">Registrarme</h3>
       <p class="py-3 text-lg text-gray-600/60">Ingresa tus datos por favor.</p>
 
       <div class="col-12 flex flex-col gap-4">
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field
+          class="full-width"
+          appearance="fill"
+        >
           <mat-label>Nombres</mat-label>
           <input
             formControlName="names"
@@ -20,7 +29,10 @@
       </div>
 
       <div class="col-12 flex flex-col gap-4">
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field
+          class="full-width"
+          appearance="fill"
+        >
           <mat-label>Apellidos</mat-label>
           <input
             formControlName="lastName"
@@ -32,7 +44,10 @@
       </div>
 
       <div class="col-12 flex flex-col gap-4">
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field
+          class="full-width"
+          appearance="fill"
+        >
           <mat-label>Nombre de usuario</mat-label>
           <input
             formControlName="userName"
@@ -44,7 +59,10 @@
       </div>
 
       <div class="col-12">
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field
+          class="full-width"
+          appearance="fill"
+        >
           <mat-label>Email</mat-label>
           <input
             formControlName="email"
@@ -56,7 +74,10 @@
       </div>
 
       <div class="col-12">
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field
+          class="full-width"
+          appearance="fill"
+        >
           <mat-label>Password</mat-label>
           <input
             [type]="hidePassword ? 'password' : 'text'"
@@ -70,10 +91,7 @@
             (click)="setHidePassword(!hidePassword)"
             type="button"
           >
-            <mat-icon matSuffix>{{
-                hidePassword ? "visibility_off" : "visibility"
-              }}
-            </mat-icon>
+            <mat-icon matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </mat-form-field>
       </div>
@@ -84,20 +102,26 @@
           class="py-4 px-8 font-bold cursor-pointer"
           type="submit"
           [disabled]="formSignUp.invalid"
-        >
-        </app-button>
+        ></app-button>
       </div>
     </div>
 
-    <p class="text-lg text-gray-600/60">¿Ya tienes una cuenta? <a href="/auth/login"
-                                                                  class="text-orange uppercase font-bold">Iniciar
-      sesión</a>
+    <p class="text-lg text-gray-600/60">
+      ¿Ya tienes una cuenta?
+      <a
+        href="/auth/login"
+        class="text-orange uppercase font-bold"
+      >
+        Iniciar sesión
+      </a>
     </p>
   </form>
 
   <div class="grow-[2] max-w-[58%] max-md:hidden max-md:invisible h-[95vh]">
-    <img src="register.png" alt="register" class="w-full h-full object-cover" />
+    <img
+      src="register.png"
+      alt="register"
+      class="w-full h-full object-cover"
+    />
   </div>
 </section>
-
-

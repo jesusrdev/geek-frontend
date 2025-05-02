@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../../../core/models/order';
 import { OrderService } from '../../../core/services/order.service';
 import { SharedService } from '../../../core/services/shared.service';
+import { NgIf, NgFor, DecimalPipe, DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'app-my-orders',
-    templateUrl: './my-orders.component.html',
-    styleUrl: './my-orders.component.css',
-    standalone: false
+  selector: 'app-my-orders',
+  templateUrl: './my-orders.component.html',
+  styleUrl: './my-orders.component.css',
+  imports: [NgIf, NgFor, DecimalPipe, DatePipe]
 })
 export class MyOrdersComponent implements OnInit {
   orders: Order[] = [];

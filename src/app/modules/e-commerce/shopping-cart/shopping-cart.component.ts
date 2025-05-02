@@ -3,12 +3,14 @@ import { ShoppingCartItem } from '../../../core/models/shopping-cart';
 import { ShoppingCartService } from '../../../core/services/shopping-cart.service';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
+import { NgIf, NgFor, DecimalPipe } from '@angular/common';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
-    selector: 'app-shopping-cart',
-    templateUrl: './shopping-cart.component.html',
-    styleUrl: './shopping-cart.component.css',
-    standalone: false
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrl: './shopping-cart.component.css',
+  imports: [NgIf, NgFor, ButtonComponent, DecimalPipe]
 })
 export class ShoppingCartComponent implements OnInit {
   cartItems: ShoppingCartItem[] = [];

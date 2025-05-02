@@ -1,17 +1,35 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { SharedService } from '../../../core/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Login, Token } from '../../../shared/interfaces/auth';
 import { jwtDecode } from 'jwt-decode';
+import { NgIf } from '@angular/common';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatFormField, MatLabel, MatInput, MatSuffix } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton } from '@angular/material/button';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.css',
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css',
+  imports: [
+    NgIf,
+    MatProgressBar,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatIcon,
+    MatSuffix,
+    MatIconButton,
+    ButtonComponent
+  ]
 })
 export class LoginComponent {
   formLogin: FormGroup;

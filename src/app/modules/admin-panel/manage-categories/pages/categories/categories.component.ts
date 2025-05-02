@@ -12,12 +12,29 @@ import { SharedService } from '../../../../../core/services/shared.service';
 import Swal from 'sweetalert2';
 
 import { CategoryModalComponent } from '../../components/modal/modal.component';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/list';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { CategoryListComponent } from '../../components/list/list.component';
 
 @Component({
-    selector: 'app-categories',
-    templateUrl: './categories.component.html',
-    styleUrl: './categories.component.css',
-    standalone: false
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrl: './categories.component.css',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatButton,
+    MatIcon,
+    MatDivider,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    CategoryListComponent
+  ]
 })
 export class CategoriesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameCategory', 'status', 'actions'];

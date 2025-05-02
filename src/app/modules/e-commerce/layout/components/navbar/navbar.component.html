@@ -2,73 +2,129 @@
   <span class="font-montserrat font-bold text-4xl text-orange">GEEK</span>
 
   <ul
-    class="max-sm:hidden flex flex-row gap-5 text-lg hover:*:border-b-orange *:border-b-2 *:border-solid *:transition-all hover:*:cursor-pointer">
-    <li routerLink="/">
-      Home
-    </li>
-    <li routerLink="/products">
-      Productos
-    </li>
-    <li routerLink="/admin" *ngIf="isAdmin">
+    class="max-sm:hidden flex flex-row gap-5 text-lg hover:*:border-b-orange *:border-b-2 *:border-solid *:transition-all hover:*:cursor-pointer"
+  >
+    <li routerLink="/">Home</li>
+    <li routerLink="/products">Productos</li>
+    <li
+      routerLink="/admin"
+      *ngIf="isAdmin"
+    >
       Panel Admin
     </li>
   </ul>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" id="menu" class="sm:!hidden">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    id="menu"
+    class="sm:!hidden"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <mat-menu #menu="matMenu" class="!bg-gray-navbar">
-    <button mat-menu-item routerLink="/">
+  <mat-menu
+    #menu="matMenu"
+    class="!bg-gray-navbar"
+  >
+    <button
+      mat-menu-item
+      routerLink="/"
+    >
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </button>
-    <button mat-menu-item routerLink="/products">
+    <button
+      mat-menu-item
+      routerLink="/products"
+    >
       <mat-icon>storefront</mat-icon>
       <span>Productos</span>
     </button>
-    <button mat-menu-item routerLink="/admin">
+    <button
+      mat-menu-item
+      routerLink="/admin"
+    >
       <mat-icon>account_circle</mat-icon>
       <span>Panel Admin</span>
     </button>
   </mat-menu>
 
-
-  <div class="flex *:tracking-wide *:grow" *ngIf="isLoggedIn; else noLoggedIn">
-    <button mat-icon-button class="!p-1" routerLink="/shopping-cart">
-      <img src="/icons/carrito.png" alt="cart" class="!w-full !h-full object-contain" />
+  <div
+    class="flex *:tracking-wide *:grow"
+    *ngIf="isLoggedIn; else noLoggedIn"
+  >
+    <button
+      mat-icon-button
+      class="!p-1"
+      routerLink="/shopping-cart"
+    >
+      <img
+        src="/icons/carrito.png"
+        alt="cart"
+        class="!w-full !h-full object-contain"
+      />
     </button>
 
     <span class="w-0.5 bg-[#C1C1C1]"></span>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="account" class="!p-0">
-      <img src="/icons/perfil.png" alt="cart" class="!w-full !h-full object-contain" />
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="account"
+      class="!p-0"
+    >
+      <img
+        src="/icons/perfil.png"
+        alt="cart"
+        class="!w-full !h-full object-contain"
+      />
     </button>
-    <mat-menu #menu="matMenu" class="!bg-gray-navbar">
+    <mat-menu
+      #menu="matMenu"
+      class="!bg-gray-navbar"
+    >
       <!--      <button mat-menu-item routerLink="/profile">-->
       <!--        <mat-icon>person</mat-icon>-->
       <!--        <span>Mi cuenta</span>-->
       <!--      </button>-->
-      <button mat-menu-item routerLink="/my-orders">
+      <button
+        mat-menu-item
+        routerLink="/my-orders"
+      >
         <mat-icon>storefront</mat-icon>
         <span>Mis compras</span>
       </button>
-      <button mat-menu-item routerLink="/favorites">
+      <button
+        mat-menu-item
+        routerLink="/favorites"
+      >
         <mat-icon>favorite</mat-icon>
         <span>Mis lista de deseos</span>
       </button>
-      <button mat-menu-item (click)="logOut()">
+      <button
+        mat-menu-item
+        (click)="logOut()"
+      >
         <mat-icon>logout</mat-icon>
         <span>Cerrar sesión</span>
       </button>
     </mat-menu>
-
   </div>
 
   <ng-template #noLoggedIn>
     <div class="flex gap-2 *:tracking-wide *:grow">
-
-      <app-button text="Registrarse" color="secondary" class="font-koulen" (handleClick)="register()"></app-button>
-      <app-button text="Acceder" color="primary" class="font-koulen" (handleClick)="logIn()"></app-button>
+      <app-button
+        text="Registrarse"
+        color="secondary"
+        class="font-koulen"
+        (handleClick)="register()"
+      ></app-button>
+      <app-button
+        text="Acceder"
+        color="primary"
+        class="font-koulen"
+        (handleClick)="logIn()"
+      ></app-button>
     </div>
   </ng-template>
 </mat-toolbar>

@@ -7,12 +7,15 @@ import { Brand } from '../../../../core/models/brand';
 import { SharedService } from '../../../../core/services/shared.service';
 import { BrandService } from '../../../../core/services/brand.service';
 import { ProductService } from '../../../../core/services/product.service';
+import { HeroComponent } from '../components/hero/hero.component';
+import { BrandsComponent } from '../components/brands/brands.component';
+import { BestSellersComponent } from '../components/best-sellers/best-sellers.component';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.css',
-    standalone: false
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
+  imports: [HeroComponent, BrandsComponent, BestSellersComponent]
 })
 export class HomeComponent {
   products: Product[] = [];

@@ -12,12 +12,29 @@ import { SharedService } from '../../../../core/services/shared.service';
 import { BrandModalComponent } from '../components/brand-modal/brand-modal.component';
 
 import Swal from 'sweetalert2';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/list';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { BrandListComponent } from '../components/list/list.component';
 
 @Component({
-    selector: 'app-brands',
-    templateUrl: './brands.component.html',
-    styleUrl: './brands.component.css',
-    standalone: false
+  selector: 'app-brands',
+  templateUrl: './brands.component.html',
+  styleUrl: './brands.component.css',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatButton,
+    MatIcon,
+    MatDivider,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    BrandListComponent
+  ]
 })
 export class BrandsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameBrand', 'imageUrl', 'status', 'actions'];

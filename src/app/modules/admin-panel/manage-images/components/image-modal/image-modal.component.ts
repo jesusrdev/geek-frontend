@@ -1,19 +1,46 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose
+} from '@angular/material/dialog';
 
 import { ImageProduct, Product } from '../../../../../core/models/product';
 
 import { SharedService } from '../../../../../core/services/shared.service';
 import { ImageService } from '../../../../../core/services/image.service';
 import { ProductService } from '../../../../../core/services/product.service';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'app-image-modal',
-    templateUrl: './image-modal.component.html',
-    styleUrl: './image-modal.component.css',
-    standalone: false
+  selector: 'app-image-modal',
+  templateUrl: './image-modal.component.html',
+  styleUrl: './image-modal.component.css',
+  imports: [
+    MatDialogTitle,
+    CdkScrollable,
+    MatDialogContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    NgFor,
+    MatOption,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+  ]
 })
 export class ImageModalComponent implements OnInit {
   formImage: FormGroup;

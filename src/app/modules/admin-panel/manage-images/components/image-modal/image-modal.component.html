@@ -7,7 +7,10 @@
         <mat-form-field class="w-full">
           <mat-label>Producto</mat-label>
           <mat-select formControlName="productId">
-            <mat-option *ngFor="let product of listProducts" [value]="product.id">
+            <mat-option
+              *ngFor="let product of listProducts"
+              [value]="product.id"
+            >
               {{ product.nameProduct }}
             </mat-option>
           </mat-select>
@@ -33,7 +36,13 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close="true" color="warn">Back</button>
+  <button
+    mat-raised-button
+    mat-dialog-close="true"
+    color="warn"
+  >
+    Back
+  </button>
   <button
     mat-raised-button
     color="primary"

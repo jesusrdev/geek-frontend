@@ -1,36 +1,49 @@
 <div class="bg-black h-240 md:h-[290px] w-full flex items-center justify-end overflow-hidden">
-  <img src="banner.png" alt="banner" class="w-fit h-full object-contain -mr-16" />
+  <img
+    src="banner.png"
+    alt="banner"
+    class="w-fit h-full object-contain -mr-16"
+  />
 </div>
 
-<form [formGroup]="filterForm" class="p-4 max-w-screen-2xl mx-auto">
+<form
+  [formGroup]="filterForm"
+  class="p-4 max-w-screen-2xl mx-auto"
+>
   <div class="flex justify-between gap-2">
     <mat-form-field class="w-fit">
       <mat-label>Ordenar por</mat-label>
       <mat-select formControlName="orderBy">
-        <mat-option [value]="0">
-          Por defecto
-        </mat-option>
-        <mat-option [value]="1">
-          De menor a mayor
-        </mat-option>
-        <mat-option [value]="2">
-          De mayor a menor
-        </mat-option>
+        <mat-option [value]="0">Por defecto</mat-option>
+        <mat-option [value]="1">De menor a mayor</mat-option>
+        <mat-option [value]="2">De mayor a menor</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="w-fit">
       <mat-label>Buscar</mat-label>
-      <input matInput type="text" formControlName="query">
+      <input
+        matInput
+        type="text"
+        formControlName="query"
+      />
       @if (filterForm.get('query')?.value) {
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="filterForm.get('query')!.setValue('')">
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="filterForm.get('query')!.setValue('')"
+        >
           <mat-icon>close</mat-icon>
         </button>
       }
     </mat-form-field>
 
     <div class="md:hidden md:invisible mt-3">
-      <button mat-raised-button (click)="toggleSideNav()">
+      <button
+        mat-raised-button
+        (click)="toggleSideNav()"
+      >
         Filtrar por
       </button>
     </div>
@@ -41,7 +54,8 @@
   <div class="flex w-full gap-2 max-w-screen-2xl mx-auto">
     <div
       class="w-[min(80vw,280px)] bg-white rounded-xl p-3 mx-2 shadow-lg border-2 border-gray-card-border h-fit max-md:hidden"
-      [class.hidden]="!panelOpenState">
+      [class.hidden]="!panelOpenState"
+    >
       <mat-accordion multi>
         <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
@@ -49,8 +63,11 @@
           </mat-expansion-panel-header>
           <section>
             <p *ngFor="let brand of brands">
-              <mat-checkbox (change)="onCheckboxChange($event, 'brands', brand.id)" [formArrayName]="'brands'"
-                            [value]="brand.id.toString()">
+              <mat-checkbox
+                (change)="onCheckboxChange($event, 'brands', brand.id)"
+                [formArrayName]="'brands'"
+                [value]="brand.id.toString()"
+              >
                 {{ brand.nameBrand }}
               </mat-checkbox>
             </p>
@@ -62,8 +79,11 @@
           </mat-expansion-panel-header>
           <section>
             <p *ngFor="let category of categories">
-              <mat-checkbox (change)="onCheckboxChange($event, 'categories', category.id)"
-                            [formArrayName]="'categories'" [value]="category.id.toString()">
+              <mat-checkbox
+                (change)="onCheckboxChange($event, 'categories', category.id)"
+                [formArrayName]="'categories'"
+                [value]="category.id.toString()"
+              >
                 {{ category.nameCategory }}
               </mat-checkbox>
             </p>
@@ -75,8 +95,11 @@
           </mat-expansion-panel-header>
           <section>
             <p *ngFor="let subcategory of subcategories">
-              <mat-checkbox (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
-                            [formArrayName]="'subcategories'" [value]="subcategory.id.toString()">
+              <mat-checkbox
+                (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
+                [formArrayName]="'subcategories'"
+                [value]="subcategory.id.toString()"
+              >
                 {{ subcategory.nameSubcategory }}
               </mat-checkbox>
             </p>
@@ -86,7 +109,6 @@
     </div>
 
     <div class="flex flex-col">
-
       <div class="grid w-full h-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-5">
         <product-card
           *ngFor="let product of products"
@@ -96,23 +118,33 @@
           [discount]="product.discount"
           [id]="product.id"
         ></product-card>
-        <div *ngIf="products.length === 0" class="flex items-center justify-center">
+        <div
+          *ngIf="products.length === 0"
+          class="flex items-center justify-center"
+        >
           <p>No hay productos disponibles</p>
         </div>
       </div>
       <div class="flex flex-col justify-between items-center my-4 col-span-4">
-        <mat-paginator [length]="total" [pageSize]="pageSize" [pageIndex]="page - 1" (page)="onPageChange($event)">
-        </mat-paginator>
+        <mat-paginator
+          [length]="total"
+          [pageSize]="pageSize"
+          [pageIndex]="page - 1"
+          (page)="onPageChange($event)"
+        ></mat-paginator>
       </div>
     </div>
   </div>
 
-  <div [class.hidden]="panelOpenState"
-       class="sidenav fixed z-20 top-0 bottom-0 left-0 w-full max-h-screen backdrop-contrast-50 flex"
+  <div
+    [class.hidden]="panelOpenState"
+    class="sidenav fixed z-20 top-0 bottom-0 left-0 w-full max-h-screen backdrop-contrast-50 flex"
   >
-    <div class="z-20 w-[max(20vw,calc(100vw-290px))]" (click)="toggleSideNav()"></div>
     <div
-      class="fixed z-40 top-0 right-0 h-screen bottom-0 m-0 w-[min(80vw,280px)] bg-white p-3">
+      class="z-20 w-[max(20vw,calc(100vw-290px))]"
+      (click)="toggleSideNav()"
+    ></div>
+    <div class="fixed z-40 top-0 right-0 h-screen bottom-0 m-0 w-[min(80vw,280px)] bg-white p-3">
       <mat-accordion multi>
         <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
@@ -120,8 +152,11 @@
           </mat-expansion-panel-header>
           <section>
             <p *ngFor="let brand of brands">
-              <mat-checkbox (change)="onCheckboxChange($event, 'brands', brand.id)" [formArrayName]="'brands'"
-                            [value]="brand.id.toString()">
+              <mat-checkbox
+                (change)="onCheckboxChange($event, 'brands', brand.id)"
+                [formArrayName]="'brands'"
+                [value]="brand.id.toString()"
+              >
                 {{ brand.nameBrand }}
               </mat-checkbox>
             </p>
@@ -133,9 +168,11 @@
           </mat-expansion-panel-header>
           <section>
             <p *ngFor="let category of categories">
-              <mat-checkbox (change)="onCheckboxChange($event, 'categories', category.id)"
-                            [formArrayName]="'categories'"
-                            [value]="category.id.toString()">
+              <mat-checkbox
+                (change)="onCheckboxChange($event, 'categories', category.id)"
+                [formArrayName]="'categories'"
+                [value]="category.id.toString()"
+              >
                 {{ category.nameCategory }}
               </mat-checkbox>
             </p>
@@ -147,8 +184,11 @@
           </mat-expansion-panel-header>
           <section>
             <p *ngFor="let subcategory of subcategories">
-              <mat-checkbox (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
-                            [formArrayName]="'subcategories'" [value]="subcategory.id.toString()">
+              <mat-checkbox
+                (change)="onCheckboxChange($event, 'subcategories', subcategory.id)"
+                [formArrayName]="'subcategories'"
+                [value]="subcategory.id.toString()"
+              >
                 {{ subcategory.nameSubcategory }}
               </mat-checkbox>
             </p>
@@ -157,6 +197,4 @@
       </mat-accordion>
     </div>
   </div>
-
-
 </form>

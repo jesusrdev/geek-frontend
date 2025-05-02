@@ -2,14 +2,46 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
 
 import { Product } from '../../../../../core/models/product';
 
-import { MatTableDataSource } from '@angular/material/table';
+import {
+  MatTableDataSource,
+  MatTable,
+  MatColumnDef,
+  MatHeaderCellDef,
+  MatHeaderCell,
+  MatCellDef,
+  MatCell,
+  MatHeaderRowDef,
+  MatHeaderRow,
+  MatRowDef,
+  MatRow,
+  MatNoDataRow
+} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-    selector: 'product-list',
-    templateUrl: './product-list.component.html',
-    styleUrl: './product-list.component.css',
-    standalone: false
+  selector: 'product-list',
+  templateUrl: './product-list.component.html',
+  styleUrl: './product-list.component.css',
+  imports: [
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatSlideToggle,
+    MatIconButton,
+    MatIcon,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    MatNoDataRow,
+    MatPaginator
+  ]
 })
 export class ProductListComponent {
   @Input()

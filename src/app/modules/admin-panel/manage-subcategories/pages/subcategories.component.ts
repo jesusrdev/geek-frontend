@@ -12,12 +12,29 @@ import { SubcategoryService } from '../../../../core/services/subcategory.servic
 import { SubcategoryModalComponent } from '../components/subcategory-modal/subcategory-modal.component';
 
 import Swal from 'sweetalert2';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/list';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { SubcategoryListComponent } from '../components/subcategory-list/subcategory-list.component';
 
 @Component({
-    selector: 'app-subcategories',
-    templateUrl: './subcategories.component.html',
-    styleUrl: './subcategories.component.css',
-    standalone: false
+  selector: 'app-subcategories',
+  templateUrl: './subcategories.component.html',
+  styleUrl: './subcategories.component.css',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatButton,
+    MatIcon,
+    MatDivider,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    SubcategoryListComponent
+  ]
 })
 export class SubcategoriesComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nameSubcategory', 'nameCategory', 'status', 'actions'];

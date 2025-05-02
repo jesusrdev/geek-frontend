@@ -1,6 +1,4 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/pages/home.component';
@@ -8,15 +6,13 @@ import { ProductsComponent } from './products/pages/products.component';
 import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
 import { SignUpComponent } from '../auth/sign-up/sign-up.component';
 import { LoginComponent } from '../auth/login/login.component';
-
-import {} from '../auth/auth.module';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { authGuard } from '../../core/guards/auth.guard';
 
-const routes: Routes = [
+export default [
   {
     path: '',
     component: LayoutComponent,
@@ -89,11 +85,4 @@ const routes: Routes = [
       // },
     ]
   }
-];
-
-@NgModule({
-  declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class EcommerceRoutingModule {}
+] as Routes;

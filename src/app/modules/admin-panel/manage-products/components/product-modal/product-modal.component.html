@@ -44,9 +44,11 @@
           [apiKey]="environment.tinyMceApiKey"
           [init]="{
             plugins: 'link lists code',
-            toolbar: 'undo redo | bold italic | numlist bullist indent outdent | alignleft aligncenter alignright | code'
+            toolbar:
+              'undo redo | bold italic | numlist bullist indent outdent | alignleft aligncenter alignright | code'
           }"
-          formControlName="largeDescription"></editor>
+          formControlName="largeDescription"
+        ></editor>
         <!--        </mat-form-field>-->
       </div>
     </div>
@@ -101,9 +103,9 @@
             <mat-option
               *ngFor="let category of listCategories"
               [value]="category.id"
-            >{{ category.nameCategory }}
-            </mat-option
             >
+              {{ category.nameCategory }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -117,9 +119,9 @@
             <mat-option
               *ngFor="let brand of listBrands"
               [value]="brand.id"
-            >{{ brand.nameBrand }}
-            </mat-option
             >
+              {{ brand.nameBrand }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -133,9 +135,9 @@
             <mat-option
               *ngFor="let subcategory of listSubcategories"
               [value]="subcategory.id"
-            >{{ subcategory.nameSubcategory }}
-            </mat-option
             >
+              {{ subcategory.nameSubcategory }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -172,7 +174,13 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close="true" color="warn">Back</button>
+  <button
+    mat-raised-button
+    mat-dialog-close="true"
+    color="warn"
+  >
+    Back
+  </button>
   <button
     mat-raised-button
     color="primary"

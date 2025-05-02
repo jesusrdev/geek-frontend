@@ -12,12 +12,29 @@ import { SharedService } from '../../../../core/services/shared.service';
 import { ProductModalComponent } from '../components/product-modal/product-modal.component';
 
 import Swal from 'sweetalert2';
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/list';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { ProductListComponent } from '../components/product-list/product-list.component';
 
 @Component({
-    selector: 'app-products',
-    templateUrl: './products.component.html',
-    styleUrl: './products.component.css',
-    standalone: false
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrl: './products.component.css',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatButton,
+    MatIcon,
+    MatDivider,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    ProductListComponent
+  ]
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [

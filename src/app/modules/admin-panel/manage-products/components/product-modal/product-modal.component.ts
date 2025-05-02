@@ -1,7 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose
+} from '@angular/material/dialog';
 
 import { environment } from '../../../../../../environments/environment';
 
@@ -15,12 +22,35 @@ import { BrandService } from '../../../../../core/services/brand.service';
 import { ProductService } from '../../../../../core/services/product.service';
 import { CategoryService } from '../../../../../core/services/category.service';
 import { SubcategoryService } from '../../../../../core/services/subcategory.service';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { EditorComponent } from '@tinymce/tinymce-angular';
+import { MatSelect } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'product-modal',
-    templateUrl: './product-modal.component.html',
-    styleUrl: './product-modal.component.css',
-    standalone: false
+  selector: 'product-modal',
+  templateUrl: './product-modal.component.html',
+  styleUrl: './product-modal.component.css',
+  imports: [
+    MatDialogTitle,
+    CdkScrollable,
+    MatDialogContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    EditorComponent,
+    MatSelect,
+    NgFor,
+    MatOption,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+  ]
 })
 export class ProductModalComponent implements OnInit {
   formProduct: FormGroup;

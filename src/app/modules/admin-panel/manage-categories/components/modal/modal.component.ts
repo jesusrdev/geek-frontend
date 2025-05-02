@@ -1,18 +1,44 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose
+} from '@angular/material/dialog';
 
 import { Category } from '../../../../../core/models/category';
 
 import { SharedService } from '../../../../../core/services/shared.service';
 import { CategoryService } from '../../../../../core/services/category.service';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'category-modal',
-    templateUrl: './modal.component.html',
-    styleUrl: './modal.component.css',
-    standalone: false
+  selector: 'category-modal',
+  templateUrl: './modal.component.html',
+  styleUrl: './modal.component.css',
+  imports: [
+    MatDialogTitle,
+    CdkScrollable,
+    MatDialogContent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatSelect,
+    MatOption,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose
+  ]
 })
 export class CategoryModalComponent implements OnInit {
   formCategory: FormGroup;
