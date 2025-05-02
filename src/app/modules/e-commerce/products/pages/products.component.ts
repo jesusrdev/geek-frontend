@@ -51,7 +51,7 @@ import { MatPaginator } from '@angular/material/paginator';
     MatPaginator
   ]
 })
-export class ProductsComponent implements OnInit {
+export default class ProductsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private fb = inject(FormBuilder);

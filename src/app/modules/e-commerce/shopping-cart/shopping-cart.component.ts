@@ -12,7 +12,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   styleUrl: './shopping-cart.component.css',
   imports: [ButtonComponent, DecimalPipe]
 })
-export class ShoppingCartComponent implements OnInit {
+export default class ShoppingCartComponent implements OnInit {
   private cartService = inject(ShoppingCartService);
   private router = inject(Router);
   private _sharedService = inject(SharedService);

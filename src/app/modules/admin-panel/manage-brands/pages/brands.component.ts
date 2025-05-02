@@ -36,7 +36,7 @@ import { BrandListComponent } from '../components/list/list.component';
     BrandListComponent
   ]
 })
-export class BrandsComponent implements OnInit, AfterViewInit {
+export default class BrandsComponent implements OnInit, AfterViewInit {
   private _brandService = inject(BrandService);
   private _sharedService = inject(SharedService);
   private dialog = inject(MatDialog);

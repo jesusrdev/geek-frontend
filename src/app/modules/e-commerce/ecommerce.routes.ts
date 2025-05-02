@@ -1,15 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { LayoutComponent } from './layout/layout.component';
-import { HomeComponent } from './home/pages/home.component';
-import { ProductsComponent } from './products/pages/products.component';
-import { ProductDetailComponent } from './product-detail/pages/product-detail.component';
-import { SignUpComponent } from '../auth/sign-up/sign-up.component';
-import { LoginComponent } from '../auth/login/login.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import LayoutComponent from './layout/layout.component';
+
 import { authGuard } from '../../core/guards/auth.guard';
 
 export default [
@@ -21,39 +13,39 @@ export default [
     children: [
       {
         path: '',
-        component: HomeComponent,
+        loadComponent: () => import('./home/pages/home.component'),
         pathMatch: 'full'
       },
       {
         path: 'products',
-        component: ProductsComponent,
+        loadComponent: () => import('./products/pages/products.component'),
         pathMatch: 'full'
       },
       {
         path: 'products/:id',
-        component: ProductDetailComponent
+        loadComponent: () => import('./product-detail/pages/product-detail.component')
       },
       {
         path: 'shopping-cart',
-        component: ShoppingCartComponent,
+        loadComponent: () => import('./shopping-cart/shopping-cart.component'),
         pathMatch: 'full',
         canActivate: [authGuard]
       },
       {
         path: 'checkout',
-        component: CheckoutComponent,
+        loadComponent: () => import('./checkout/checkout.component'),
         pathMatch: 'full',
         canActivate: [authGuard]
       },
       {
         path: 'my-orders',
-        component: MyOrdersComponent,
+        loadComponent: () => import('./my-orders/my-orders.component'),
         pathMatch: 'full',
         canActivate: [authGuard]
       },
       {
         path: 'favorites',
-        component: FavoritesComponent,
+        loadComponent: () => import('./favorites/favorites.component'),
         pathMatch: 'full',
         canActivate: [authGuard]
       }
@@ -68,13 +60,13 @@ export default [
     children: [
       {
         path: 'sign-up',
-        component: SignUpComponent,
+        loadComponent: () => import('../auth/sign-up/sign-up.component'),
         pathMatch: 'full'
         // canActivate: [authGuard],
       },
       {
         path: 'login',
-        component: LoginComponent,
+        loadComponent: () => import('../auth/login/login.component'),
         pathMatch: 'full'
         // canActivate: [authGuard],
       }

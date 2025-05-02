@@ -10,7 +10,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
   styleUrl: './my-orders.component.css',
   imports: [DecimalPipe, DatePipe]
 })
-export class MyOrdersComponent implements OnInit {
+export default class MyOrdersComponent implements OnInit {
   private ordersService = inject(OrderService);
   private sharedService = inject(SharedService);
 

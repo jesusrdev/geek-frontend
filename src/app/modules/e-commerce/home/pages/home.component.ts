@@ -17,7 +17,7 @@ import { BestSellersComponent } from '../components/best-sellers/best-sellers.co
   styleUrl: './home.component.css',
   imports: [HeroComponent, BrandsComponent, BestSellersComponent]
 })
-export class HomeComponent {
+export default class HomeComponent {
   private router = inject(Router);
   private _sharedService = inject(SharedService);
   private _brandService = inject(BrandService);

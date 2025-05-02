@@ -1,11 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoriesComponent } from './manage-categories/pages/categories/categories.component';
-import { BrandsComponent } from './manage-brands/pages/brands.component';
-import { SubcategoriesComponent } from './manage-subcategories/pages/subcategories.component';
-import { ProductsComponent } from './manage-products/pages/products.component';
-import { ImagesComponent } from './manage-images/pages/images.component';
+import DashboardComponent from './dashboard/dashboard.component';
 
 export default [
   {
@@ -16,23 +11,27 @@ export default [
     children: [
       {
         path: 'categories',
-        component: CategoriesComponent,
+        loadComponent: () => import('./manage-categories/pages/categories/categories.component'),
         pathMatch: 'full'
       },
       {
         path: 'brands',
-        component: BrandsComponent,
+        loadComponent: () => import('./manage-brands/pages/brands.component'),
         pathMatch: 'full'
       },
       {
         path: 'subcategories',
-        component: SubcategoriesComponent,
+        loadComponent: () => import('./manage-subcategories/pages/subcategories.component'),
         pathMatch: 'full'
       },
-      { path: 'products', component: ProductsComponent, pathMatch: 'full' },
+      {
+        path: 'products',
+        loadComponent: () => import('./manage-products/pages/products.component'),
+        pathMatch: 'full'
+      },
       {
         path: 'images',
-        component: ImagesComponent,
+        loadComponent: () => import('./manage-images/pages/images.component'),
         pathMatch: 'full'
       },
       // { path: 'users', component: ListUserComponent, pathMatch: 'full' },

@@ -36,7 +36,7 @@ import { CategoryListComponent } from '../../components/list/list.component';
     CategoryListComponent
   ]
 })
-export class CategoriesComponent implements OnInit, AfterViewInit {
+export default class CategoriesComponent implements OnInit, AfterViewInit {
   private _categoryService = inject(CategoryService);
   private _sharedService = inject(SharedService);
   private dialog = inject(MatDialog);

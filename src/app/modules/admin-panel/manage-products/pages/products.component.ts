@@ -36,7 +36,7 @@ import { ProductListComponent } from '../components/product-list/product-list.co
     ProductListComponent
   ]
 })
-export class ProductsComponent implements OnInit, AfterViewInit {
+export default class ProductsComponent implements OnInit, AfterViewInit {
   private _productService = inject(ProductService);
   private _sharedService = inject(SharedService);
   private dialog = inject(MatDialog);

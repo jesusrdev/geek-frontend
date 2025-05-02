@@ -11,7 +11,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   styleUrl: './favorites.component.css',
   imports: [ButtonComponent, DecimalPipe]
 })
-export class FavoritesComponent implements OnInit {
+export default class FavoritesComponent implements OnInit {
   private wishlistService = inject(WishlistService);
   private sharedService = inject(SharedService);
 

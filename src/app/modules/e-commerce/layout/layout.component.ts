@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './layout.component.css',
   imports: [NavbarComponent, RouterOutlet, FooterComponent]
 })
-export class LayoutComponent implements OnInit {
+export default class LayoutComponent implements OnInit {
   private router = inject(Router);
   private sharedService = inject(SharedService);
 

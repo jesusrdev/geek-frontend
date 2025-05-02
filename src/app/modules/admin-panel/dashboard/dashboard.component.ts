@@ -29,7 +29,7 @@ import { MatNavList, MatListItem, MatListItemIcon, MatListItemTitle } from '@ang
     RouterOutlet
   ]
 })
-export class DashboardComponent implements OnInit {
+export default class DashboardComponent implements OnInit {
   private router = inject(Router);
   private sharedService = inject(SharedService);
   private cookieService = inject(CookieService);

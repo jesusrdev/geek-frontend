@@ -16,7 +16,7 @@ import { ProductsSuggestedComponent } from '../components/products-suggested/pro
   styleUrl: './product-detail.component.css',
   imports: [DescriptionComponent, ProductsSuggestedComponent]
 })
-export class ProductDetailComponent implements OnInit {
+export default class ProductDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private _productService = inject(ProductService);
   private _sharedService = inject(SharedService);

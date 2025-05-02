@@ -36,7 +36,7 @@ import { ImageListComponent } from '../components/image-list/image-list.componen
     ImageListComponent
   ]
 })
-export class ImagesComponent implements OnInit, AfterViewInit {
+export default class ImagesComponent implements OnInit, AfterViewInit {
   private _brandService = inject(ImageService);
   private _sharedService = inject(SharedService);
   private dialog = inject(MatDialog);

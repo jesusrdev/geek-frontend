@@ -36,7 +36,7 @@ import { SubcategoryListComponent } from '../components/subcategory-list/subcate
     SubcategoryListComponent
   ]
 })
-export class SubcategoriesComponent implements OnInit, AfterViewInit {
+export default class SubcategoriesComponent implements OnInit, AfterViewInit {
   private _subcategoryService = inject(SubcategoryService);
   private _sharedService = inject(SharedService);
   private dialog = inject(MatDialog);

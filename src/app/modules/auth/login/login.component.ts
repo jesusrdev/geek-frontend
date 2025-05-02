@@ -30,7 +30,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
     ButtonComponent
   ]
 })
-export class LoginComponent {
+export default class LoginComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private userService = inject(AuthService);
