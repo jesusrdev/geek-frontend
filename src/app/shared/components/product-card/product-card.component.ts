@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output, inject, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../core/services/shared.service';
-import { MatCard, MatCardHeader, MatCardImage, MatCardContent, MatCardActions } from '@angular/material/card';
-import { NgClass, DecimalPipe, PercentPipe } from '@angular/common';
+import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage } from '@angular/material/card';
+import { DecimalPipe, NgClass, PercentPipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { Product } from '../../../core/models/product';
 
 @Component({
   selector: 'product-card',
@@ -26,14 +26,20 @@ import { MatIcon } from '@angular/material/icon';
 export class ProductCardComponent {
   private router = inject(Router);
 
-  readonly id = input<number>(0);
-  readonly imageUrl = input<string>('');
-  readonly name = input<string>('');
-  readonly price = input<number>(0);
-  discount = input<number>(0);
-  readonly class = input<string | undefined>('');
+  readonly product = input.required<Product>();
+  readonly class = input<string>('');
+
+  readonly imageUrl = computed<string>(() => {
+    if (this.product().images.length > 0) {
+      const image = this.product().images[0];
+      if (image.urlImage) {
+        return image.urlImage;
+      }
+    }
+    return '';
+  });
 
   goToProduct() {
-    this.router.navigate(['products', this.id()]);
+    this.router.navigate(['products', this.product().id]);
   }
 }

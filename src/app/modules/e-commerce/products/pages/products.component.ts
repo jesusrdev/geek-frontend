@@ -1,19 +1,22 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Product } from '../../../../core/models/product';
 import { Brand } from '../../../../core/models/brand';
 import { Category } from '../../../../core/models/category';
 import { Subcategory } from '../../../../core/models/subcategory';
+
 import { SharedService } from '../../../../core/services/shared.service';
 import { ProductService } from '../../../../core/services/product.service';
 import { CategoryService } from '../../../../core/services/category.service';
 import { BrandService } from '../../../../core/services/brand.service';
 import { SubcategoryService } from '../../../../core/services/subcategory.service';
-import { MatFormField, MatLabel, MatInput, MatSuffix } from '@angular/material/input';
+
+import { MatFormField, MatInput, MatLabel, MatSuffix } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/autocomplete';
-import { MatIconButton, MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {
   MatAccordion,
@@ -66,22 +69,19 @@ export default class ProductsComponent implements OnInit {
   categories: Category[] = [];
   subcategories: Subcategory[] = [];
 
-  filterForm: FormGroup;
   total: number = 0;
   pageSize: number = 12;
   page: number = 1;
 
-  panelOpenState = true; // Abierto por defecto
+  filterForm: FormGroup = this.fb.group({
+    query: [''],
+    orderBy: [0],
+    brands: [[]],
+    categories: [[]],
+    subcategories: [[]]
+  });
 
-  constructor() {
-    this.filterForm = this.fb.group({
-      query: [''],
-      orderBy: [0],
-      brands: this.fb.array([]),
-      categories: this.fb.array([]),
-      subcategories: this.fb.array([])
-    });
-  }
+  panelOpenState = true; // Abierto por defecto
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
@@ -180,10 +180,11 @@ export default class ProductsComponent implements OnInit {
   onCheckboxChange(event: any, controlName: string, id: number) {
     const formArray = this.filterForm.get(controlName) as FormArray;
     if (event.checked) {
-      formArray.push(this.fb.control(id));
+      formArray.setValue([...formArray.value, id]);
     } else {
-      const index = formArray.controls.findIndex(x => x.value === id);
-      formArray.removeAt(index);
+      const index = formArray.value.indexOf(id);
+      formArray.setValue([...formArray.value.slice(0, index), ...formArray.value.slice(index + 1)]);
     }
+    console.table(this.filterForm.value);
   }
 }

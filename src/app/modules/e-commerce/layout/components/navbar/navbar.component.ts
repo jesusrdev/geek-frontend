@@ -9,7 +9,7 @@ import { Token } from '../../../../../shared/interfaces/auth';
 import { MatToolbar } from '@angular/material/toolbar';
 
 import { MatIconButton } from '@angular/material/button';
-import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
 
@@ -32,12 +32,14 @@ export class NavbarComponent {
     const userSession = this.sharedService.getSession();
     const token = this.cookieService.get('Authorization');
 
-    const decodedToken: Token = jwtDecode(token);
+    if (token != null && token !== '') {
+      const decodedToken = jwtDecode<Token>(token);
+      this.isAdmin = decodedToken.role === 'Admin';
+    }
 
     if (userSession != null) {
       this.username = userSession;
       this.isLoggedIn = true;
-      this.isAdmin = decodedToken.role === 'Admin';
     }
   }
 
@@ -53,6 +55,9 @@ export class NavbarComponent {
     this.sharedService.deleteSession();
 
     this.cookieService.delete('Authorization', '/');
+    this.isLoggedIn = false;
+    this.isAdmin = false;
+    this.username = '';
 
     this.router.navigate(['/']);
   }

@@ -6,10 +6,11 @@
   @if (cartItems.length > 0) {
     <div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        @for (item of cartItems; track item) {
+        @for (item of cartItems; track item.id) {
+          @let imageUrl = item.product.images.length > 0 ? item.product.images[0].urlImage : '';
           <div class="border p-4 rounded-lg">
             <img
-              [src]="item.product.images[0].urlImage || null"
+              [src]="imageUrl"
               [alt]="item.product.nameProduct"
               class="w-full h-48 object-contain mb-2"
             />

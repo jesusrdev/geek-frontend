@@ -15,16 +15,11 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-5">
-  @for (product of productsFiltered(); track product) {
+  @for (product of productsFiltered(); track product.id) {
     <product-card
-      [imageUrl]="product.images[0].urlImage || ''"
-      [name]="product.nameProduct"
-      [price]="product.price"
-      [discount]="product.discount"
-      [id]="product.id"
+      [product]="product"
     ></product-card>
-  }
-  @if (productsFiltered.length === 0) {
+  } @empty {
     <div class="flex items-center justify-center">
       <p>No hay productos disponibles</p>
     </div>
@@ -35,5 +30,6 @@
   <app-button
     text="Ver más productos"
     class="py-4 px-8 font-bold"
+    (handleClick)="goToProducts()"
   ></app-button>
 </div>

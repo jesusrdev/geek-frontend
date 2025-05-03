@@ -118,14 +118,9 @@
       <div class="grid w-full h-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-5">
         @for (product of products; track product) {
           <product-card
-            [imageUrl]="product.images[0].urlImage || ''"
-            [name]="product.nameProduct"
-            [price]="product.price"
-            [discount]="product.discount"
-            [id]="product.id"
+            [product]="product"
           ></product-card>
-        }
-        @if (products.length === 0) {
+        } @empty {
           <div class="flex items-center justify-center">
             <p>No hay productos disponibles</p>
           </div>

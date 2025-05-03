@@ -29,13 +29,16 @@ export class BestSellersComponent {
   }
 
   constructor() {
-    const firstBrand = this.brands()[0];
-    if (firstBrand) {
-      this.brandActive.set(firstBrand.id);
-    }
-
     effect(() => {
-      this.filterProductsByBrandId(this.brandActive());
+      const firstBrand = this.brands()[0];
+      if (firstBrand) {
+        this.brandActive.set(firstBrand.id);
+      }
+      // this.filterProductsByBrandId(this.brandActive());
     });
+  }
+
+  goToProducts() {
+    this.router.navigate(['/products'], { queryParams: { brandsId: [this.brandActive()] } });
   }
 }

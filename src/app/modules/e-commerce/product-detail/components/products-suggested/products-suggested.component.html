@@ -3,11 +3,7 @@
 <div class="flex w-full py-4 overflow-x-scroll [scroll-snap-type:x_mandatory]">
   @for (product of products(); track product) {
     <product-card
-      [imageUrl]="product.images[0].urlImage || ''"
-      [name]="product.nameProduct"
-      [price]="product.price"
-      [discount]="product.discount"
-      [id]="product.id"
+      [product]="product"
       class="h-full flex-[0_0_100%] lg:flex-[0_0_33%] sm:flex-[0_0_50%] [scroll-snap-align:center] mx-3"
     ></product-card>
   }

@@ -29,8 +29,9 @@
         mat-cell
         *matCellDef="let element"
       >
+        @let imageUrl = element.images.length > 0 ? element.images[0].urlImage : '';
         <img
-          [src]="element.images[0]?.urlImage"
+          [src]="imageUrl"
           [alt]="element.nameProduct"
           class="max-h-10 bg-black"
         />
