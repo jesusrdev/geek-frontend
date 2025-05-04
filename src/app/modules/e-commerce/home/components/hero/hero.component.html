@@ -1,6 +1,5 @@
 <div class="overflow-x-scroll [scroll-snap-type:x_mandatory] flex w-full">
   @for (product of products().slice(0, 5); track product.id) {
-    @let imageUrl = product.images.length > 0 ? product.images[0].urlImage : '';
     <div
       class="flex flex-col sm:flex-row max-h-[calc(100vh-52.5px)] sm:h-screen w-full items-center flex-[0_0_100%] [scroll-snap-align:center]"
     >
@@ -25,7 +24,7 @@
       >
         <div class="flex flex-col items-center justify-center">
           <img
-            [src]="imageUrl"
+            [src]="product.image"
             [alt]="product.nameProduct"
             class="mb-6"
           />
@@ -34,7 +33,7 @@
         </div>
       </div>
       <img
-        [src]="imageUrl"
+        [src]="product.image"
         [alt]="product.nameProduct"
         class="mb-6 p-5 w-[min(75%,300px)] sm:hidden"
       />

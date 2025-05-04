@@ -1,6 +1,7 @@
 import { Brand } from './brand';
 import { Category } from './category';
 import { Subcategory } from './subcategory';
+import { CommentResponse } from './comment';
 
 export interface Product {
   id: number;
@@ -9,8 +10,8 @@ export interface Product {
   largeDescription: string;
   price: number;
   stock: number;
-  discount: number;
-  status: number;
+  discount?: number;
+  status: boolean;
   categoryId: number;
   category?: Category;
   brandId: number;
@@ -18,6 +19,27 @@ export interface Product {
   subCategoryId: number;
   subcategory?: Subcategory;
   images: ImageProduct[];
+  review?: number;
+  comments?: CommentResponse[];
+}
+
+export interface ProductList {
+  id: number;
+  nameProduct: string;
+  description: string;
+  largeDescription: string;
+  price: number;
+  stock?: number;
+  status: boolean;
+  categoryId: number;
+  nameCategory: string;
+  brandId: number;
+  nameBrand: string;
+  subCategoryId: number;
+  nameSubcategory: string;
+  discount?: number;
+  review?: number;
+  image?: string;
 }
 
 export interface ImageProduct {

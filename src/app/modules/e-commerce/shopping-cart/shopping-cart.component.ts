@@ -30,7 +30,7 @@ export default class ShoppingCartComponent implements OnInit {
         if (response.isSuccessful) {
           this.cartItems = response.result;
           this.totalPrice = response.result.reduce(
-            (acc, item) => acc + item.price * (1 - item.product.discount) * item.quantity,
+            (acc, item) => acc + item.price * (1 - (item.product.discount || 0)) * item.quantity,
             0
           );
         }

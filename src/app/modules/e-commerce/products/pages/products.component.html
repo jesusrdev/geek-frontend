@@ -118,7 +118,7 @@
       <div class="grid w-full h-fit grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-5">
         @for (product of products; track product) {
           <product-card
-            [product]="product"
+            [product]="convertToProductList(product)"
           ></product-card>
         } @empty {
           <div class="flex items-center justify-center">

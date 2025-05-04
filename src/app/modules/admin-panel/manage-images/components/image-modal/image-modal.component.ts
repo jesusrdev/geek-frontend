@@ -1,21 +1,20 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import {
   MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialogTitle,
-  MatDialogContent,
   MatDialogActions,
-  MatDialogClose
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle
 } from '@angular/material/dialog';
 
-import { ImageProduct, Product } from '../../../../../core/models/product';
+import { ImageProduct, ProductList } from '../../../../../core/models/product';
 
 import { SharedService } from '../../../../../core/services/shared.service';
 import { ImageService } from '../../../../../core/services/image.service';
 import { ProductService } from '../../../../../core/services/product.service';
-import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField, MatLabel } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 
@@ -28,7 +27,6 @@ import { MatButton } from '@angular/material/button';
   styleUrl: './image-modal.component.css',
   imports: [
     MatDialogTitle,
-    CdkScrollable,
     MatDialogContent,
     FormsModule,
     ReactiveFormsModule,
@@ -53,7 +51,7 @@ export class ImageModalComponent implements OnInit {
   title = 'Añadir';
   nameButton = 'Guardar';
 
-  listProducts: Product[] = [];
+  listProducts: ProductList[] = [];
 
   constructor() {
     const _productService = this._productService;

@@ -2,7 +2,7 @@ import { Component, computed, effect, inject, input, signal } from '@angular/cor
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 
-import { Product } from '../../../../../core/models/product';
+import { ProductList } from '../../../../../core/models/product';
 import { Brand } from '../../../../../core/models/brand';
 
 import { ProductCardComponent } from '../../../../../shared/components/product-card/product-card.component';
@@ -17,7 +17,7 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
 export class BestSellersComponent {
   private router = inject(Router);
 
-  readonly products = input<Product[]>([]);
+  readonly products = input<ProductList[]>([]);
   readonly brands = input<Brand[]>([]);
 
   productsFiltered = computed(() => this.products().filter(product => product.brandId === this.brandActive()));

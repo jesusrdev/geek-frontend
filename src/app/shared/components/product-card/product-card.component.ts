@@ -1,10 +1,10 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage } from '@angular/material/card';
 import { DecimalPipe, NgClass, PercentPipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { Product } from '../../../core/models/product';
+import { ProductList } from '../../../core/models/product';
 
 @Component({
   selector: 'product-card',
@@ -26,18 +26,8 @@ import { Product } from '../../../core/models/product';
 export class ProductCardComponent {
   private router = inject(Router);
 
-  readonly product = input.required<Product>();
+  readonly product = input.required<ProductList>();
   readonly class = input<string>('');
-
-  readonly imageUrl = computed<string>(() => {
-    if (this.product().images.length > 0) {
-      const image = this.product().images[0];
-      if (image.urlImage) {
-        return image.urlImage;
-      }
-    }
-    return '';
-  });
 
   goToProduct() {
     this.router.navigate(['products', this.product().id]);

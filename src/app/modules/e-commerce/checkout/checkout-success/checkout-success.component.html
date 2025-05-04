@@ -1,0 +1,20 @@
+@if (isLoading()) {
+  <mat-progress-bar mode="indeterminate" />
+  <div class="h-screen aspect-square">
+  </div>
+} @else {
+  <div class="flex flex-col items-center justify-center gap-4 h-screen max-w-lg text-center mx-auto p-6">
+    @if (error()) {
+      <h1 class="text-3xl font-bold">¡Ocurrió un error!</h1>
+      <p class="text-xl">{{ error() }}</p>
+    } @else {
+      <h1 class="text-3xl font-bold">¡Compra realizada con éxito!</h1>
+      <p class="text-xl">Gracias por su compra. Se le enviará un correo con la factura.</p>
+    }
+    <app-button
+      (click)="goToHome()"
+      text="Volver al inicio"
+      color="primary"
+    ></app-button>
+  </div>
+}

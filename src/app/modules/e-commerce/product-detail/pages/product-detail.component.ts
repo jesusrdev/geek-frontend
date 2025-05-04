@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Product } from '../../../../core/models/product';
+import { Product, ProductList } from '../../../../core/models/product';
 
 import { ProductService } from '../../../../core/services/product.service';
 import { SharedService } from '../../../../core/services/shared.service';
@@ -25,7 +25,7 @@ export default class ProductDetailComponent implements OnInit {
   productId: number = 0;
   product?: Product;
   productDescription: SafeHtml = '';
-  products: Product[] = [];
+  products: ProductList[] = [];
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

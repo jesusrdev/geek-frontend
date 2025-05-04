@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Product } from '../../../../core/models/product';
+import { ProductList } from '../../../../core/models/product';
 import { Brand } from '../../../../core/models/brand';
 
 import { SharedService } from '../../../../core/services/shared.service';
@@ -23,7 +23,7 @@ export default class HomeComponent {
   private _brandService = inject(BrandService);
   private _productService = inject(ProductService);
 
-  products: Product[] = [];
+  products: ProductList[] = [];
   brands: Brand[] = [];
 
   getProducts() {

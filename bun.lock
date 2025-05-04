@@ -14,6 +14,7 @@
         "@angular/platform-browser": "^19.2.8",
         "@angular/platform-browser-dynamic": "^19.2.8",
         "@angular/router": "^19.2.8",
+        "@stripe/stripe-js": "^7.3.0",
         "@tinymce/tinymce-angular": "^8.0.1",
         "jwt-decode": "^4.0.0",
         "ngx-cookie-service": "^18.0.0",
@@ -585,6 +586,8 @@
     "@sindresorhus/merge-streams": ["@sindresorhus/merge-streams@2.3.0", "", {}, "sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg=="],
 
     "@socket.io/component-emitter": ["@socket.io/component-emitter@3.1.2", "", {}, "sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA=="],
+
+    "@stripe/stripe-js": ["@stripe/stripe-js@7.3.0", "", {}, "sha512-xnCyFIEI5SQnQrKkCxVj7nS5fWTZap+zuIGzmmxLMdlmgahFJaihK4zogqE8YyKKTLtrp/EldkEijSgtXsRVDg=="],
 
     "@tinymce/tinymce-angular": ["@tinymce/tinymce-angular@8.0.1", "", { "dependencies": { "tinymce": "^7.0.0 || ^6.0.0 || ^5.5.0", "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": ">=16.0.0", "@angular/core": ">=16.0.0", "@angular/forms": ">=16.0.0", "rxjs": "^7.4.0" } }, "sha512-m0/ne5nL00YeZ7wCyhBVwKUbvS8fQZ+S+T5pinqTIqTUKpcfIC2+BIKqzUpS+niiRCowFoZl5eVlI5zdFN9/0A=="],
 

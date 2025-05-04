@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Product } from '../../../../core/models/product';
+import { Product, ProductList } from '../../../../core/models/product';
 import { Brand } from '../../../../core/models/brand';
 import { Category } from '../../../../core/models/category';
 import { Subcategory } from '../../../../core/models/subcategory';
@@ -186,5 +186,9 @@ export default class ProductsComponent implements OnInit {
       formArray.setValue([...formArray.value.slice(0, index), ...formArray.value.slice(index + 1)]);
     }
     console.table(this.filterForm.value);
+  }
+
+  convertToProductList(product: Product): ProductList {
+    return ProductService.convertToProductList(product);
   }
 }

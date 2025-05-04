@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 
-import { Product } from '../../../../../core/models/product';
+import { ProductList } from '../../../../../core/models/product';
 
 import { ProductCardComponent } from '../../../../../shared/components/product-card/product-card.component';
 
@@ -11,5 +11,5 @@ import { ProductCardComponent } from '../../../../../shared/components/product-c
   imports: [ProductCardComponent]
 })
 export class ProductsSuggestedComponent {
-  readonly products = input<Product[]>([]);
+  readonly products = input<ProductList[]>([]);
 }

@@ -16,7 +16,8 @@
             />
             <div>
               <h2 class="text-xl font-semibold">{{ item.product.nameProduct }}</h2>
-              <p class="text-gray-600">Precio: S/ {{ item.price * (1 - item.product.discount) | number: '1.2-2' }}</p>
+              <p class="text-gray-600">Precio:
+                S/ {{ item.price * (1 - (item.product.discount || 0)) | number: '1.2-2' }}</p>
               <p class="text-gray-600">Cantidad: {{ item.quantity }}</p>
             </div>
           </div>

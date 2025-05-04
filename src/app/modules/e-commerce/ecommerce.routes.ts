@@ -33,9 +33,27 @@ export default [
       },
       {
         path: 'checkout',
-        loadComponent: () => import('./checkout/checkout.component'),
-        pathMatch: 'full',
-        canActivate: [authGuard]
+        canActivate: [authGuard],
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('./checkout/checkout.component'),
+            pathMatch: 'full',
+            canActivate: [authGuard]
+          },
+          {
+            path: 'success',
+            loadComponent: () => import('./checkout/checkout-success/checkout-success.component'),
+            pathMatch: 'full',
+            canActivate: [authGuard]
+          },
+          {
+            path: 'cancel',
+            loadComponent: () => import('./checkout/checkout-cancel/checkout-cancel.component'),
+            pathMatch: 'full',
+            canActivate: [authGuard]
+          }
+        ]
       },
       {
         path: 'my-orders',

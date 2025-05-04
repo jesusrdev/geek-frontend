@@ -32,7 +32,7 @@ export default class CheckoutComponent implements OnInit {
         if (response.isSuccessful) {
           this.cartItems = response.result;
           this.total = response.result.reduce(
-            (acc, item) => acc + item.price * (1 - item.product.discount) * item.quantity,
+            (acc, item) => acc + item.price * (1 - (item.product.discount || 0)) * item.quantity,
             0
           );
         }
@@ -46,12 +46,7 @@ export default class CheckoutComponent implements OnInit {
   completeCheckout(): void {
     this.orderService.create().subscribe({
       next: response => {
-        if (response.isSuccessful) {
-          alert('Compra realizada con éxito');
-          this.router.navigate(['/']);
-        } else {
-          alert('Error al realizar la compra');
-        }
+        console.log('Checkout created successfully');
       },
       error: err => {
         alert('Error al realizar la compra');

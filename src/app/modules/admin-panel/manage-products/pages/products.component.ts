@@ -98,7 +98,7 @@ export default class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   changeStatus(product: Product) {
-    const text = product.status != 1 ? 'activar' : 'desactivar';
+    const text = product.status ? 'activar' : 'desactivar';
     Swal.fire({
       title: `¿Quieres ${text} este producto?`,
       text: product.nameProduct,

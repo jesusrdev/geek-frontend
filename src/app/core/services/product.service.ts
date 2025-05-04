@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 import { ApiResponse } from '../../shared/interfaces/api-response';
-import { Product } from '../models/product';
+import { Product, ProductList } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,12 @@ export class ProductService {
     return this.http.get<ApiResponse<Product[]>>(`${this.baseUrl}`);
   }
 
-  listActive(): Observable<ApiResponse<Product[]>> {
-    return this.http.get<ApiResponse<Product[]>>(`${this.baseUrl}/getassets`);
+  listPopular(): Observable<ApiResponse<ProductList[]>> {
+    return this.http.get<ApiResponse<ProductList[]>>(`${this.baseUrl}/popular`);
+  }
+
+  listActive(): Observable<ApiResponse<ProductList[]>> {
+    return this.http.get<ApiResponse<ProductList[]>>(`${this.baseUrl}/getassets`);
   }
 
   create(request: FormData): Observable<ApiResponse<Product>> {
@@ -73,5 +77,26 @@ export class ProductService {
     }
 
     return this.http.get<ApiResponse<Product[]>>(`${this.baseUrl}/filter`, { params });
+  }
+
+  static convertToProductList(product: Product): ProductList {
+    return {
+      id: product.id,
+      nameProduct: product.nameProduct,
+      description: product.description,
+      largeDescription: product.largeDescription,
+      price: product.price,
+      stock: product.stock,
+      discount: product.discount,
+      status: product.status,
+      categoryId: product.categoryId,
+      nameCategory: product.category?.nameCategory || '',
+      brandId: product.brandId,
+      nameBrand: product.brand?.nameBrand || '',
+      subCategoryId: product.subCategoryId,
+      nameSubcategory: product.subcategory?.nameSubcategory || '',
+      review: product.review,
+      image: product.images.length > 0 ? product.images[0].urlImage : ''
+    };
   }
 }
