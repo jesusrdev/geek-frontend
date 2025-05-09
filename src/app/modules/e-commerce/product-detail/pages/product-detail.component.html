@@ -1,11 +1,12 @@
-@if (product) {
+@if (product()) {
   <main class="mx-auto max-w-screen-xl p-5">
     <product-description
-      [product]="product"
-      [productDescription]="productDescription"
+      [product]="product()"
+      [productDescription]="productDescription()"
     ></product-description>
     <hr class="my-8" />
-    <products-suggested [products]="products.splice(0, 3)"></products-suggested>
+    <products-suggested
+      [products]="products()"></products-suggested>
   </main>
 } @else {
   <div class="flex items-center flex-col gap-3 h-[80vh] justify-center text-3xl p-5">

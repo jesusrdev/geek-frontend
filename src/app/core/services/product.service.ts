@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 import { ApiResponse } from '../../shared/interfaces/api-response';
-import { Product, ProductList } from '../models/product';
+import { Product, ProductDetail, ProductList } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class ProductService {
 
   baseUrl: string = environment.apiUrl + 'product';
 
-  get(id: number): Observable<ApiResponse<Product>> {
-    return this.http.get<ApiResponse<Product>>(`${this.baseUrl}/${id}`);
+  get(id: number): Observable<ApiResponse<ProductDetail>> {
+    return this.http.get<ApiResponse<ProductDetail>>(`${this.baseUrl}/${id}`);
   }
 
   list(): Observable<ApiResponse<Product[]>> {

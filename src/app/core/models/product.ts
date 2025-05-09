@@ -42,6 +42,26 @@ export interface ProductList {
   image?: string;
 }
 
+export interface ProductDetail {
+  id: number;
+  nameProduct: string;
+  description: string;
+  largeDescription: string;
+  price: number;
+  stock?: number;
+  status: boolean;
+  categoryId: number;
+  nameCategory: string;
+  brandId: number;
+  nameBrand: string;
+  subCategoryId: number;
+  nameSubcategory: string;
+  discount?: number;
+  review?: number;
+  images: string[];
+  comments: CommentResponse[];
+}
+
 export interface ImageProduct {
   id: number;
   urlImage?: string;

@@ -20,7 +20,11 @@ export class BestSellersComponent {
   readonly products = input<ProductList[]>([]);
   readonly brands = input<Brand[]>([]);
 
-  productsFiltered = computed(() => this.products().filter(product => product.brandId === this.brandActive()));
+  productsFiltered = computed(() =>
+    this.products()
+      .filter(product => product.brandId === this.brandActive())
+      .sort((a, b) => (b.review || 0) - (a.review || 0))
+  );
 
   brandActive = signal<number>(1);
 

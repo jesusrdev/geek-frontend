@@ -1,7 +1,7 @@
-import { Component, OnInit, inject, input } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Component, inject, input, OnInit } from '@angular/core';
+import { SafeHtml } from '@angular/platform-browser';
 
-import { Product } from '../../../../../core/models/product';
+import { ProductDetail } from '../../../../../core/models/product';
 
 import { SharedService } from '../../../../../core/services/shared.service';
 import { ShoppingCartService } from '../../../../../core/services/shopping-cart.service';
@@ -21,7 +21,7 @@ export class DescriptionComponent implements OnInit {
   private wishlistService = inject(WishlistService);
   private _sharedService = inject(SharedService);
 
-  readonly product = input<Product>({} as Product);
+  readonly product = input<ProductDetail>({} as ProductDetail);
   readonly productDescription = input<SafeHtml>('');
 
   quantity: number = 1;

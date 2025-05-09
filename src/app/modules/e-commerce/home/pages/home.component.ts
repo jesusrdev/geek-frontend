@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductList } from '../../../../core/models/product';
@@ -25,6 +25,7 @@ export default class HomeComponent {
 
   products: ProductList[] = [];
   brands: Brand[] = [];
+  popularProducts = signal<ProductList[]>([]);
 
   getProducts() {
     this._productService.listActive().subscribe({
@@ -56,8 +57,24 @@ export default class HomeComponent {
     });
   }
 
+  getPopularProducts() {
+    this._productService.listPopular().subscribe({
+      next: data => {
+        if (data.isSuccessful) {
+          this.popularProducts.set(data.result);
+        } else {
+          this._sharedService.showAlert('No se encontraron productos', 'Advertencia');
+        }
+      },
+      error: e => {
+        this._sharedService.showAlert(e.error.message, 'Error!');
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
+    this.getPopularProducts();
   }
 }

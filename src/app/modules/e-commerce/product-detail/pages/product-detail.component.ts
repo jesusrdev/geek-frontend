@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Product, ProductList } from '../../../../core/models/product';
+import { ProductDetail, ProductList } from '../../../../core/models/product';
 
 import { ProductService } from '../../../../core/services/product.service';
 import { SharedService } from '../../../../core/services/shared.service';
@@ -22,25 +22,34 @@ export default class ProductDetailComponent implements OnInit {
   private _sharedService = inject(SharedService);
   private sanitizer = inject(DomSanitizer);
 
-  productId: number = 0;
-  product?: Product;
-  productDescription: SafeHtml = '';
-  products: ProductList[] = [];
+  productId = signal<number>(0);
+  product = signal<ProductDetail>({} as ProductDetail);
+  productDescription = signal<SafeHtml>('');
+  products = signal<ProductList[]>([]);
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.productId = parseInt(params.get('id') || '0');
-      this.getProduct();
-      this.getProductsSuggested();
+  constructor() {
+    effect(() => {
+      this.route.paramMap.subscribe(params => {
+        this.productId.set(parseInt(params.get('id') || '0'));
+      });
+      if (this.productId() > 0) {
+        this.getProduct();
+        this.getProductsSuggested();
+      }
+
+      // hacer scroll al inicio de la página
+      window.scrollTo(0, 0);
     });
   }
 
+  ngOnInit(): void {}
+
   getProduct() {
-    this._productService.get(this.productId).subscribe({
+    this._productService.get(this.productId()).subscribe({
       next: data => {
         if (data.isSuccessful) {
-          this.product = data.result;
-          this.productDescription = this.sanitizer.bypassSecurityTrustHtml(this.product.largeDescription);
+          this.product.set(data.result);
+          this.productDescription.set(this.sanitizer.bypassSecurityTrustHtml(this.product().largeDescription));
         } else {
           this._sharedService.showAlert('No se encontraró el producto', 'Advertencia');
         }
@@ -52,12 +61,18 @@ export default class ProductDetailComponent implements OnInit {
   }
 
   getProductsSuggested() {
-    this._productService.listActive().subscribe({
+    this._productService.listPopular().subscribe({
       next: data => {
         if (data.isSuccessful) {
-          this.products = data.result.filter(
-            product => product.brandId === this.product?.brandId && product.id !== this.product?.id
+          const products = data.result.filter(
+            product => product.brandId === this.product().brandId && product.id !== this.product().id
           );
+
+          if (products.length === 0) {
+            this.products.set(data.result.splice(0, 6));
+          } else {
+            this.products.set(products.splice(0, 6));
+          }
         } else {
           this._sharedService.showAlert('No se encontraron productos', 'Advertencia');
         }
