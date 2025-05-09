@@ -15,6 +15,7 @@ export default class CheckoutSuccessComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private _orderService = inject(OrderService);
+  private sharedService = inject(SharedService);
 
   readonly isLoading = signal(true);
   readonly error = signal<string | null>(null);
@@ -43,7 +44,11 @@ export default class CheckoutSuccessComponent {
 
   success() {
     this._orderService.success(this.orderId()!).subscribe({
-      next: () => {
+      next: response => {
+        if (!response.isSuccessful) {
+          this.sharedService.showAlert('Error al pagar la orden', 'Error!');
+          this.error.set(response.message || response.result || 'Error al pagar la orden');
+        }
         this.isLoading.set(false);
       },
       error: error => {

@@ -5,5 +5,5 @@ export interface ShippingAddress {
   country: string;
   state: string;
   zipCode: string;
-  username: string;
+  userName: string;
 }

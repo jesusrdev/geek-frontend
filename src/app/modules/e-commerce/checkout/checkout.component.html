@@ -3,34 +3,59 @@
   @if (cartItems.length === 0) {
     <div class="text-center text-gray-500">Tu carrito está vacío.</div>
   }
-  @if (cartItems.length > 0) {
-    <div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        @for (item of cartItems; track item.id) {
-          @let imageUrl = item.product.images.length > 0 ? item.product.images[0].urlImage : '';
-          <div class="border p-4 rounded-lg flex gap-3 items-center">
-            <img
-              [src]="imageUrl"
-              [alt]="item.product.nameProduct"
-              class="h-16 w-16 object-contain mb-2"
-            />
-            <div>
-              <h2 class="text-xl font-semibold">{{ item.product.nameProduct }}</h2>
-              <p class="text-gray-600">Precio:
-                S/ {{ item.price * (1 - (item.product.discount || 0)) | number: '1.2-2' }}</p>
-              <p class="text-gray-600">Cantidad: {{ item.quantity }}</p>
+  <div class="grid lg:grid-cols-2 grid-cols-1">
+    <div class="border-r-2 border-gray-300 pr-4 mr-8">
+      <checkout-shipping-address
+        (onSelect)="selectShippingAddressId.set($event)"
+        [shippingAddressId]="selectShippingAddressId()"
+      ></checkout-shipping-address>
+    </div>
+    <div class="w-full">
+      @if (cartItems.length > 0) {
+        <div class="grid grid-cols-1 gap-4 w-full">
+          @for (item of cartItems; track item.id) {
+            @let imageUrl = item.product.images.length > 0 ? item.product.images[0].urlImage : '';
+            <div class="border-[1.5px] p-4 rounded-lg flex gap-3 items-center relative">
+              <img
+                [src]="imageUrl"
+                [alt]="item.product.nameProduct"
+                class="h-16 w-16 object-contain mb-2"
+              />
+              <div>
+                <h2 class="text-xl font-semibold">{{ item.product.nameProduct }}</h2>
+                <p class="text-gray-600">Precio:
+                  S/ {{ item.price * (1 - (item.product.discount || 0)) | number: '1.2-2' }}</p>
+                <div class="text-white bg-orange absolute rounded-full px-3 aspect-square  -top-3 -left-3">
+                  <span class="text-xs font-bold">{{ item.quantity }}</span>
+                </div>
+              </div>
             </div>
+          }
+        </div>
+        <div class="mt-4 flex justify-between flex-col items-center w-full">
+          <div class="flex items-center gap-2 justify-between w-full py-2 opacity-80">
+            <span>Subtotal:</span>
+            <span>S/ {{ total | number: '1.2-2' }}</span>
           </div>
-        }
-      </div>
-      <div class="mt-4 flex justify-between items-center">
-        <p class="text-xl font-bold">Total: S/ {{ total | number: '1.2-2' }}</p>
+
+          <div class="flex items-center gap-2 justify-between w-full py-2 opacity-80">
+            <span>Envio:</span>
+            <span>S/ {{ 0 | number: '1.2-2' }}</span>
+          </div>
+
+          <div
+            class="text-xl font-semibold flex items-center gap-2 justify-between w-full border-t-2 border-t-gray-300 py-2">
+            <span>Total:</span>
+            <span>S/ {{ total | number: '1.2-2' }}</span>
+          </div>
+        </div>
         <app-button
           text="Comprar"
           (handleClick)="completeCheckout()"
+          [disabled]="selectShippingAddressId() === 0"
           class=""
         ></app-button>
-      </div>
+      }
     </div>
-  }
+  </div>
 </div>

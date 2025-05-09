@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ShoppingCartItem } from '../../../core/models/shopping-cart';
 import { ShoppingCartService } from '../../../core/services/shopping-cart.service';
 import { Router } from '@angular/router';
@@ -6,12 +6,13 @@ import { SharedService } from '../../../core/services/shared.service';
 import { OrderService } from '../../../core/services/order.service';
 import { DecimalPipe } from '@angular/common';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
-  imports: [ButtonComponent, DecimalPipe]
+  imports: [ButtonComponent, DecimalPipe, ShippingAddressComponent]
 })
 export default class CheckoutComponent implements OnInit {
   private cartService = inject(ShoppingCartService);
@@ -21,6 +22,8 @@ export default class CheckoutComponent implements OnInit {
 
   cartItems: ShoppingCartItem[] = [];
   total: number = 0;
+
+  selectShippingAddressId = signal<number>(0);
 
   ngOnInit(): void {
     this.getCartItems();
@@ -44,12 +47,12 @@ export default class CheckoutComponent implements OnInit {
   }
 
   completeCheckout(): void {
-    this.orderService.create().subscribe({
+    this.orderService.create(this.selectShippingAddressId()).subscribe({
       next: response => {
-        console.log('Checkout created successfully');
+        this._sharedService.showAlert('Checkout created successfully', 'Success!');
       },
       error: err => {
-        alert('Error al realizar la compra');
+        this._sharedService.showAlert(JSON.stringify(err.error), 'Error!');
       }
     });
   }
