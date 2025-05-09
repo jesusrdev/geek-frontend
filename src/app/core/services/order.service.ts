@@ -35,6 +35,7 @@ export class OrderService {
       .post<ApiResponse<{ sessionId: string }>>(`${this.baseUrl}`, {
         id: 0,
         status: 1
+        // shippindAdressId: 0  //TODO
       })
       .pipe(
         switchMap(async response => {

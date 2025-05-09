@@ -2,14 +2,16 @@ import { Injectable, inject } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Session } from '../../shared/interfaces/auth';
+import { Session, Token } from '../../shared/interfaces/auth';
+import { jwtDecode } from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
   private _snackBar = inject(MatSnackBar);
-
+  private cookieService = inject(CookieService);
 
   showAlert(message: string, type: string): void {
     this._snackBar.open(message, type, {
@@ -32,5 +34,15 @@ export class SharedService {
 
   deleteSession(): void {
     localStorage.removeItem('userSession');
+  }
+
+  getDecodedToken(): Token | null {
+    const token = this.cookieService.get('Authorization');
+
+    if (token != null && token !== '') {
+      return jwtDecode<Token>(token);
+    } else {
+      return null;
+    }
   }
 }

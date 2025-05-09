@@ -1,0 +1,152 @@
+<div class="flex w-full p-4 flex-col gap-4">
+  @for (comment of comments(); track comment) {
+    <div class="">
+      <div
+        class="grid gap-2 items-start"
+        style="grid-template-columns: minmax(0, auto) 1fr; grid-auto-flow: column;"
+      >
+        <div
+          class="flex-shrink-0 w-10 h-10 rounded-full flex  items-center justify-center text-xl font-semibold bg-orange text-white row-start-1">
+          {{ comment.nameUser ? comment.nameUser[0] : '?' }}
+        </div>
+
+        <div class="flex justify-center row-start-2 w-full h-full">
+          <span class="w-0 h-full bg-orange border border-orange text-center"></span>
+        </div>
+
+        <div class="flex-1 row-start-1 flex justify-between">
+          <div class="">
+            <p class="text-sm font-medium">
+              {{ comment.nameUser ?? 'Usuario desconocido' }}
+            </p>
+            <p class="text-sm opacity-80">
+              {{ comment.createdAt | date }}
+            </p>
+          </div>
+
+          <div class="flex items-center">
+            <button
+              mat-icon-button
+              color="primary"
+              class="row-start-1"
+              (click)="!isReplying() ? selectComment(comment, 'reply') : isReplying.set(false)"
+            >
+              <mat-icon>{{ isReplying() ? 'close' : 'reply' }}</mat-icon>
+            </button>
+
+            @if (comment.userId === parseInt(user()?.nameid || '0') || user()?.role === 'Admin') {
+              <button
+                mat-icon-button
+                color="primary"
+                class="row-start-1"
+                (click)="!isEditing() ? selectComment(comment, 'edit') : isEditing.set(false)"
+              >
+                <mat-icon>{{ isEditing() ? 'close' : 'edit' }}</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                color="primary"
+                class="row-start-1"
+                (click)="deleteComment(comment.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="row-start-2">
+
+          @if (isEditing()) {
+            <div class="flex">
+              <input
+                class="w-full h-full border border-orange rounded-md p-2"
+                matInput
+                placeholder="Escribe tu comentario aquí"
+                [autofocus]="true"
+                value="{{ editValue() }}"
+                [defaultValue]="comment.content"
+                (input)="editValue.set(commentInput.value)"
+                #commentInput
+              >
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="saveComment()"
+              >
+                <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          } @else {
+            <p class="text-sm opacity-80 row-span-2 break-words !row-start-2">
+              {{ comment.content }}
+            </p>
+          }
+
+          @if (comment.commentsChild && comment.commentsChild.length > 0) {
+            <product-comments
+              [comments]="comment.commentsChild"
+              (reload)="reload.emit()"
+            ></product-comments>
+          }
+
+          @if (isReplying()) {
+            <div class="flex items-center justify-center mt-4">
+              <input
+                class="w-full h-full border border-orange rounded-md p-2 mr-2"
+                matInput
+                placeholder="Escribe tu comentario aquí"
+                [autofocus]="true"
+                value="{{ createValue() }}"
+                (input)="createValue.set(createCommentInput.value)"
+                #createCommentInput
+              >
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="saveComment()"
+              >
+                <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+  @if (isCreating()) {
+    <div class="flex items-center justify-center">
+      <input
+        class="w-full h-full border border-orange rounded-md p-2 mr-2"
+        matInput
+        placeholder="Escribe tu comentario aquí"
+        [autofocus]="true"
+        value="{{ createValue() }}"
+        (input)="createValue.set(createCommentInput.value)"
+        #createCommentInput
+      >
+      <button
+        mat-icon-button
+        color="primary"
+        (click)="saveComment()"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+    <button
+      class="flex items-end justify-center text-orange w-fit hover:cursor-pointer border-b-2 hover:border-orange border-white transition-all"
+      (click)="isCreating.set(false)"
+    >
+      <span class="leading-none">Cancelar</span>
+    </button>
+  } @else {
+    <button
+      class="flex items-end justify-center text-orange w-fit hover:cursor-pointer border-b-2 hover:border-orange border-white transition-all"
+      (click)="selectComment(defaultComment, 'create')"
+    >
+      <mat-icon class="material-symbols-outlined !text-xl">add</mat-icon>
+      <span class="leading-none">Añadir comentario</span>
+    </button>
+  }
+</div>

@@ -30,6 +30,20 @@
           <span class="bg-orange rounded-md px-1 text-white">{{ product().discount | percent }}</span>
         </div>
 
+        <div class="flex items-center gap-2 my-2">
+          <div>
+            @for (item of Array(review()).fill(0); track item) {
+              <mat-icon class="!text-orange">star</mat-icon>
+            }
+            @for (item of Array(5 - review()).fill(0); track item) {
+              <mat-icon>star</mat-icon>
+            }
+          </div>
+          <span class="">
+            {{ product().review }}
+          </span>
+        </div>
+
         <div class="flex items-center gap-2">
           <button
             (click)="decreaseQuantity()"
@@ -50,20 +64,20 @@
             +
           </button>
         </div>
-        <div class="flex items-center justify-between gap-1 mx-sm:flex-col mt-3 *:flex-1">
-          <app-button
-            (click)="addToCart()"
-            class="text-sm rounded-full border border-orange w-full"
-            text="Agregar al carrito"
-            color="secondary"
-          ></app-button>
-          <app-button
-            (click)="addToWishlist()"
-            class="text-sm rounded-full"
-            text="Agregar a la lista de deseos"
-          ></app-button>
-        </div>
       </div>
+    </div>
+    <div class="flex items-center justify-between gap-1 mx-sm:flex-col mt-3 *:flex-1">
+      <app-button
+        (click)="addToCart()"
+        class="text-sm rounded-full w-full"
+        text="Agregar al carrito"
+      ></app-button>
+      <app-button
+        (click)="addToWishlist()"
+        class="text-sm rounded-full border border-orange w-full"
+        color="secondary"
+        text="Agregar a la lista de deseos"
+      ></app-button>
     </div>
   </div>
 </div>

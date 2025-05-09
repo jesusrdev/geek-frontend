@@ -4,7 +4,19 @@
       [product]="product()"
       [productDescription]="productDescription()"
     ></product-description>
-    <hr class="my-8" />
+    <hr class="my-5" />
+
+    <h3 class="text-3xl font-medium">Comentarios y Preguntas</h3>
+    <div class="max-w-xl">
+      <product-comments
+        [comments]="product().comments"
+        [productId]="product().id"
+        (reload)="getProduct()"
+        class="w-full"
+      ></product-comments>
+    </div>
+    <hr class="my-5" />
+
     <products-suggested
       [products]="products()"></products-suggested>
   </main>

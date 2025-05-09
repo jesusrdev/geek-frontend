@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductDetail, ProductList } from '../../../../core/models/product';
@@ -9,12 +9,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { DescriptionComponent } from '../components/description/description.component';
 import { ProductsSuggestedComponent } from '../components/products-suggested/products-suggested.component';
+import { CommentsComponent } from '../components/comments/comments.component';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
-  imports: [DescriptionComponent, ProductsSuggestedComponent]
+  imports: [DescriptionComponent, ProductsSuggestedComponent, CommentsComponent]
 })
 export default class ProductDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);

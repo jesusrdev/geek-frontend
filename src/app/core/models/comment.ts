@@ -26,5 +26,6 @@ export interface CommentResponse {
   status: number;
   createdAt: string;
   updatedAt: string;
-  parentCommentId?: number;
+  parentCommentId?: number | null;
+  commentsChild?: CommentResponse[];
 }

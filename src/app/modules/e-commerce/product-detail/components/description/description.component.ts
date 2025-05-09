@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, computed, inject, input, OnInit } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 
 import { ProductDetail } from '../../../../../core/models/product';
@@ -9,12 +9,13 @@ import { WishlistService } from '../../../../../core/services/wishlist.service';
 import { DecimalPipe, PercentPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'product-description',
   templateUrl: './description.component.html',
   styleUrl: './description.component.css',
-  imports: [FormsModule, ButtonComponent, DecimalPipe, PercentPipe]
+  imports: [FormsModule, ButtonComponent, DecimalPipe, PercentPipe, MatIcon]
 })
 export class DescriptionComponent implements OnInit {
   private shoppingCartService = inject(ShoppingCartService);
@@ -25,6 +26,8 @@ export class DescriptionComponent implements OnInit {
   readonly productDescription = input<SafeHtml>('');
 
   quantity: number = 1;
+
+  review = computed(() => this.product().review || 0);
 
   ngOnInit(): void {}
 
@@ -80,4 +83,6 @@ export class DescriptionComponent implements OnInit {
         }
       });
   }
+
+  protected readonly Array = Array;
 }
